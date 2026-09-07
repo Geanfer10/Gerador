@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel de Geradores — Goiás Verde</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --verde-escuro: #173404;
+    --verde: #3B6D11;
+    --verde-claro: #639922;
+    --verde-fundo: #EAF3DE;
+    --texto: #2C2C2A;
+    --texto-secundario: #5F5E5A;
+    --texto-muted: #888780;
+    --branco: #FFFFFF;
+    --borda: #E3E1D8;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(180deg, #F6FAF1 0%, #FFFFFF 100%);
+    color: var(--texto);
+    padding: 32px;
+  }
+
+  .cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  .titulo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .titulo h1 {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .titulo p {
+    font-size: 13px;
+    color: var(--texto-muted);
+    margin: 0;
+  }
+
+  .icone-titulo {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background: var(--verde);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 22px;
+  }
+
+  #atualizado {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--texto-muted);
+  }
+
+  .kpis {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+
+  .kpi {
+    background: var(--branco);
+    border: 1px solid var(--borda);
+    border-radius: 12px;
+    padding: 16px 18px;
+  }
+
+  .kpi.destaque {
+    background: var(--verde-fundo);
+    border-color: var(--verde-fundo);
+  }
+
+  .kpi p.label {
+    font-size: 13px;
+    color: var(--texto-secundario);
+    margin: 0 0 6px;
+  }
+
+  .kpi.destaque p.label { color: var(--verde); }
+
+  .kpi p.valor {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 26px;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  .kpi.destaque p.valor { color: var(--verde-escuro); }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  .card {
+    background: var(--branco);
+    border-radius: 12px;
+    border: 1px solid var(--borda);
+    border-left: 4px solid var(--verde);
+    padding: 16px;
+  }
+
+  .card.alerta { border-left-color: #BA7517; }
+  .card.critico { border-left-color: #A32D2D; }
+
+  .card-topo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 6px;
+  }
+
+  .card-topo span.nome {
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .card p.serie {
+    font-size: 11px;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--texto-muted);
+    margin: 0 0 10px;
+  }
+
+  .badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: var(--verde-fundo);
+    color: var(--verde-escuro);
+    margin-bottom: 12px;
+  }
+
+  .badge.alerta { background: #FAEEDA; color: #633806; }
+  .badge.critico { background: #FCEBEB; color: #501313; }
+
+  .linha-horimetro {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 4px;
+  }
+
+  .linha-horimetro span.rotulo {
+    font-size: 11px;
+    color: var(--texto-secundario);
+  }
+
+  .linha-horimetro span.valor {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  .barra-fundo {
+    height: 6px;
+    background: var(--verde-fundo);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 12px;
+  }
+
+  .barra-preenchida {
+    height: 100%;
+    background: var(--verde-claro);
+  }
+
+  .card-rodape {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--texto-secundario);
+  }
+
+  .status-em-dia { color: var(--verde); font-weight: 600; }
+  .status-alerta-txt { color: #BA7517; font-weight: 600; }
+  .status-critico-txt { color: #A32D2D; font-weight: 600; }
+
+  #erro {
+    display: none;
+    background: #FCEBEB;
+    color: #501313;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 1100px) {
+    .kpis, .cards { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+  <div class="cabecalho">
+    <div class="titulo">
+      <div class="icone-titulo">⚡</div>
+      <div>
+        <h1>Painel de geradores</h1>
+        <p>Goiás Verde Alimentos · PCM</p>
+      </div>
+    </div>
+    <span id="atualizado">carregando...</span>
+  </div>
+
+  <div id="erro"></div>
+
+  <div class="kpis" id="kpis"></div>
+
+  <div class="cards" id="cards"></div>
+
+  <script>
+    const CAMINHO_JSON = "data/geradores.json";
+    const HORIMETRO_MAXIMO = 550; // referencia para a barra de progresso
+
+    function classificarStatus(texto) {
+      const t = (texto || "").toLowerCase();
+      if (t.includes("critico") || t.includes("crítico") || t.includes("atrasad")) return "critico";
+      if (t.includes("alerta") || t.includes("proximo") || t.includes("próximo")) return "alerta";
+      return "ok";
+    }
+
+    function formatarData(iso) {
+      if (!iso) return "—";
+      return iso;
+    }
+
+    async function carregar() {
+      try {
+        const resp = await fetch(CAMINHO_JSON, { cache: "no-store" });
+        if (!resp.ok) throw new Error("Nao foi possivel carregar " + CAMINHO_JSON);
+        const dados = await resp.json();
+        renderizar(dados);
+      } catch (e) {
+        document.getElementById("erro").style.display = "block";
+        document.getElementById("erro").textContent =
+          "Não foi possível carregar os dados dos geradores. Verifique se data/geradores.json existe e se o workflow do GitHub Actions já rodou.";
+        console.error(e);
+      }
+    }
+
+    function renderizar(dados) {
+      const geradores = dados.geradores || [];
+      const dataAtualizacao = new Date(dados.atualizado_em);
+      document.getElementById("atualizado").textContent =
+        "atualizado " + dataAtualizacao.toLocaleDateString("pt-BR") + " " + dataAtualizacao.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
+
+      const total = geradores.length;
+      const operando = geradores.filter(g => (g.status_operacional || "").toLowerCase().includes("operando")).length;
+      const emDia = geradores.filter(g => classificarStatus(g.status) === "ok").length;
+      const proximas = geradores
+        .map(g => g.proxima_preventiva)
+        .filter(Boolean)
+        .sort();
+      const proximaGeral = proximas.length ? proximas[0] : "—";
+
+      const kpisEl = document.getElementById("kpis");
+      kpisEl.innerHTML = `
+        <div class="kpi">
+          <p class="label">Total de geradores</p>
+          <p class="valor">${total}</p>
+        </div>
+        <div class="kpi destaque">
+          <p class="label">Operando</p>
+          <p class="valor">${operando}/${total}</p>
+        </div>
+        <div class="kpi destaque">
+          <p class="label">Em dia (preventiva)</p>
+          <p class="valor">${emDia}/${total}</p>
+        </div>
+        <div class="kpi">
+          <p class="label">Próxima preventiva</p>
+          <p class="valor">${formatarData(proximaGeral)}</p>
+        </div>
+      `;
+
+      const cardsEl = document.getElementById("cards");
+      cardsEl.innerHTML = "";
+      geradores.forEach(g => {
+        const classe = classificarStatus(g.status);
+        const pct = g.horimetro != null ? Math.min(100, Math.round((g.horimetro / HORIMETRO_MAXIMO) * 100)) : 0;
+        const textoStatus = classe === "ok" ? "Em dia" : (classe === "alerta" ? "Atenção" : "Atrasado");
+        const classeTexto = classe === "ok" ? "status-em-dia" : (classe === "alerta" ? "status-alerta-txt" : "status-critico-txt");
+
+        const card = document.createElement("div");
+        card.className = "card" + (classe === "alerta" ? " alerta" : classe === "critico" ? " critico" : "");
+        card.innerHTML = `
+          <div class="card-topo">
+            <span class="nome">${g.equipamento}</span>
+          </div>
+          <p class="serie">${g.status_operacional || ""}</p>
+          <span class="badge${classe === "alerta" ? " alerta" : classe === "critico" ? " critico" : ""}">${g.status_operacional || "—"}</span>
+          <div class="linha-horimetro">
+            <span class="rotulo">Horímetro</span>
+            <span class="valor">${g.horimetro != null ? g.horimetro.toFixed(1) + "h" : "—"}</span>
+          </div>
+          <div class="barra-fundo">
+            <div class="barra-preenchida" style="width:${pct}%"></div>
+          </div>
+          <div class="card-rodape">
+            <span>Próx: ${formatarData(g.proxima_preventiva)}</span>
+            <span class="${classeTexto}">${textoStatus}</span>
+          </div>
+        `;
+        cardsEl.appendChild(card);
+      });
+    }
+
+    carregar();
+    // Atualiza a pagina sozinha a cada 5 minutos, para uso na TV
+    setInterval(carregar, 5 * 60 * 1000);
+  </script>
+
+</body>
+</html>
