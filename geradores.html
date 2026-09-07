@@ -66,10 +66,39 @@
     font-size: 22px;
   }
 
+  .lado-direito {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
   #atualizado {
     font-family: 'JetBrains Mono', monospace;
     font-size: 12px;
     color: var(--texto-muted);
+  }
+
+  .btn-monday {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--verde);
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 9px 16px;
+    border-radius: 8px;
+    transition: background 0.15s ease;
+  }
+
+  .btn-monday:hover {
+    background: var(--verde-escuro);
+  }
+
+  .btn-monday svg {
+    width: 15px;
+    height: 15px;
   }
 
   .kpis {
@@ -196,6 +225,21 @@
     color: var(--texto-secundario);
   }
 
+  .card-observacao {
+    font-size: 11px;
+    color: var(--texto-secundario);
+    background: #F6FAF1;
+    border-radius: 6px;
+    padding: 6px 8px;
+    margin-top: 10px;
+    line-height: 1.4;
+  }
+
+  .card-observacao strong {
+    color: var(--verde);
+    font-weight: 600;
+  }
+
   .status-em-dia { color: var(--verde); font-weight: 600; }
   .status-alerta-txt { color: #BA7517; font-weight: 600; }
   .status-critico-txt { color: #A32D2D; font-weight: 600; }
@@ -225,7 +269,13 @@
         <p>Goiás Verde Alimentos · PCM</p>
       </div>
     </div>
-    <span id="atualizado">carregando...</span>
+    <div class="lado-direito">
+      <span id="atualizado">carregando...</span>
+      <a class="btn-monday" href="https://messigean18s-team.monday.com/boards/18415734554" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12h14M13 6l6 6-6 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Análise no Monday
+      </a>
+    </div>
   </div>
 
   <div id="erro"></div>
@@ -307,6 +357,8 @@
         const textoStatus = classe === "ok" ? "Em dia" : (classe === "alerta" ? "Atenção" : "Atrasado");
         const classeTexto = classe === "ok" ? "status-em-dia" : (classe === "alerta" ? "status-alerta-txt" : "status-critico-txt");
 
+        const temObservacao = g.observacoes && g.observacoes.trim().length > 0;
+
         const card = document.createElement("div");
         card.className = "card" + (classe === "alerta" ? " alerta" : classe === "critico" ? " critico" : "");
         card.innerHTML = `
@@ -326,6 +378,7 @@
             <span>Próx: ${formatarData(g.proxima_preventiva)}</span>
             <span class="${classeTexto}">${textoStatus}</span>
           </div>
+          ${temObservacao ? `<div class="card-observacao"><strong>Obs:</strong> ${g.observacoes}</div>` : ""}
         `;
         cardsEl.appendChild(card);
       });
