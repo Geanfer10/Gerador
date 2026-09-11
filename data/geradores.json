@@ -1,5 +1,5 @@
 {
-  "atualizado_em": "2026-09-11T13:13:55.096170+00:00",
+  "atualizado_em": "2026-09-11T14:14:26.658678+00:00",
   "total_geradores": 8,
   "geradores": [
     {
@@ -76,7 +76,7 @@
       "ultima_preventiva": "2026-05-06",
       "proxima_preventiva": "2026-11-06",
       "relatorio_dcco": "",
-      "observacoes": "Aquecedor de arrefecimento solto",
+      "observacoes": "",
       "status": "🟢 Em Dia"
     },
     {
