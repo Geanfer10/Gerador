@@ -1,5 +1,5 @@
 {
-  "atualizado_em": "2026-09-18T14:14:11.267228+00:00",
+  "atualizado_em": "2026-09-18T15:13:32.992556+00:00",
   "total_geradores": 8,
   "geradores": [
     {
@@ -48,13 +48,13 @@
     },
     {
       "equipamento": "Gerador 05 - C400D6B Série: C22T057394",
-      "status_operacional": "Operando",
+      "status_operacional": "Manutençao",
       "horimetro": 519.0,
       "ultimo_teste": "2026-09-11",
       "ultima_preventiva": "2026-05-06",
       "proxima_preventiva": "2026-11-06",
       "relatorio_dcco": "",
-      "observacoes": "nivel de agua baixo",
+      "observacoes": "Alternador",
       "status": "🟢 Em Dia"
     },
     {
