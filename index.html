@@ -103,7 +103,7 @@
 
   .kpis {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 14px;
     margin-bottom: 24px;
   }
@@ -120,6 +120,11 @@
     border-color: var(--verde-fundo);
   }
 
+  .kpi.alerta-kpi {
+    background: #FDF4F4;
+    border-color: #FDF4F4;
+  }
+
   .kpi p.label {
     font-size: 13px;
     color: var(--texto-secundario);
@@ -127,6 +132,7 @@
   }
 
   .kpi.destaque p.label { color: var(--verde); }
+  .kpi.alerta-kpi p.label { color: #A32D2D; }
 
   .kpi p.valor {
     font-family: 'JetBrains Mono', monospace;
@@ -136,6 +142,7 @@
   }
 
   .kpi.destaque p.valor { color: var(--verde-escuro); }
+  .kpi.alerta-kpi p.valor { color: #A32D2D; }
 
   .cards {
     display: grid;
@@ -327,6 +334,7 @@
 
       const total = geradores.length;
       const operando = geradores.filter(g => (g.status_operacional || "").toLowerCase().includes("operando")).length;
+      const emManutTotal = geradores.filter(g => emManutencao(g.status_operacional)).length;
       const emDia = geradores.filter(g => classificarStatus(g.status) === "ok").length;
       const proximas = geradores
         .map(g => g.proxima_preventiva)
@@ -343,6 +351,10 @@
         <div class="kpi destaque">
           <p class="label">Operando</p>
           <p class="valor">${operando}/${total}</p>
+        </div>
+        <div class="kpi alerta-kpi">
+          <p class="label">Em manutenção</p>
+          <p class="valor">${emManutTotal}/${total}</p>
         </div>
         <div class="kpi destaque">
           <p class="label">Em dia (preventiva)</p>
