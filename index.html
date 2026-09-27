@@ -165,6 +165,82 @@
     height: 15px;
   }
 
+  .btn-filtro {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--branco);
+    color: var(--texto);
+    border: 1px solid var(--borda);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 9px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+
+  .btn-filtro:hover {
+    background: var(--verde-fundo);
+  }
+
+  .btn-filtro.ativo {
+    background: #A32D2D;
+    border-color: #A32D2D;
+    color: white;
+  }
+
+  /* ---------- Ranking de uso ---------- */
+  .ranking {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+
+  .ranking-card {
+    background: var(--branco);
+    border: 1px solid var(--borda);
+    border-radius: 12px;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .ranking-icone {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .ranking-card.mais .ranking-icone { background: #FDF4F4; color: #A32D2D; }
+  .ranking-card.menos .ranking-icone { background: var(--verde-fundo); color: var(--verde); }
+
+  .ranking-texto p.label {
+    font-size: 12px;
+    color: var(--texto-secundario);
+    margin: 0 0 2px;
+  }
+
+  .ranking-texto p.nome {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .ranking-texto p.valor {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--texto-secundario);
+    margin: 2px 0 0;
+  }
+
   /* ---------- KPIs ---------- */
   .kpis {
     display: grid;
@@ -342,6 +418,8 @@
     font-weight: 600;
   }
 
+  .card.escondido-pelo-filtro { display: none; }
+
   .status-em-dia { color: var(--verde); font-weight: 600; }
   .status-alerta-txt { color: #BA7517; font-weight: 600; }
   .status-critico-txt { color: #A32D2D; font-weight: 600; }
@@ -366,6 +444,8 @@
 
   @media (max-width: 700px) {
     .kpis { grid-template-columns: repeat(2, 1fr); }
+    .ranking { grid-template-columns: 1fr; }
+    .lado-direito { flex-wrap: wrap; justify-content: flex-end; }
   }
 </style>
 </head>
@@ -385,6 +465,7 @@
     </div>
     <div class="lado-direito">
       <span id="atualizado">carregando...</span>
+      <button class="btn-filtro" id="btn-filtro-alertas" onclick="alternarFiltroAlertas()">Só alertas</button>
       <a class="btn-monday" href="https://messigean18s-team.monday.com/boards/18415734554" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12h14M13 6l6 6-6 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         Análise no Monday
@@ -396,12 +477,15 @@
 
   <div class="kpis" id="kpis"></div>
 
+  <div class="ranking" id="ranking"></div>
+
   <div class="cards" id="cards"></div>
 
   <script>
     const CAMINHO_JSON = "data/geradores.json";
     const HORIMETRO_MAXIMO = 550; // referencia para a barra de progresso
     const JANELA_DESTAQUE_HORAS = 2; // por quanto tempo o selo "mudou agora" fica visivel
+    let filtroSoAlertasAtivo = false;
 
     function classificarStatus(texto) {
       const t = (texto || "").toLowerCase();
@@ -471,6 +555,58 @@
       trackEl.innerHTML = itensHtml + itensHtml;
     }
 
+    function renderizarRanking(geradores) {
+      const rankingEl = document.getElementById("ranking");
+      const comHorimetro = geradores.filter(g => g.horimetro != null);
+      if (comHorimetro.length < 2) {
+        rankingEl.innerHTML = "";
+        return;
+      }
+
+      const maisRodado = comHorimetro.reduce((a, b) => (b.horimetro > a.horimetro ? b : a));
+      const menosRodado = comHorimetro.reduce((a, b) => (b.horimetro < a.horimetro ? b : a));
+
+      rankingEl.innerHTML = `
+        <div class="ranking-card mais">
+          <div class="ranking-icone">▲</div>
+          <div class="ranking-texto">
+            <p class="label">Mais rodado</p>
+            <p class="nome">${maisRodado.equipamento}</p>
+            <p class="valor">${maisRodado.horimetro.toFixed(1)}h acumuladas</p>
+          </div>
+        </div>
+        <div class="ranking-card menos">
+          <div class="ranking-icone">▼</div>
+          <div class="ranking-texto">
+            <p class="label">Menos rodado</p>
+            <p class="nome">${menosRodado.equipamento}</p>
+            <p class="valor">${menosRodado.horimetro.toFixed(1)}h acumuladas</p>
+          </div>
+        </div>
+      `;
+    }
+
+    function precisaAtencao(g) {
+      const emManut = emManutencao(g.status_operacional);
+      const statusPreventiva = classificarStatus(g.status);
+      return emManut || statusPreventiva !== "ok";
+    }
+
+    function alternarFiltroAlertas() {
+      filtroSoAlertasAtivo = !filtroSoAlertasAtivo;
+      const btn = document.getElementById("btn-filtro-alertas");
+      btn.textContent = filtroSoAlertasAtivo ? "Mostrar todos" : "Só alertas";
+      btn.classList.toggle("ativo", filtroSoAlertasAtivo);
+      aplicarFiltroAlertas();
+    }
+
+    function aplicarFiltroAlertas() {
+      document.querySelectorAll(".card").forEach(card => {
+        const precisa = card.dataset.precisaAtencao === "true";
+        card.classList.toggle("escondido-pelo-filtro", filtroSoAlertasAtivo && !precisa);
+      });
+    }
+
     function renderizar(dados) {
       const geradores = dados.geradores || [];
       const dataAtualizacao = new Date(dados.atualizado_em);
@@ -478,6 +614,7 @@
         "atualizado " + dataAtualizacao.toLocaleDateString("pt-BR") + " " + dataAtualizacao.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
 
       renderizarTicker(geradores);
+      renderizarRanking(geradores);
 
       const total = geradores.length;
       const operando = geradores.filter(g => (g.status_operacional || "").toLowerCase().includes("operando")).length;
@@ -537,6 +674,7 @@
 
         const card = document.createElement("div");
         card.className = "card" + (classe === "alerta" ? " alerta" : classe === "critico" ? " critico" : "") + (destacarMudanca ? " mudou-agora" : "");
+        card.dataset.precisaAtencao = precisaAtencao(g) ? "true" : "false";
         card.innerHTML = `
           ${destacarMudanca ? `<span class="selo-novo">Mudou agora</span>` : ""}
           <div class="card-topo">
@@ -562,6 +700,8 @@
         `;
         cardsEl.appendChild(card);
       });
+
+      aplicarFiltroAlertas();
     }
 
     carregar();
