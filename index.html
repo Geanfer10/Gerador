@@ -29,6 +29,70 @@
     padding: 32px;
   }
 
+  /* ---------- Ticker estilo bolsa de valores ---------- */
+  .ticker-wrap {
+    background: #0F1512;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    white-space: nowrap;
+  }
+
+  .ticker-track {
+    display: inline-flex;
+    align-items: center;
+    animation: ticker-scroll 40s linear infinite;
+    padding: 10px 0;
+  }
+
+  .ticker-wrap:hover .ticker-track {
+    animation-play-state: paused;
+  }
+
+  @keyframes ticker-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .ticker-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 24px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: #F1EFE8;
+    border-right: 1px solid #2C332E;
+  }
+
+  .ticker-item .nome {
+    font-weight: 500;
+    color: #F1EFE8;
+  }
+
+  .ticker-item .valor {
+    color: #B8B6AC;
+  }
+
+  .ticker-item .variacao {
+    font-weight: 500;
+  }
+
+  .ticker-item .variacao.subiu { color: #97C459; }
+  .ticker-item .variacao.desceu { color: #F09595; }
+  .ticker-item .variacao.neutro { color: #888780; }
+
+  .ticker-item .bolinha {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .ticker-item .bolinha.ok { background: #97C459; }
+  .ticker-item .bolinha.manut { background: #F09595; }
+
+  /* ---------- Cabeçalho ---------- */
   .cabecalho {
     display: flex;
     align-items: center;
@@ -101,9 +165,10 @@
     height: 15px;
   }
 
+  /* ---------- KPIs ---------- */
   .kpis {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     gap: 14px;
     margin-bottom: 24px;
   }
@@ -115,15 +180,9 @@
     padding: 16px 18px;
   }
 
-  .kpi.destaque {
-    background: var(--verde-fundo);
-    border-color: var(--verde-fundo);
-  }
-
-  .kpi.alerta-kpi {
-    background: #FDF4F4;
-    border-color: #FDF4F4;
-  }
+  .kpi.destaque { background: var(--verde-fundo); border-color: var(--verde-fundo); }
+  .kpi.alerta-kpi { background: #FDF4F4; border-color: #FDF4F4; }
+  .kpi.disponibilidade { background: var(--verde-escuro); border-color: var(--verde-escuro); }
 
   .kpi p.label {
     font-size: 13px;
@@ -133,6 +192,7 @@
 
   .kpi.destaque p.label { color: var(--verde); }
   .kpi.alerta-kpi p.label { color: #A32D2D; }
+  .kpi.disponibilidade p.label { color: #C0DD97; }
 
   .kpi p.valor {
     font-family: 'JetBrains Mono', monospace;
@@ -143,7 +203,9 @@
 
   .kpi.destaque p.valor { color: var(--verde-escuro); }
   .kpi.alerta-kpi p.valor { color: #A32D2D; }
+  .kpi.disponibilidade p.valor { color: #FFFFFF; }
 
+  /* ---------- Cards ---------- */
   .cards {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -156,10 +218,33 @@
     border: 1px solid var(--borda);
     border-left: 4px solid var(--verde);
     padding: 16px;
+    position: relative;
   }
 
   .card.alerta { border-left-color: #BA7517; }
   .card.critico { border-left-color: #A32D2D; border-left-width: 6px; background: #FDF4F4; }
+
+  .card.mudou-agora {
+    animation: pulso-borda 2s ease-in-out infinite;
+  }
+
+  @keyframes pulso-borda {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(163, 45, 45, 0.35); }
+    50% { box-shadow: 0 0 0 6px rgba(163, 45, 45, 0); }
+  }
+
+  .selo-novo {
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    background: #A32D2D;
+    color: white;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 999px;
+    letter-spacing: 0.03em;
+  }
 
   .card-topo {
     display: flex;
@@ -212,6 +297,16 @@
     font-weight: 500;
   }
 
+  .linha-horimetro span.delta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    margin-left: 6px;
+  }
+
+  .linha-horimetro span.delta.subiu { color: var(--verde); }
+  .linha-horimetro span.delta.desceu { color: #A32D2D; }
+
   .barra-fundo {
     height: 6px;
     background: var(--verde-fundo);
@@ -261,12 +356,24 @@
     margin-bottom: 20px;
   }
 
+  @media (max-width: 1200px) {
+    .kpis { grid-template-columns: repeat(3, 1fr); }
+  }
+
   @media (max-width: 1100px) {
-    .kpis, .cards { grid-template-columns: repeat(2, 1fr); }
+    .cards { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 700px) {
+    .kpis { grid-template-columns: repeat(2, 1fr); }
   }
 </style>
 </head>
 <body>
+
+  <div class="ticker-wrap">
+    <div class="ticker-track" id="ticker-track"></div>
+  </div>
 
   <div class="cabecalho">
     <div class="titulo">
@@ -294,6 +401,7 @@
   <script>
     const CAMINHO_JSON = "data/geradores.json";
     const HORIMETRO_MAXIMO = 550; // referencia para a barra de progresso
+    const JANELA_DESTAQUE_HORAS = 2; // por quanto tempo o selo "mudou agora" fica visivel
 
     function classificarStatus(texto) {
       const t = (texto || "").toLowerCase();
@@ -312,6 +420,13 @@
       return iso;
     }
 
+    function mudouRecentemente(g) {
+      if (!g.status_mudou || !g.status_mudou_em) return false;
+      const quando = new Date(g.status_mudou_em);
+      const horasPassadas = (Date.now() - quando.getTime()) / (1000 * 60 * 60);
+      return horasPassadas < JANELA_DESTAQUE_HORAS;
+    }
+
     async function carregar() {
       try {
         const resp = await fetch(CAMINHO_JSON, { cache: "no-store" });
@@ -326,16 +441,49 @@
       }
     }
 
+    function renderizarTicker(geradores) {
+      const trackEl = document.getElementById("ticker-track");
+
+      const montarItem = g => {
+        const emManut = emManutencao(g.status_operacional);
+        const delta = g.delta_horimetro;
+        let variacaoTexto = "—";
+        let variacaoClasse = "neutro";
+        if (delta != null) {
+          if (delta > 0) { variacaoTexto = `▲ +${delta.toFixed(1)}h`; variacaoClasse = "subiu"; }
+          else if (delta < 0) { variacaoTexto = `▼ ${delta.toFixed(1)}h`; variacaoClasse = "desceu"; }
+          else { variacaoTexto = "• 0.0h"; variacaoClasse = "neutro"; }
+        }
+        const bolinhaClasse = emManut ? "manut" : "ok";
+        const horimetroTexto = g.horimetro != null ? g.horimetro.toFixed(1) + "h" : "—";
+        return `
+          <span class="ticker-item">
+            <span class="bolinha ${bolinhaClasse}"></span>
+            <span class="nome">${g.equipamento}</span>
+            <span class="valor">${horimetroTexto}</span>
+            <span class="variacao ${variacaoClasse}">${variacaoTexto}</span>
+          </span>
+        `;
+      };
+
+      const itensHtml = geradores.map(montarItem).join("");
+      // Duplica a sequencia para o efeito de rolagem continua (translateX -50%)
+      trackEl.innerHTML = itensHtml + itensHtml;
+    }
+
     function renderizar(dados) {
       const geradores = dados.geradores || [];
       const dataAtualizacao = new Date(dados.atualizado_em);
       document.getElementById("atualizado").textContent =
         "atualizado " + dataAtualizacao.toLocaleDateString("pt-BR") + " " + dataAtualizacao.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
 
+      renderizarTicker(geradores);
+
       const total = geradores.length;
       const operando = geradores.filter(g => (g.status_operacional || "").toLowerCase().includes("operando")).length;
       const emManutTotal = geradores.filter(g => emManutencao(g.status_operacional)).length;
       const emDia = geradores.filter(g => classificarStatus(g.status) === "ok").length;
+      const disponibilidade = total > 0 ? Math.round((operando / total) * 100) : 0;
       const proximas = geradores
         .map(g => g.proxima_preventiva)
         .filter(Boolean)
@@ -344,6 +492,10 @@
 
       const kpisEl = document.getElementById("kpis");
       kpisEl.innerHTML = `
+        <div class="kpi disponibilidade">
+          <p class="label">Disponibilidade da frota</p>
+          <p class="valor">${disponibilidade}%</p>
+        </div>
         <div class="kpi">
           <p class="label">Total de geradores</p>
           <p class="valor">${total}</p>
@@ -374,12 +526,19 @@
         const pct = g.horimetro != null ? Math.min(100, Math.round((g.horimetro / HORIMETRO_MAXIMO) * 100)) : 0;
         const textoStatus = classificarStatus(g.status) === "ok" ? "Em dia" : (classificarStatus(g.status) === "alerta" ? "Atenção" : "Atrasado");
         const classeTexto = classificarStatus(g.status) === "ok" ? "status-em-dia" : (classificarStatus(g.status) === "alerta" ? "status-alerta-txt" : "status-critico-txt");
-
         const temObservacao = g.observacoes && g.observacoes.trim().length > 0;
+        const destacarMudanca = mudouRecentemente(g);
+
+        let deltaHtml = "";
+        if (g.delta_horimetro != null && g.delta_horimetro !== 0) {
+          const subiu = g.delta_horimetro > 0;
+          deltaHtml = `<span class="delta ${subiu ? "subiu" : "desceu"}">${subiu ? "▲" : "▼"} ${Math.abs(g.delta_horimetro).toFixed(1)}h</span>`;
+        }
 
         const card = document.createElement("div");
-        card.className = "card" + (classe === "alerta" ? " alerta" : classe === "critico" ? " critico" : "");
+        card.className = "card" + (classe === "alerta" ? " alerta" : classe === "critico" ? " critico" : "") + (destacarMudanca ? " mudou-agora" : "");
         card.innerHTML = `
+          ${destacarMudanca ? `<span class="selo-novo">Mudou agora</span>` : ""}
           <div class="card-topo">
             <span class="nome">${g.equipamento}</span>
           </div>
@@ -387,7 +546,10 @@
           <span class="badge${classe === "alerta" ? " alerta" : classe === "critico" ? " critico" : ""}">${g.status_operacional || "—"}</span>
           <div class="linha-horimetro">
             <span class="rotulo">Horímetro</span>
-            <span class="valor">${g.horimetro != null ? g.horimetro.toFixed(1) + "h" : "—"}</span>
+            <span>
+              <span class="valor">${g.horimetro != null ? g.horimetro.toFixed(1) + "h" : "—"}</span>
+              ${deltaHtml}
+            </span>
           </div>
           <div class="barra-fundo">
             <div class="barra-preenchida" style="width:${pct}%"></div>
