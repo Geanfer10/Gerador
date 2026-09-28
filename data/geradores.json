@@ -1,12 +1,12 @@
 {
-  "atualizado_em": "2026-09-27T23:56:45.203187+00:00",
+  "atualizado_em": "2026-09-28T17:20:15.576263+00:00",
   "total_geradores": 8,
   "geradores": [
     {
       "equipamento": "Gerador 01 - C400D6B Série: D22T057618",
       "status_operacional": "Operando",
-      "horimetro": 508.7,
-      "delta_horimetro": 0.0,
+      "horimetro": 542.1,
+      "delta_horimetro": 33.4,
       "status_anterior": "Operando",
       "status_mudou": false,
       "status_mudou_em": null,
@@ -20,8 +20,8 @@
     {
       "equipamento": "Gerador 02 - C400D6B Série: C22T057571",
       "status_operacional": "Operando",
-      "horimetro": 507.9,
-      "delta_horimetro": 0.0,
+      "horimetro": 544.9,
+      "delta_horimetro": 37.0,
       "status_anterior": "Operando",
       "status_mudou": false,
       "status_mudou_em": null,
@@ -35,8 +35,8 @@
     {
       "equipamento": "Gerador 03 - C400D6B Série: C22T057467",
       "status_operacional": "Operando",
-      "horimetro": 490.4,
-      "delta_horimetro": 0.0,
+      "horimetro": 5192.0,
+      "delta_horimetro": 4701.6,
       "status_anterior": "Operando",
       "status_mudou": false,
       "status_mudou_em": null,
@@ -50,8 +50,8 @@
     {
       "equipamento": "Gerador 04 - C400D6B Série: C22T057318",
       "status_operacional": "Operando",
-      "horimetro": 492.0,
-      "delta_horimetro": 0.0,
+      "horimetro": 526.4,
+      "delta_horimetro": 34.4,
       "status_anterior": "Operando",
       "status_mudou": false,
       "status_mudou_em": null,
@@ -80,8 +80,8 @@
     {
       "equipamento": "Gerador 06 - C400D6B Série: C22T057317",
       "status_operacional": "Operando",
-      "horimetro": 477.7,
-      "delta_horimetro": 0.0,
+      "horimetro": 515.4,
+      "delta_horimetro": 37.7,
       "status_anterior": "Operando",
       "status_mudou": false,
       "status_mudou_em": null,
@@ -95,8 +95,8 @@
     {
       "equipamento": "Gerador 07 - C400D6B Série: B26T066767",
       "status_operacional": "Operando",
-      "horimetro": 32.6,
-      "delta_horimetro": 0.0,
+      "horimetro": 70.3,
+      "delta_horimetro": 37.7,
       "status_anterior": "Operando",
       "status_mudou": false,
       "status_mudou_em": null,
@@ -110,8 +110,8 @@
     {
       "equipamento": "Gerador 08 - C400D6B Série: B26T066768",
       "status_operacional": "Operando",
-      "horimetro": 29.5,
-      "delta_horimetro": 0.0,
+      "horimetro": 67.2,
+      "delta_horimetro": 37.7,
       "status_anterior": "Operando",
       "status_mudou": false,
       "status_mudou_em": null,
