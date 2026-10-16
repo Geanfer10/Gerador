@@ -1,5 +1,5 @@
 {
-  "atualizado_em": "2026-10-16T18:43:29.921690+00:00",
+  "atualizado_em": "2026-10-16T18:47:58.731588+00:00",
   "total_geradores": 8,
   "geradores": [
     {
@@ -31,7 +31,7 @@
           },
           {
             "nome": "Correia Alternador",
-            "status": "nao_conforme"
+            "status": "conforme"
           },
           {
             "nome": "Cabos das Baterias",
@@ -67,7 +67,6 @@
           }
         ],
         "nao_conformes": [
-          "Correia Alternador",
           "Conservação e Limpeza"
         ],
         "pendencias_abertas": [
@@ -155,7 +154,6 @@
             "data": "2026-10-16",
             "status": "🟡 Aberta",
             "componentes": [
-              "Correia Alternador",
               "Conservação e Limpeza"
             ],
             "observacoes": ""
@@ -172,10 +170,9 @@
             "observacoes": "",
             "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/13312708811",
             "nao_conformes": [
-              "Correia Alternador",
               "Conservação e Limpeza"
             ],
-            "conformes": 8
+            "conformes": 9
           },
           {
             "data": "2026-09-11",
@@ -300,7 +297,7 @@
           },
           {
             "nome": "Correia Alternador",
-            "status": "conforme"
+            "status": "nao_conforme"
           },
           {
             "nome": "Cabos das Baterias",
@@ -336,6 +333,7 @@
           }
         ],
         "nao_conformes": [
+          "Correia Alternador",
           "Conservação e Limpeza"
         ],
         "pendencias_abertas": [
@@ -423,6 +421,7 @@
             "data": "2026-10-16",
             "status": "🟡 Aberta",
             "componentes": [
+              "Correia Alternador",
               "Conservação e Limpeza"
             ],
             "observacoes": "Nao ligou"
@@ -439,9 +438,10 @@
             "observacoes": "Nao ligou",
             "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/13312769238",
             "nao_conformes": [
+              "Correia Alternador",
               "Conservação e Limpeza"
             ],
-            "conformes": 9
+            "conformes": 8
           },
           {
             "data": "2026-09-11",
