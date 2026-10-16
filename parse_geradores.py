@@ -105,6 +105,7 @@ def buscar_board(board_id: str, token: str):
     query = """
     query ($boardId: [ID!]) {
       boards(ids: $boardId) {
+        id
         columns {
           id
           title
@@ -215,7 +216,7 @@ def buscar_inspecoes(board_id: str, token: str):
     return colunas, itens
 
 
-def resumir_inspecoes(colunas, itens):
+def resumir_inspecoes(colunas, itens, board_id=INSPECOES_BOARD_ID_PADRAO):
     """Devolve {numero_do_gerador: {...ultima inspecao..., pendencias_abertas:[...]}}"""
     por_titulo = {normalizar(c["title"]): c["id"] for c in colunas}
 
@@ -236,6 +237,8 @@ def resumir_inspecoes(colunas, itens):
         for nome in COMPONENTES:
             comps.append({"nome": nome, "status": classificar_componente(col(v, nome))})
         registros.setdefault(numero, []).append({
+            "url": f"https://messigean18s-team.monday.com/boards/{board_id}/pulses/{item['id']}",
+            "nome": item.get("name") or "",
             "data": col(v, "Data da Inspeção"),
             "hora": minutos_do_dia(col(v, "Hora Inicio")),
             "turno": col(v, "Turno"),
@@ -276,6 +279,17 @@ def resumir_inspecoes(colunas, itens):
             "observacoes": ultima["observacoes"], "componentes": ultima["componentes"],
             "nao_conformes": [c["nome"] for c in ultima["componentes"] if c["status"] == "nao_conforme"],
             "pendencias_abertas": abertas,
+            "url": ultima["url"],
+            "historico": [
+                {
+                    "data": r["data"], "turno": r["turno"], "inspetor": r["inspetor"],
+                    "horimetro": r["horimetro"], "situacao": r["situacao"],
+                    "observacoes": r["observacoes"], "url": r["url"],
+                    "nao_conformes": [c["nome"] for c in r["componentes"] if c["status"] == "nao_conforme"],
+                    "conformes": sum(1 for c in r["componentes"] if c["status"] == "conforme"),
+                }
+                for r in reversed(lista[-8:])
+            ],
         }
     return resultado
 
@@ -359,6 +373,7 @@ def montar_json(board: dict, anterior_por_equipamento: dict, inspecoes: dict = N
                 "relatorio_dcco": pegar("relatorio_dcco"),
                 "observacoes": pegar("observacoes"),
                 "status": pegar("status") or "Desconhecido",
+                "url": f"https://messigean18s-team.monday.com/boards/{board.get('id', '')}/pulses/{item['id']}",
                 "inspecao": inspecoes.get(numero_do_gerador(equipamento)),
             }
         )
@@ -432,7 +447,7 @@ def main():
     inspecoes = {}
     try:
         colunas_insp, itens_insp = buscar_inspecoes(args.inspecoes_board_id, token)
-        inspecoes = resumir_inspecoes(colunas_insp, itens_insp)
+        inspecoes = resumir_inspecoes(colunas_insp, itens_insp, args.inspecoes_board_id)
     except Exception as e:  # o painel segue funcionando sem os dados de inspecao
         print(f"Aviso: nao foi possivel ler as inspecoes ({e}).", file=sys.stderr)
     dados = montar_json(board, anterior_por_equipamento, inspecoes)

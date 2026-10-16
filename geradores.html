@@ -468,6 +468,11 @@
   .chip { font-size: 11px; padding: 2px 8px; border-radius: 999px; }
   .chip.ok { background: var(--verde-fundo); color: var(--verde-escuro); }
   .chip.nok { background: #FCEBEB; color: #501313; font-weight: 600; }
+  .card { cursor: pointer; transition: transform 0.12s ease, box-shadow 0.12s ease; }
+  .card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(23, 52, 4, 0.12); }
+  .card .ver-relatorio { font-size: 11px; color: var(--verde); font-weight: 600; margin-top: 10px; }
+  .btn-link { display: inline-block; margin: 4px 8px 0 0; font-size: 12px; font-weight: 600; color: var(--verde); text-decoration: none; border: 1px solid var(--borda); border-radius: 6px; padding: 4px 10px; }
+  .btn-link:hover { background: var(--verde-fundo); }
   .vazio { font-size: 13px; color: var(--texto-secundario); }
   @media (max-width: 700px) { .conf-resumo { grid-template-columns: 1fr; } }
 
@@ -718,6 +723,7 @@
     }
 
     function renderizarPainel() {
+      if (geradorAberto) { renderizarRelatorio(); return; }
       if (!kpiAberto) return;
       const def = montarKpis(ultimosGeradores)[kpiAberto];
       const itens = def.lista.map(g => ({ g, an: analisarConformidade(g) }));
@@ -744,7 +750,74 @@
       `;
     }
 
+    let geradorAberto = null;
+
+    function renderizarRelatorio() {
+      const g = ultimosGeradores.find(x => x.equipamento === geradorAberto);
+      if (!g) return;
+      const an = analisarConformidade(g);
+      const insp = g.inspecao;
+      document.getElementById("painel-titulo").textContent = g.equipamento;
+      document.getElementById("painel-sub").textContent = "Relatório do gerador · dados do Monday";
+
+      const links = [
+        g.url ? `<a class="btn-link" href="${esc(g.url)}" target="_blank" rel="noopener">Abrir gerador no Monday ›</a>` : "",
+        insp && insp.url ? `<a class="btn-link" href="${esc(insp.url)}" target="_blank" rel="noopener">Última inspeção no Monday ›</a>` : "",
+        g.relatorio_dcco ? `<a class="btn-link" href="${esc(g.url || "#")}" target="_blank" rel="noopener">Relatório DCCO: ${esc(g.relatorio_dcco)} ›</a>` : ""
+      ].join("");
+
+      let corpo = `
+        <div class="conf-resumo">
+          <div class="conf-caixa ${an.conforme ? "ok" : "nok"}"><p>Situação atual</p><strong style="font-size:20px">${an.conforme ? "Conforme" : "Não conforme"}</strong></div>
+          <div class="conf-caixa ${emManutencao(g.status_operacional) ? "nok" : "ok"}"><p>Operação</p><strong style="font-size:20px">${esc(g.status_operacional || "—")}</strong></div>
+        </div>
+        ${an.motivos.length ? `<p class="motivos" style="color:#A32D2D;font-size:13px;margin:0 0 8px">${an.motivos.map(esc).join(" · ")}</p>` : ""}
+        <div>${links}</div>
+        <h3>Dados do gerador</h3>
+        <div class="item-analise"><div class="obs" style="margin-top:0">
+          Horímetro: <strong>${g.horimetro != null ? g.horimetro.toFixed(1) + "h" : "—"}</strong> ·
+          Última preventiva: <strong>${esc(formatarData(g.ultima_preventiva))}</strong> ·
+          Próxima: <strong>${esc(formatarData(g.proxima_preventiva))}</strong> ·
+          Último teste: <strong>${esc(formatarData(g.ultimo_teste))}</strong> ·
+          Preventiva: <strong>${esc(g.status || "—")}</strong>
+          ${g.observacoes && g.observacoes.trim() ? `<br><strong>Obs:</strong> ${esc(g.observacoes)}` : ""}
+        </div></div>`;
+
+      if (!insp) {
+        corpo += `<h3>Inspeções semanais</h3><p class="vazio">Nenhuma inspeção encontrada para este gerador.</p>`;
+      } else {
+        const chips = (insp.componentes || []).map(c => {
+          if (c.status === "conforme") return `<span class="chip ok">✓ ${esc(c.nome)}</span>`;
+          if (c.status === "nao_conforme") return `<span class="chip nok">✕ ${esc(c.nome)}</span>`;
+          return `<span class="chip" style="background:#F1EFE8;color:#5F5E5A">— ${esc(c.nome)}</span>`;
+        }).join("");
+        const hist = (insp.historico || []).map(h => `
+          <div class="item-analise ${h.nao_conformes.length ? "nok" : ""}">
+            <div class="linha"><span>${esc(h.data)}${h.turno ? " · " + esc(h.turno) : ""}</span><span class="extra">${esc(h.inspetor || "")}${h.horimetro != null ? " · " + h.horimetro.toFixed(1) + "h" : ""}</span></div>
+            <div class="${h.nao_conformes.length ? "motivos" : "obs"}">${h.nao_conformes.length ? "Não conforme: " + h.nao_conformes.map(esc).join(", ") : "Todos os itens conformes"}</div>
+            ${h.observacoes && h.observacoes.trim() ? `<div class="obs"><strong>Obs:</strong> ${esc(h.observacoes)}</div>` : ""}
+            ${h.url ? `<a class="btn-link" href="${esc(h.url)}" target="_blank" rel="noopener">Abrir no Monday ›</a>` : ""}
+          </div>`).join("");
+        corpo += `
+          <h3>Última inspeção (${esc(insp.data)}${insp.turno ? " · " + esc(insp.turno) : ""}${insp.inspetor ? " · " + esc(insp.inspetor) : ""})</h3>
+          <div class="chips" style="margin-bottom:8px">${chips}</div>
+          ${insp.observacoes && insp.observacoes.trim() ? `<div class="item-analise"><div class="obs" style="margin-top:0"><strong>Obs da inspeção:</strong> ${esc(insp.observacoes)}</div></div>` : ""}
+          <h3>Histórico de inspeções (${(insp.historico || []).length} mais recentes)</h3>
+          ${hist}
+          ${(insp.pendencias_abertas || []).length ? `<h3 class="nok">Pendências em aberto (${insp.pendencias_abertas.length})</h3>` + insp.pendencias_abertas.slice().reverse().slice(0, 5).map(p => `<div class="item-analise nok"><div class="linha"><span>${esc(p.data)}</span><span class="extra">${esc(p.status)}</span></div><div class="motivos">${esc((p.componentes || []).join(", ") || "—")}</div>${p.observacoes ? `<div class="obs">${esc(p.observacoes)}</div>` : ""}</div>`).join("") : ""}`;
+      }
+      document.getElementById("painel-corpo").innerHTML = corpo;
+    }
+
+    function abrirRelatorio(nome) {
+      kpiAberto = null;
+      geradorAberto = nome;
+      renderizarRelatorio();
+      document.getElementById("painel-fundo").classList.add("aberto");
+    }
+
     function abrirPainel(chave) {
+      geradorAberto = null;
       kpiAberto = chave;
       renderizarPainel();
       document.getElementById("painel-fundo").classList.add("aberto");
@@ -752,6 +825,7 @@
 
     function fecharPainel() {
       kpiAberto = null;
+      geradorAberto = null;
       document.getElementById("painel-fundo").classList.remove("aberto");
     }
 
@@ -759,6 +833,16 @@
     document.getElementById("kpis").addEventListener("click", e => {
       const el = e.target.closest("[data-kpi]");
       if (el) abrirPainel(el.dataset.kpi);
+    });
+    document.getElementById("cards").addEventListener("click", e => {
+      if (e.target.closest("a")) return;
+      const el = e.target.closest(".card");
+      if (el) abrirRelatorio(el.dataset.nome);
+    });
+    document.getElementById("cards").addEventListener("keydown", e => {
+      if (e.key !== "Enter" && e.key !== " ") return;
+      const el = e.target.closest(".card");
+      if (el) { e.preventDefault(); abrirRelatorio(el.dataset.nome); }
     });
     document.getElementById("kpis").addEventListener("keydown", e => {
       if (e.key !== "Enter" && e.key !== " ") return;
@@ -857,6 +941,9 @@
 
         const card = document.createElement("div");
         card.className = "card" + (classe === "alerta" ? " alerta" : classe === "critico" ? " critico" : "") + (destacarMudanca ? " mudou-agora" : "");
+        card.dataset.nome = g.equipamento;
+        card.tabIndex = 0;
+        card.setAttribute("role", "button");
         card.dataset.precisaAtencao = precisaAtencao(g) ? "true" : "false";
         card.innerHTML = `
           ${destacarMudanca ? `<span class="selo-novo">Mudou agora</span>` : ""}
@@ -880,6 +967,7 @@
             <span class="${classeTexto}">${textoStatus}</span>
           </div>
           ${temObservacao ? `<div class="card-observacao"><strong>Obs:</strong> ${g.observacoes}</div>` : ""}
+          <div class="ver-relatorio">Ver relatório ›</div>
         `;
         cardsEl.appendChild(card);
       });
