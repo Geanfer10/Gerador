@@ -1,12 +1,12 @@
 {
-  "atualizado_em": "2026-10-16T13:44:18.581017+00:00",
+  "atualizado_em": "2026-10-16T17:24:49.509343+00:00",
   "total_geradores": 8,
   "geradores": [
     {
       "equipamento": "Gerador 01 - C400D6B Série: D22T057618",
       "status_operacional": "Operando",
-      "horimetro": 551.9,
-      "delta_horimetro": 0.0,
+      "horimetro": 561.1,
+      "delta_horimetro": 9.2,
       "status_anterior": "Operando",
       "status_mudou": false,
       "status_mudou_em": null,
@@ -15,13 +15,158 @@
       "proxima_preventiva": "2026-11-06",
       "relatorio_dcco": "",
       "observacoes": "gerador nao ligou",
-      "status": "🟢 Em Dia"
+      "status": "🟢 Em Dia",
+      "inspecao": {
+        "data": "2026-10-16",
+        "turno": "1º Turno",
+        "inspetor": "Paulo Ricardo",
+        "horimetro": 561.1,
+        "situacao": "Conforme",
+        "observacoes": "",
+        "componentes": [
+          {
+            "nome": "Nível de Água",
+            "status": "conforme"
+          },
+          {
+            "nome": "Correia Alternador",
+            "status": "nao_conforme"
+          },
+          {
+            "nome": "Cabos das Baterias",
+            "status": "conforme"
+          },
+          {
+            "nome": "Vazamento Resistência",
+            "status": "conforme"
+          },
+          {
+            "nome": "Tubo Flexível",
+            "status": "conforme"
+          },
+          {
+            "nome": "Nível de Óleo",
+            "status": "conforme"
+          },
+          {
+            "nome": "Filtro de Ar",
+            "status": "conforme"
+          },
+          {
+            "nome": "Mangueiras Diesel",
+            "status": "conforme"
+          },
+          {
+            "nome": "Fixação Componentes",
+            "status": "conforme"
+          },
+          {
+            "nome": "Conservação e Limpeza",
+            "status": "nao_conforme"
+          }
+        ],
+        "nao_conformes": [
+          "Correia Alternador",
+          "Conservação e Limpeza"
+        ],
+        "pendencias_abertas": [
+          {
+            "data": "2026-07-03",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-07-10",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-07-20",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-07-31",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-08-07",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-08-14",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": "Feito reset para ligar"
+          },
+          {
+            "data": "2026-08-21",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-08-28",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-09-04",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-09-11",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": "Gerador nao liga"
+          },
+          {
+            "data": "2026-10-16",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Correia Alternador",
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          }
+        ]
+      }
     },
     {
       "equipamento": "Gerador 02 - C400D6B Série: C22T057571",
       "status_operacional": "Operando",
-      "horimetro": 553.0,
-      "delta_horimetro": 0.0,
+      "horimetro": 561.2,
+      "delta_horimetro": 8.2,
       "status_anterior": "Operando",
       "status_mudou": false,
       "status_mudou_em": null,
@@ -30,13 +175,156 @@
       "proxima_preventiva": "2026-11-06",
       "relatorio_dcco": "",
       "observacoes": "",
-      "status": "🟢 Em Dia"
+      "status": "🟢 Em Dia",
+      "inspecao": {
+        "data": "2026-10-16",
+        "turno": "1º Turno",
+        "inspetor": "Paulo Ricardo",
+        "horimetro": 561.2,
+        "situacao": "Atenção",
+        "observacoes": "Nao ligou",
+        "componentes": [
+          {
+            "nome": "Nível de Água",
+            "status": "conforme"
+          },
+          {
+            "nome": "Correia Alternador",
+            "status": "conforme"
+          },
+          {
+            "nome": "Cabos das Baterias",
+            "status": "conforme"
+          },
+          {
+            "nome": "Vazamento Resistência",
+            "status": "conforme"
+          },
+          {
+            "nome": "Tubo Flexível",
+            "status": "conforme"
+          },
+          {
+            "nome": "Nível de Óleo",
+            "status": "conforme"
+          },
+          {
+            "nome": "Filtro de Ar",
+            "status": "conforme"
+          },
+          {
+            "nome": "Mangueiras Diesel",
+            "status": "conforme"
+          },
+          {
+            "nome": "Fixação Componentes",
+            "status": "conforme"
+          },
+          {
+            "nome": "Conservação e Limpeza",
+            "status": "nao_conforme"
+          }
+        ],
+        "nao_conformes": [
+          "Conservação e Limpeza"
+        ],
+        "pendencias_abertas": [
+          {
+            "data": "2026-07-03",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-07-10",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-07-20",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-07-31",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": "feito reset para ligar"
+          },
+          {
+            "data": "2026-08-07",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-08-14",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-08-21",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": "feito reset para ligar"
+          },
+          {
+            "data": "2026-08-28",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-09-04",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-09-11",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-10-16",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": "Nao ligou"
+          }
+        ]
+      }
     },
     {
       "equipamento": "Gerador 03 - C400D6B Série: C22T057467",
       "status_operacional": "Operando",
-      "horimetro": 528.4,
-      "delta_horimetro": 0.0,
+      "horimetro": 535.5,
+      "delta_horimetro": 7.1,
       "status_anterior": "Operando",
       "status_mudou": false,
       "status_mudou_em": null,
@@ -45,13 +333,156 @@
       "proxima_preventiva": "2026-11-06",
       "relatorio_dcco": "",
       "observacoes": "",
-      "status": "🟢 Em Dia"
+      "status": "🟢 Em Dia",
+      "inspecao": {
+        "data": "2026-10-16",
+        "turno": "1º Turno",
+        "inspetor": "Paulo Ricardo",
+        "horimetro": 535.5,
+        "situacao": "Conforme",
+        "observacoes": "",
+        "componentes": [
+          {
+            "nome": "Nível de Água",
+            "status": "conforme"
+          },
+          {
+            "nome": "Correia Alternador",
+            "status": "conforme"
+          },
+          {
+            "nome": "Cabos das Baterias",
+            "status": "conforme"
+          },
+          {
+            "nome": "Vazamento Resistência",
+            "status": "conforme"
+          },
+          {
+            "nome": "Tubo Flexível",
+            "status": "conforme"
+          },
+          {
+            "nome": "Nível de Óleo",
+            "status": "conforme"
+          },
+          {
+            "nome": "Filtro de Ar",
+            "status": "conforme"
+          },
+          {
+            "nome": "Mangueiras Diesel",
+            "status": "conforme"
+          },
+          {
+            "nome": "Fixação Componentes",
+            "status": "conforme"
+          },
+          {
+            "nome": "Conservação e Limpeza",
+            "status": "nao_conforme"
+          }
+        ],
+        "nao_conformes": [
+          "Conservação e Limpeza"
+        ],
+        "pendencias_abertas": [
+          {
+            "data": "2026-07-03",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": "Feito reset para ligar"
+          },
+          {
+            "data": "2026-07-10",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-07-20",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-07-31",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": "feito reset para ligar"
+          },
+          {
+            "data": "2026-08-07",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": "mensagem de \" warning \" no painel"
+          },
+          {
+            "data": "2026-08-14",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-08-21",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": "Feito dois reset para ligar e sensor map cap solto"
+          },
+          {
+            "data": "2026-08-28",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-09-04",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-09-11",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-10-16",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          }
+        ]
+      }
     },
     {
       "equipamento": "Gerador 04 - C400D6B Série: C22T057318",
       "status_operacional": "Operando",
-      "horimetro": 535.6,
-      "delta_horimetro": 0.0,
+      "horimetro": 543.2,
+      "delta_horimetro": 7.6,
       "status_anterior": "Operando",
       "status_mudou": false,
       "status_mudou_em": null,
@@ -60,7 +491,142 @@
       "proxima_preventiva": "2026-11-06",
       "relatorio_dcco": "",
       "observacoes": "",
-      "status": "🟢 Em Dia"
+      "status": "🟢 Em Dia",
+      "inspecao": {
+        "data": "2026-10-16",
+        "turno": "1º Turno",
+        "inspetor": "Paulo Ricardo",
+        "horimetro": 543.2,
+        "situacao": "Conforme",
+        "observacoes": "",
+        "componentes": [
+          {
+            "nome": "Nível de Água",
+            "status": "conforme"
+          },
+          {
+            "nome": "Correia Alternador",
+            "status": "conforme"
+          },
+          {
+            "nome": "Cabos das Baterias",
+            "status": "conforme"
+          },
+          {
+            "nome": "Vazamento Resistência",
+            "status": "conforme"
+          },
+          {
+            "nome": "Tubo Flexível",
+            "status": "conforme"
+          },
+          {
+            "nome": "Nível de Óleo",
+            "status": "conforme"
+          },
+          {
+            "nome": "Filtro de Ar",
+            "status": "conforme"
+          },
+          {
+            "nome": "Mangueiras Diesel",
+            "status": "conforme"
+          },
+          {
+            "nome": "Fixação Componentes",
+            "status": "conforme"
+          },
+          {
+            "nome": "Conservação e Limpeza",
+            "status": "nao_conforme"
+          }
+        ],
+        "nao_conformes": [
+          "Conservação e Limpeza"
+        ],
+        "pendencias_abertas": [
+          {
+            "data": "2026-07-03",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-07-10",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-07-20",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-07-31",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": "mensagem de \" warning \" no painel"
+          },
+          {
+            "data": "2026-08-07",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-08-14",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": "Mensagen de warning no painel"
+          },
+          {
+            "data": "2026-08-28",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-09-04",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-09-11",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-10-16",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          }
+        ]
+      }
     },
     {
       "equipamento": "Gerador 05 - C400D6B Série: C22T057394",
@@ -75,13 +641,158 @@
       "proxima_preventiva": "2026-11-06",
       "relatorio_dcco": "",
       "observacoes": "Alternador",
-      "status": "🟢 Em Dia"
+      "status": "🟢 Em Dia",
+      "inspecao": {
+        "data": "2026-09-11",
+        "turno": "1º Turno",
+        "inspetor": "Paulo Ricardo",
+        "horimetro": 519.0,
+        "situacao": "Não Conforme",
+        "observacoes": "Completar nivel de agua",
+        "componentes": [
+          {
+            "nome": "Nível de Água",
+            "status": "nao_conforme"
+          },
+          {
+            "nome": "Correia Alternador",
+            "status": "conforme"
+          },
+          {
+            "nome": "Cabos das Baterias",
+            "status": "conforme"
+          },
+          {
+            "nome": "Vazamento Resistência",
+            "status": "conforme"
+          },
+          {
+            "nome": "Tubo Flexível",
+            "status": "conforme"
+          },
+          {
+            "nome": "Nível de Óleo",
+            "status": "conforme"
+          },
+          {
+            "nome": "Filtro de Ar",
+            "status": "conforme"
+          },
+          {
+            "nome": "Mangueiras Diesel",
+            "status": "conforme"
+          },
+          {
+            "nome": "Fixação Componentes",
+            "status": "conforme"
+          },
+          {
+            "nome": "Conservação e Limpeza",
+            "status": "nao_conforme"
+          }
+        ],
+        "nao_conformes": [
+          "Nível de Água",
+          "Conservação e Limpeza"
+        ],
+        "pendencias_abertas": [
+          {
+            "data": "2026-07-03",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-07-10",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-07-20",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-07-31",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-08-07",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-08-14",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-08-21",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": "Sensor map cabo solto"
+          },
+          {
+            "data": "2026-08-21",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-08-28",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-09-04",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-09-11",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Nível de Água",
+              "Conservação e Limpeza"
+            ],
+            "observacoes": "Completar nivel de agua"
+          }
+        ]
+      }
     },
     {
       "equipamento": "Gerador 06 - C400D6B Série: C22T057317",
       "status_operacional": "Operando",
-      "horimetro": 525.0,
-      "delta_horimetro": 0.0,
+      "horimetro": 532.6,
+      "delta_horimetro": 7.6,
       "status_anterior": "Operando",
       "status_mudou": false,
       "status_mudou_em": null,
@@ -90,13 +801,156 @@
       "proxima_preventiva": "2026-11-06",
       "relatorio_dcco": "",
       "observacoes": "",
-      "status": "🟢 Em Dia"
+      "status": "🟢 Em Dia",
+      "inspecao": {
+        "data": "2026-10-16",
+        "turno": "1º Turno",
+        "inspetor": "Paulo Ricardo",
+        "horimetro": 532.6,
+        "situacao": "Conforme",
+        "observacoes": "",
+        "componentes": [
+          {
+            "nome": "Nível de Água",
+            "status": "conforme"
+          },
+          {
+            "nome": "Correia Alternador",
+            "status": "conforme"
+          },
+          {
+            "nome": "Cabos das Baterias",
+            "status": "conforme"
+          },
+          {
+            "nome": "Vazamento Resistência",
+            "status": "conforme"
+          },
+          {
+            "nome": "Tubo Flexível",
+            "status": "conforme"
+          },
+          {
+            "nome": "Nível de Óleo",
+            "status": "conforme"
+          },
+          {
+            "nome": "Filtro de Ar",
+            "status": "conforme"
+          },
+          {
+            "nome": "Mangueiras Diesel",
+            "status": "conforme"
+          },
+          {
+            "nome": "Fixação Componentes",
+            "status": "conforme"
+          },
+          {
+            "nome": "Conservação e Limpeza",
+            "status": "nao_conforme"
+          }
+        ],
+        "nao_conformes": [
+          "Conservação e Limpeza"
+        ],
+        "pendencias_abertas": [
+          {
+            "data": "2026-07-03",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": "Feito reset para ligar"
+          },
+          {
+            "data": "2026-07-10",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": "Gerador com mensagen \" warning \""
+          },
+          {
+            "data": "2026-07-20",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-07-31",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": "mensagem de \"warning\" no painel"
+          },
+          {
+            "data": "2026-08-07",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-08-14",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-08-21",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-08-28",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-09-04",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-09-11",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-10-16",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          }
+        ]
+      }
     },
     {
       "equipamento": "Gerador 07 - C400D6B Série: B26T066767",
       "status_operacional": "Operando",
-      "horimetro": 79.6,
-      "delta_horimetro": 0.0,
+      "horimetro": 87.2,
+      "delta_horimetro": 7.6,
       "status_anterior": "Operando",
       "status_mudou": false,
       "status_mudou_em": null,
@@ -105,13 +959,157 @@
       "proxima_preventiva": "2026-11-06",
       "relatorio_dcco": "",
       "observacoes": "",
-      "status": "🟢 Em Dia"
+      "status": "🟢 Em Dia",
+      "inspecao": {
+        "data": "2026-10-16",
+        "turno": "1º Turno",
+        "inspetor": "Paulo Ricardo",
+        "horimetro": 87.2,
+        "situacao": "Conforme",
+        "observacoes": "",
+        "componentes": [
+          {
+            "nome": "Nível de Água",
+            "status": "conforme"
+          },
+          {
+            "nome": "Correia Alternador",
+            "status": "conforme"
+          },
+          {
+            "nome": "Cabos das Baterias",
+            "status": "conforme"
+          },
+          {
+            "nome": "Vazamento Resistência",
+            "status": "conforme"
+          },
+          {
+            "nome": "Tubo Flexível",
+            "status": "conforme"
+          },
+          {
+            "nome": "Nível de Óleo",
+            "status": "conforme"
+          },
+          {
+            "nome": "Filtro de Ar",
+            "status": "conforme"
+          },
+          {
+            "nome": "Mangueiras Diesel",
+            "status": "conforme"
+          },
+          {
+            "nome": "Fixação Componentes",
+            "status": "conforme"
+          },
+          {
+            "nome": "Conservação e Limpeza",
+            "status": "nao_conforme"
+          }
+        ],
+        "nao_conformes": [
+          "Conservação e Limpeza"
+        ],
+        "pendencias_abertas": [
+          {
+            "data": "2026-07-03",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-07-10",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-07-20",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-07-31",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-08-07",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": "mensagem de \" warning \" no painel"
+          },
+          {
+            "data": "2026-08-14",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-08-21",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-08-28",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-09-04",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Vazamento Resistência",
+              "Conservação e Limpeza"
+            ],
+            "observacoes": "parafuso da resistencia solto"
+          },
+          {
+            "data": "2026-09-11",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-10-16",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          }
+        ]
+      }
     },
     {
       "equipamento": "Gerador 08 - C400D6B Série: B26T066768",
       "status_operacional": "Operando",
-      "horimetro": 76.4,
-      "delta_horimetro": 0.0,
+      "horimetro": 84.0,
+      "delta_horimetro": 7.6,
       "status_anterior": "Operando",
       "status_mudou": false,
       "status_mudou_em": null,
@@ -119,8 +1117,155 @@
       "ultima_preventiva": "2026-05-06",
       "proxima_preventiva": "2026-11-06",
       "relatorio_dcco": "",
-      "observacoes": "",
-      "status": "🟢 Em Dia"
+      "observacoes": "tubo flexivel trincado",
+      "status": "🟢 Em Dia",
+      "inspecao": {
+        "data": "2026-10-16",
+        "turno": "1º Turno",
+        "inspetor": "Paulo Ricardo",
+        "horimetro": 84.0,
+        "situacao": "Atenção",
+        "observacoes": "Tubo flexivel quebrado",
+        "componentes": [
+          {
+            "nome": "Nível de Água",
+            "status": "conforme"
+          },
+          {
+            "nome": "Correia Alternador",
+            "status": "conforme"
+          },
+          {
+            "nome": "Cabos das Baterias",
+            "status": "nao_conforme"
+          },
+          {
+            "nome": "Vazamento Resistência",
+            "status": "conforme"
+          },
+          {
+            "nome": "Tubo Flexível",
+            "status": "nao_conforme"
+          },
+          {
+            "nome": "Nível de Óleo",
+            "status": "conforme"
+          },
+          {
+            "nome": "Filtro de Ar",
+            "status": "conforme"
+          },
+          {
+            "nome": "Mangueiras Diesel",
+            "status": "conforme"
+          },
+          {
+            "nome": "Fixação Componentes",
+            "status": "conforme"
+          },
+          {
+            "nome": "Conservação e Limpeza",
+            "status": "nao_conforme"
+          }
+        ],
+        "nao_conformes": [
+          "Cabos das Baterias",
+          "Tubo Flexível",
+          "Conservação e Limpeza"
+        ],
+        "pendencias_abertas": [
+          {
+            "data": "2026-07-03",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-07-10",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-07-20",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-07-31",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-08-07",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-08-14",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-08-21",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": "Mensagens de aviso 3457 sens perca tens bar"
+          },
+          {
+            "data": "2026-08-28",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-09-04",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-09-11",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
+          },
+          {
+            "data": "2026-10-16",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Cabos das Baterias",
+              "Tubo Flexível",
+              "Conservação e Limpeza"
+            ],
+            "observacoes": "Tubo flexivel quebrado"
+          }
+        ]
+      }
     }
   ]
 }
