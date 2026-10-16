@@ -699,8 +699,9 @@
       if (insp) {
         const chips = (insp.componentes || []).filter(c => c.status === "conforme" || c.status === "nao_conforme")
           .map(c => `<span class="chip ${c.status === "nao_conforme" ? "nok" : "ok"}">${c.status === "nao_conforme" ? "✕" : "✓"} ${esc(c.nome)}</span>`).join("");
-        const pend = (insp.pendencias_abertas || []).map(p =>
-          `<div class="obs"><strong>Pendência ${esc(p.status)}</strong> (${esc(p.data)}): ${esc((p.componentes || []).join(", ") || "—")}${p.observacoes ? " — " + esc(p.observacoes) : ""}</div>`).join("");
+        const todasPend = (insp.pendencias_abertas || []).slice().reverse();
+        const pend = todasPend.slice(0, 3).map(p =>
+          `<div class="obs"><strong>Pendência ${esc(p.status)}</strong> (${esc(p.data)}): ${esc((p.componentes || []).join(", ") || "—")}${p.observacoes ? " — " + esc(p.observacoes) : ""}</div>`).join("") + (todasPend.length > 3 ? `<div class="obs">+ ${todasPend.length - 3} pendência(s) mais antigas em aberto no Monday</div>` : "");
         inspHtml = `
           <div class="obs"><strong>Última inspeção:</strong> ${esc(insp.data)}${insp.turno ? " · " + esc(insp.turno) : ""}${insp.inspetor ? " · " + esc(insp.inspetor) : ""}</div>
           ${chips ? `<div class="chips">${chips}</div>` : ""}
