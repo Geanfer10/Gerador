@@ -1,5 +1,5 @@
 {
-  "atualizado_em": "2026-10-16T18:15:26.115953+00:00",
+  "atualizado_em": "2026-10-16T18:43:29.921690+00:00",
   "total_geradores": 8,
   "geradores": [
     {
@@ -14,7 +14,7 @@
       "ultima_preventiva": "2026-05-06",
       "proxima_preventiva": "2026-11-06",
       "relatorio_dcco": "",
-      "observacoes": "gerador nao ligou",
+      "observacoes": "",
       "status": "🟢 Em Dia",
       "url": "https://messigean18s-team.monday.com/boards/18415734554/pulses/12156579661",
       "inspecao": {
@@ -283,7 +283,7 @@
       "ultima_preventiva": "2026-05-06",
       "proxima_preventiva": "2026-11-06",
       "relatorio_dcco": "",
-      "observacoes": "",
+      "observacoes": "gerador nao ligou",
       "status": "🟢 Em Dia",
       "url": "https://messigean18s-team.monday.com/boards/18415734554/pulses/12156716029",
       "inspecao": {
