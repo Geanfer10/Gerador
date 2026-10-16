@@ -1,5 +1,5 @@
 {
-  "atualizado_em": "2026-10-16T17:42:25.231451+00:00",
+  "atualizado_em": "2026-10-16T18:15:26.115953+00:00",
   "total_geradores": 8,
   "geradores": [
     {
@@ -16,6 +16,7 @@
       "relatorio_dcco": "",
       "observacoes": "gerador nao ligou",
       "status": "🟢 Em Dia",
+      "url": "https://messigean18s-team.monday.com/boards/18415734554/pulses/12156579661",
       "inspecao": {
         "data": "2026-10-16",
         "turno": "1º Turno",
@@ -159,6 +160,114 @@
             ],
             "observacoes": ""
           }
+        ],
+        "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/13312708811",
+        "historico": [
+          {
+            "data": "2026-10-16",
+            "turno": "1º Turno",
+            "inspetor": "Paulo Ricardo",
+            "horimetro": 561.1,
+            "situacao": "Conforme",
+            "observacoes": "",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/13312708811",
+            "nao_conformes": [
+              "Correia Alternador",
+              "Conservação e Limpeza"
+            ],
+            "conformes": 8
+          },
+          {
+            "data": "2026-09-11",
+            "turno": "1º Turno",
+            "inspetor": "Paulo Ricardo",
+            "horimetro": 508.07,
+            "situacao": "Não Conforme",
+            "observacoes": "Gerador nao liga",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/13027971180",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          },
+          {
+            "data": "2026-09-04",
+            "turno": "1º Turno",
+            "inspetor": "Iran Batista",
+            "horimetro": 502.3,
+            "situacao": "Conforme",
+            "observacoes": "",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/12979122558",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          },
+          {
+            "data": "2026-08-28",
+            "turno": "1º Turno",
+            "inspetor": "Iran Batista",
+            "horimetro": 502.3,
+            "situacao": "Conforme",
+            "observacoes": "",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/12923072254",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          },
+          {
+            "data": "2026-08-21",
+            "turno": "1º Turno",
+            "inspetor": "Iran Batista",
+            "horimetro": 502.2,
+            "situacao": "Conforme",
+            "observacoes": "",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/12866083594",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          },
+          {
+            "data": "2026-08-14",
+            "turno": "1º Turno",
+            "inspetor": "Iran Batista",
+            "horimetro": 499.9,
+            "situacao": "Conforme",
+            "observacoes": "Feito reset para ligar",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/12806180266",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          },
+          {
+            "data": "2026-08-07",
+            "turno": "1º Turno",
+            "inspetor": "Iran Batista",
+            "horimetro": 498.6,
+            "situacao": "Conforme",
+            "observacoes": "",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/12747811938",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          },
+          {
+            "data": "2026-07-31",
+            "turno": "1º Turno",
+            "inspetor": "Iran Batista",
+            "horimetro": 496.5,
+            "situacao": "Conforme",
+            "observacoes": "",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/12684410146",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          }
         ]
       }
     },
@@ -176,6 +285,7 @@
       "relatorio_dcco": "",
       "observacoes": "",
       "status": "🟢 Em Dia",
+      "url": "https://messigean18s-team.monday.com/boards/18415734554/pulses/12156716029",
       "inspecao": {
         "data": "2026-10-16",
         "turno": "1º Turno",
@@ -317,6 +427,113 @@
             ],
             "observacoes": "Nao ligou"
           }
+        ],
+        "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/13312769238",
+        "historico": [
+          {
+            "data": "2026-10-16",
+            "turno": "1º Turno",
+            "inspetor": "Paulo Ricardo",
+            "horimetro": 561.2,
+            "situacao": "Atenção",
+            "observacoes": "Nao ligou",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/13312769238",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          },
+          {
+            "data": "2026-09-11",
+            "turno": "1º Turno",
+            "inspetor": "Paulo Ricardo",
+            "horimetro": 507.9,
+            "situacao": "Conforme",
+            "observacoes": "",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/13027953100",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          },
+          {
+            "data": "2026-09-04",
+            "turno": "1º Turno",
+            "inspetor": "Iran Batista",
+            "horimetro": 502.5,
+            "situacao": "Conforme",
+            "observacoes": "",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/12979169901",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          },
+          {
+            "data": "2026-08-28",
+            "turno": "1º Turno",
+            "inspetor": "Iran Batista",
+            "horimetro": 502.5,
+            "situacao": "Conforme",
+            "observacoes": "",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/12923114815",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          },
+          {
+            "data": "2026-08-21",
+            "turno": "1º Turno",
+            "inspetor": "Iran Batista",
+            "horimetro": 502.5,
+            "situacao": "Conforme",
+            "observacoes": "feito reset para ligar",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/12866108408",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          },
+          {
+            "data": "2026-08-14",
+            "turno": "1º Turno",
+            "inspetor": "Iran Batista",
+            "horimetro": 500.1,
+            "situacao": "Conforme",
+            "observacoes": "",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/12806195865",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          },
+          {
+            "data": "2026-08-07",
+            "turno": "1º Turno",
+            "inspetor": "Iran Batista",
+            "horimetro": 498.8,
+            "situacao": "Conforme",
+            "observacoes": "",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/12747812814",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          },
+          {
+            "data": "2026-07-31",
+            "turno": "1º Turno",
+            "inspetor": "Iran Batista",
+            "horimetro": 497.1,
+            "situacao": "Conforme",
+            "observacoes": "feito reset para ligar",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/12684555836",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          }
         ]
       }
     },
@@ -334,6 +551,7 @@
       "relatorio_dcco": "",
       "observacoes": "",
       "status": "🟢 Em Dia",
+      "url": "https://messigean18s-team.monday.com/boards/18415734554/pulses/12156717818",
       "inspecao": {
         "data": "2026-10-16",
         "turno": "1º Turno",
@@ -475,6 +693,113 @@
             ],
             "observacoes": ""
           }
+        ],
+        "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/13312759109",
+        "historico": [
+          {
+            "data": "2026-10-16",
+            "turno": "1º Turno",
+            "inspetor": "Paulo Ricardo",
+            "horimetro": 535.5,
+            "situacao": "Conforme",
+            "observacoes": "",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/13312759109",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          },
+          {
+            "data": "2026-09-11",
+            "turno": "1º Turno",
+            "inspetor": "Paulo Ricardo",
+            "horimetro": 490.4,
+            "situacao": "Conforme",
+            "observacoes": "",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/13028017966",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          },
+          {
+            "data": "2026-09-04",
+            "turno": "1º Turno",
+            "inspetor": "Iran Batista",
+            "horimetro": 485.5,
+            "situacao": "Conforme",
+            "observacoes": "",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/12979197444",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          },
+          {
+            "data": "2026-08-28",
+            "turno": "1º Turno",
+            "inspetor": "Iran Batista",
+            "horimetro": 485.5,
+            "situacao": "Conforme",
+            "observacoes": "",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/12923136035",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          },
+          {
+            "data": "2026-08-21",
+            "turno": "1º Turno",
+            "inspetor": "Iran Batista",
+            "horimetro": 485.5,
+            "situacao": "Conforme",
+            "observacoes": "Feito dois reset para ligar e sensor map cap solto",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/12866173557",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          },
+          {
+            "data": "2026-08-14",
+            "turno": "1º Turno",
+            "inspetor": "Iran Batista",
+            "horimetro": 485.3,
+            "situacao": "Conforme",
+            "observacoes": "",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/12806213055",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          },
+          {
+            "data": "2026-08-07",
+            "turno": "1º Turno",
+            "inspetor": "Iran Batista",
+            "horimetro": 483.5,
+            "situacao": "Conforme",
+            "observacoes": "mensagem de \" warning \" no painel",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/12747863401",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          },
+          {
+            "data": "2026-07-31",
+            "turno": "1º Turno",
+            "inspetor": "Iran Batista",
+            "horimetro": 483.5,
+            "situacao": "Conforme",
+            "observacoes": "feito reset para ligar",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/12684493818",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          }
         ]
       }
     },
@@ -492,6 +817,7 @@
       "relatorio_dcco": "",
       "observacoes": "",
       "status": "🟢 Em Dia",
+      "url": "https://messigean18s-team.monday.com/boards/18415734554/pulses/12156690448",
       "inspecao": {
         "data": "2026-10-16",
         "turno": "1º Turno",
@@ -625,6 +951,113 @@
             ],
             "observacoes": ""
           }
+        ],
+        "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/13312780656",
+        "historico": [
+          {
+            "data": "2026-10-16",
+            "turno": "1º Turno",
+            "inspetor": "Paulo Ricardo",
+            "horimetro": 543.2,
+            "situacao": "Conforme",
+            "observacoes": "",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/13312780656",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          },
+          {
+            "data": "2026-09-11",
+            "turno": "1º Turno",
+            "inspetor": "Paulo Ricardo",
+            "horimetro": 492.0,
+            "situacao": "Conforme",
+            "observacoes": "",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/13027975478",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          },
+          {
+            "data": "2026-09-04",
+            "turno": "1º Turno",
+            "inspetor": "Iran Batista",
+            "horimetro": 488.6,
+            "situacao": "Conforme",
+            "observacoes": "",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/12979202743",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          },
+          {
+            "data": "2026-08-28",
+            "turno": "1º Turno",
+            "inspetor": "Iran Batista",
+            "horimetro": 488.6,
+            "situacao": "Conforme",
+            "observacoes": "",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/12923144712",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          },
+          {
+            "data": "2026-08-14",
+            "turno": "1º Turno",
+            "inspetor": "Iran Batista",
+            "horimetro": 486.2,
+            "situacao": "Conforme",
+            "observacoes": "Mensagen de warning no painel",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/12806233826",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          },
+          {
+            "data": "2026-08-07",
+            "turno": "1º Turno",
+            "inspetor": "Iran Batista",
+            "horimetro": 485.0,
+            "situacao": "Conforme",
+            "observacoes": "",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/12747867874",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          },
+          {
+            "data": "2026-07-31",
+            "turno": "1º Turno",
+            "inspetor": "Iran Batista",
+            "horimetro": 483.4,
+            "situacao": "Conforme",
+            "observacoes": "mensagem de \" warning \" no painel",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/12684511058",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          },
+          {
+            "data": "2026-07-20",
+            "turno": "1º Turno",
+            "inspetor": "Iran Batista",
+            "horimetro": 482.7,
+            "situacao": "Conforme",
+            "observacoes": "",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/12579644690",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          }
         ]
       }
     },
@@ -642,6 +1075,7 @@
       "relatorio_dcco": "",
       "observacoes": "Alternador",
       "status": "🟢 Em Dia",
+      "url": "https://messigean18s-team.monday.com/boards/18415734554/pulses/12156716427",
       "inspecao": {
         "data": "2026-09-11",
         "turno": "1º Turno",
@@ -785,6 +1219,114 @@
             ],
             "observacoes": "Completar nivel de agua"
           }
+        ],
+        "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/13028028092",
+        "historico": [
+          {
+            "data": "2026-09-11",
+            "turno": "1º Turno",
+            "inspetor": "Paulo Ricardo",
+            "horimetro": 519.0,
+            "situacao": "Não Conforme",
+            "observacoes": "Completar nivel de agua",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/13028028092",
+            "nao_conformes": [
+              "Nível de Água",
+              "Conservação e Limpeza"
+            ],
+            "conformes": 8
+          },
+          {
+            "data": "2026-09-04",
+            "turno": "1º Turno",
+            "inspetor": "Iran Batista",
+            "horimetro": 512.5,
+            "situacao": "Conforme",
+            "observacoes": "",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/12979224699",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          },
+          {
+            "data": "2026-08-28",
+            "turno": "1º Turno",
+            "inspetor": "Iran Batista",
+            "horimetro": 512.5,
+            "situacao": "Conforme",
+            "observacoes": "",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/12923192955",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          },
+          {
+            "data": "2026-08-21",
+            "turno": "1º Turno",
+            "inspetor": "Iran Batista",
+            "horimetro": 512.5,
+            "situacao": "Conforme",
+            "observacoes": "",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/12866233118",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          },
+          {
+            "data": "2026-08-21",
+            "turno": "1º Turno",
+            "inspetor": "Iran Batista",
+            "horimetro": 488.5,
+            "situacao": "Conforme",
+            "observacoes": "Sensor map cabo solto",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/12866194119",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          },
+          {
+            "data": "2026-08-14",
+            "turno": "1º Turno",
+            "inspetor": "Iran Batista",
+            "horimetro": 510.1,
+            "situacao": "Conforme",
+            "observacoes": "",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/12806232552",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          },
+          {
+            "data": "2026-08-07",
+            "turno": "1º Turno",
+            "inspetor": "Iran Batista",
+            "horimetro": 508.9,
+            "situacao": "Conforme",
+            "observacoes": "",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/12747885113",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          },
+          {
+            "data": "2026-07-31",
+            "turno": "1º Turno",
+            "inspetor": "Iran Batista",
+            "horimetro": 506.8,
+            "situacao": "Conforme",
+            "observacoes": "",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/12684563315",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          }
         ]
       }
     },
@@ -802,6 +1344,7 @@
       "relatorio_dcco": "",
       "observacoes": "",
       "status": "🟢 Em Dia",
+      "url": "https://messigean18s-team.monday.com/boards/18415734554/pulses/12156729876",
       "inspecao": {
         "data": "2026-10-16",
         "turno": "1º Turno",
@@ -943,6 +1486,113 @@
             ],
             "observacoes": ""
           }
+        ],
+        "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/13312798707",
+        "historico": [
+          {
+            "data": "2026-10-16",
+            "turno": "1º Turno",
+            "inspetor": "Paulo Ricardo",
+            "horimetro": 532.6,
+            "situacao": "Conforme",
+            "observacoes": "",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/13312798707",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          },
+          {
+            "data": "2026-09-11",
+            "turno": "1º Turno",
+            "inspetor": "Paulo Ricardo",
+            "horimetro": 477.7,
+            "situacao": "Conforme",
+            "observacoes": "",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/13028073818",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          },
+          {
+            "data": "2026-09-04",
+            "turno": "1º Turno",
+            "inspetor": "Iran Batista",
+            "horimetro": 470.9,
+            "situacao": "Conforme",
+            "observacoes": "",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/12979245982",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          },
+          {
+            "data": "2026-08-28",
+            "turno": "1º Turno",
+            "inspetor": "Iran Batista",
+            "horimetro": 470.9,
+            "situacao": "Conforme",
+            "observacoes": "",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/12923197671",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          },
+          {
+            "data": "2026-08-21",
+            "turno": "1º Turno",
+            "inspetor": "Iran Batista",
+            "horimetro": 470.9,
+            "situacao": "Conforme",
+            "observacoes": "",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/12866254830",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          },
+          {
+            "data": "2026-08-14",
+            "turno": "1º Turno",
+            "inspetor": "Iran Batista",
+            "horimetro": 468.5,
+            "situacao": "Conforme",
+            "observacoes": "",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/12806313689",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          },
+          {
+            "data": "2026-08-07",
+            "turno": "1º Turno",
+            "inspetor": "Iran Batista",
+            "horimetro": 466.9,
+            "situacao": "Conforme",
+            "observacoes": "",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/12747876038",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          },
+          {
+            "data": "2026-07-31",
+            "turno": "1º Turno",
+            "inspetor": "Iran Batista",
+            "horimetro": 466.3,
+            "situacao": "Conforme",
+            "observacoes": "mensagem de \"warning\" no painel",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/12684536846",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          }
         ]
       }
     },
@@ -960,6 +1610,7 @@
       "relatorio_dcco": "",
       "observacoes": "",
       "status": "🟢 Em Dia",
+      "url": "https://messigean18s-team.monday.com/boards/18415734554/pulses/12156707557",
       "inspecao": {
         "data": "2026-10-16",
         "turno": "1º Turno",
@@ -1102,6 +1753,114 @@
             ],
             "observacoes": ""
           }
+        ],
+        "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/13312823937",
+        "historico": [
+          {
+            "data": "2026-10-16",
+            "turno": "1º Turno",
+            "inspetor": "Paulo Ricardo",
+            "horimetro": 87.2,
+            "situacao": "Conforme",
+            "observacoes": "",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/13312823937",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          },
+          {
+            "data": "2026-09-11",
+            "turno": "1º Turno",
+            "inspetor": "Paulo Ricardo",
+            "horimetro": 32.6,
+            "situacao": "Conforme",
+            "observacoes": "",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/13028134615",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          },
+          {
+            "data": "2026-09-04",
+            "turno": "1º Turno",
+            "inspetor": "Iran Batista",
+            "horimetro": 25.8,
+            "situacao": "Conforme",
+            "observacoes": "parafuso da resistencia solto",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/12979271372",
+            "nao_conformes": [
+              "Vazamento Resistência",
+              "Conservação e Limpeza"
+            ],
+            "conformes": 8
+          },
+          {
+            "data": "2026-08-28",
+            "turno": "1º Turno",
+            "inspetor": "Iran Batista",
+            "horimetro": 25.8,
+            "situacao": "Conforme",
+            "observacoes": "",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/12923229724",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          },
+          {
+            "data": "2026-08-21",
+            "turno": "1º Turno",
+            "inspetor": "Iran Batista",
+            "horimetro": 25.8,
+            "situacao": "Conforme",
+            "observacoes": "",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/12866284430",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          },
+          {
+            "data": "2026-08-14",
+            "turno": "1º Turno",
+            "inspetor": "Iran Batista",
+            "horimetro": 23.5,
+            "situacao": "Conforme",
+            "observacoes": "",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/12806307595",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          },
+          {
+            "data": "2026-08-07",
+            "turno": "1º Turno",
+            "inspetor": "Iran Batista",
+            "horimetro": 22.3,
+            "situacao": "Conforme",
+            "observacoes": "mensagem de \" warning \" no painel",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/12747925008",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          },
+          {
+            "data": "2026-07-31",
+            "turno": "1º Turno",
+            "inspetor": "Iran Batista",
+            "horimetro": 20.2,
+            "situacao": "Conforme",
+            "observacoes": "",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/12684600014",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          }
         ]
       }
     },
@@ -1119,6 +1878,7 @@
       "relatorio_dcco": "",
       "observacoes": "tubo flexivel trincado",
       "status": "🟢 Em Dia",
+      "url": "https://messigean18s-team.monday.com/boards/18415734554/pulses/12156730950",
       "inspecao": {
         "data": "2026-10-16",
         "turno": "1º Turno",
@@ -1263,6 +2023,115 @@
               "Conservação e Limpeza"
             ],
             "observacoes": "Tubo flexivel quebrado"
+          }
+        ],
+        "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/13312827525",
+        "historico": [
+          {
+            "data": "2026-10-16",
+            "turno": "1º Turno",
+            "inspetor": "Paulo Ricardo",
+            "horimetro": 84.0,
+            "situacao": "Atenção",
+            "observacoes": "Tubo flexivel quebrado",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/13312827525",
+            "nao_conformes": [
+              "Cabos das Baterias",
+              "Tubo Flexível",
+              "Conservação e Limpeza"
+            ],
+            "conformes": 7
+          },
+          {
+            "data": "2026-09-11",
+            "turno": "1º Turno",
+            "inspetor": "Paulo Ricardo",
+            "horimetro": 29.5,
+            "situacao": "Conforme",
+            "observacoes": "",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/13028160547",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          },
+          {
+            "data": "2026-09-04",
+            "turno": "1º Turno",
+            "inspetor": "Iran Batista",
+            "horimetro": 22.7,
+            "situacao": "Conforme",
+            "observacoes": "",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/12979288018",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          },
+          {
+            "data": "2026-08-28",
+            "turno": "1º Turno",
+            "inspetor": "Iran Batista",
+            "horimetro": 22.7,
+            "situacao": "Conforme",
+            "observacoes": "",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/12923331549",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          },
+          {
+            "data": "2026-08-21",
+            "turno": "1º Turno",
+            "inspetor": "Iran Batista",
+            "horimetro": 22.7,
+            "situacao": "Conforme",
+            "observacoes": "Mensagens de aviso 3457 sens perca tens bar",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/12866332418",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          },
+          {
+            "data": "2026-08-14",
+            "turno": "1º Turno",
+            "inspetor": "Iran Batista",
+            "horimetro": 20.3,
+            "situacao": "Conforme",
+            "observacoes": "",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/12806396569",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          },
+          {
+            "data": "2026-08-07",
+            "turno": "1º Turno",
+            "inspetor": "Iran Batista",
+            "horimetro": 19.1,
+            "situacao": "Conforme",
+            "observacoes": "",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/12747943237",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          },
+          {
+            "data": "2026-07-31",
+            "turno": "1º Turno",
+            "inspetor": "Iran Batista",
+            "horimetro": 17.0,
+            "situacao": "Conforme",
+            "observacoes": "",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/12684613121",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
           }
         ]
       }
