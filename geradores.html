@@ -29,6 +29,70 @@
     padding: 32px;
   }
 
+  /* ---------- Ticker estilo bolsa de valores ---------- */
+  .ticker-wrap {
+    background: #0F1512;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    white-space: nowrap;
+  }
+
+  .ticker-track {
+    display: inline-flex;
+    align-items: center;
+    animation: ticker-scroll 40s linear infinite;
+    padding: 10px 0;
+  }
+
+  .ticker-wrap:hover .ticker-track {
+    animation-play-state: paused;
+  }
+
+  @keyframes ticker-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .ticker-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 24px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: #F1EFE8;
+    border-right: 1px solid #2C332E;
+  }
+
+  .ticker-item .nome {
+    font-weight: 500;
+    color: #F1EFE8;
+  }
+
+  .ticker-item .valor {
+    color: #B8B6AC;
+  }
+
+  .ticker-item .variacao {
+    font-weight: 500;
+  }
+
+  .ticker-item .variacao.subiu { color: #97C459; }
+  .ticker-item .variacao.desceu { color: #F09595; }
+  .ticker-item .variacao.neutro { color: #888780; }
+
+  .ticker-item .bolinha {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .ticker-item .bolinha.ok { background: #97C459; }
+  .ticker-item .bolinha.manut { background: #F09595; }
+
+  /* ---------- Cabeçalho ---------- */
   .cabecalho {
     display: flex;
     align-items: center;
@@ -101,9 +165,86 @@
     height: 15px;
   }
 
+  .btn-filtro {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--branco);
+    color: var(--texto);
+    border: 1px solid var(--borda);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 9px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+
+  .btn-filtro:hover {
+    background: var(--verde-fundo);
+  }
+
+  .btn-filtro.ativo {
+    background: #A32D2D;
+    border-color: #A32D2D;
+    color: white;
+  }
+
+  /* ---------- Ranking de uso ---------- */
+  .ranking {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+
+  .ranking-card {
+    background: var(--branco);
+    border: 1px solid var(--borda);
+    border-radius: 12px;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .ranking-icone {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .ranking-card.mais .ranking-icone { background: #FDF4F4; color: #A32D2D; }
+  .ranking-card.menos .ranking-icone { background: var(--verde-fundo); color: var(--verde); }
+
+  .ranking-texto p.label {
+    font-size: 12px;
+    color: var(--texto-secundario);
+    margin: 0 0 2px;
+  }
+
+  .ranking-texto p.nome {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .ranking-texto p.valor {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--texto-secundario);
+    margin: 2px 0 0;
+  }
+
+  /* ---------- KPIs ---------- */
   .kpis {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     gap: 14px;
     margin-bottom: 24px;
   }
@@ -115,10 +256,9 @@
     padding: 16px 18px;
   }
 
-  .kpi.destaque {
-    background: var(--verde-fundo);
-    border-color: var(--verde-fundo);
-  }
+  .kpi.destaque { background: var(--verde-fundo); border-color: var(--verde-fundo); }
+  .kpi.alerta-kpi { background: #FDF4F4; border-color: #FDF4F4; }
+  .kpi.disponibilidade { background: var(--verde-escuro); border-color: var(--verde-escuro); }
 
   .kpi p.label {
     font-size: 13px;
@@ -127,6 +267,8 @@
   }
 
   .kpi.destaque p.label { color: var(--verde); }
+  .kpi.alerta-kpi p.label { color: #A32D2D; }
+  .kpi.disponibilidade p.label { color: #C0DD97; }
 
   .kpi p.valor {
     font-family: 'JetBrains Mono', monospace;
@@ -136,7 +278,10 @@
   }
 
   .kpi.destaque p.valor { color: var(--verde-escuro); }
+  .kpi.alerta-kpi p.valor { color: #A32D2D; }
+  .kpi.disponibilidade p.valor { color: #FFFFFF; }
 
+  /* ---------- Cards ---------- */
   .cards {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -149,10 +294,33 @@
     border: 1px solid var(--borda);
     border-left: 4px solid var(--verde);
     padding: 16px;
+    position: relative;
   }
 
   .card.alerta { border-left-color: #BA7517; }
-  .card.critico { border-left-color: #A32D2D; }
+  .card.critico { border-left-color: #A32D2D; border-left-width: 6px; background: #FDF4F4; }
+
+  .card.mudou-agora {
+    animation: pulso-borda 2s ease-in-out infinite;
+  }
+
+  @keyframes pulso-borda {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(163, 45, 45, 0.35); }
+    50% { box-shadow: 0 0 0 6px rgba(163, 45, 45, 0); }
+  }
+
+  .selo-novo {
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    background: #A32D2D;
+    color: white;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 999px;
+    letter-spacing: 0.03em;
+  }
 
   .card-topo {
     display: flex;
@@ -205,6 +373,16 @@
     font-weight: 500;
   }
 
+  .linha-horimetro span.delta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    margin-left: 6px;
+  }
+
+  .linha-horimetro span.delta.subiu { color: var(--verde); }
+  .linha-horimetro span.delta.desceu { color: #A32D2D; }
+
   .barra-fundo {
     height: 6px;
     background: var(--verde-fundo);
@@ -240,6 +418,59 @@
     font-weight: 600;
   }
 
+  .card.escondido-pelo-filtro { display: none; }
+
+  /* ---------- KPIs clicaveis + painel de analise ---------- */
+  .kpi { cursor: pointer; transition: transform 0.12s ease, box-shadow 0.12s ease; position: relative; }
+  .kpi:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(23, 52, 4, 0.12); }
+  .kpi:focus-visible { outline: 3px solid var(--verde-claro); outline-offset: 2px; }
+  .kpi .dica { position: absolute; top: 10px; right: 12px; font-size: 11px; opacity: 0.55; }
+
+  .painel-fundo {
+    position: fixed; inset: 0; background: rgba(23, 52, 4, 0.45);
+    display: none; align-items: center; justify-content: center; z-index: 50; padding: 16px;
+  }
+  .painel-fundo.aberto { display: flex; }
+  .painel {
+    background: var(--branco); border-radius: 14px; width: 100%; max-width: 760px;
+    max-height: 90vh; display: flex; flex-direction: column; overflow: hidden;
+  }
+  .painel-topo {
+    display: flex; justify-content: space-between; align-items: flex-start; gap: 12px;
+    padding: 18px 22px; border-bottom: 1px solid var(--borda);
+  }
+  .painel-topo h2 { margin: 0; font-size: 18px; }
+  .painel-topo p { margin: 2px 0 0; font-size: 12px; color: var(--texto-secundario); }
+  .painel-fechar {
+    background: var(--verde-fundo); border: none; border-radius: 8px; width: 34px; height: 34px;
+    font-size: 18px; cursor: pointer; color: var(--verde-escuro); flex-shrink: 0;
+  }
+  .painel-corpo { padding: 18px 22px 22px; overflow-y: auto; }
+  .conf-resumo { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+  .conf-caixa { border-radius: 10px; padding: 12px 14px; }
+  .conf-caixa.ok { background: var(--verde-fundo); color: var(--verde-escuro); }
+  .conf-caixa.nok { background: #FDF4F4; color: #A32D2D; }
+  .conf-caixa p { margin: 0; font-size: 12px; }
+  .conf-caixa strong { display: block; font-family: 'JetBrains Mono', monospace; font-size: 26px; font-weight: 500; }
+  .conf-barra { height: 8px; border-radius: 4px; background: #F1C9C9; overflow: hidden; margin-bottom: 20px; }
+  .conf-barra > div { height: 100%; background: var(--verde-claro); }
+  .painel h3 { font-size: 13px; margin: 18px 0 8px; }
+  .painel h3.nok { color: #A32D2D; }
+  .painel h3.ok { color: var(--verde); }
+  .item-analise { border: 1px solid var(--borda); border-left: 4px solid var(--verde); border-radius: 8px; padding: 10px 12px; margin-bottom: 8px; }
+  .item-analise.nok { border-left-color: #A32D2D; background: #FDF4F4; }
+  .item-analise .linha { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; font-size: 14px; font-weight: 600; }
+  .item-analise .linha .extra { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500; color: var(--texto-secundario); }
+  .item-analise .motivos { font-size: 12px; color: #A32D2D; margin-top: 2px; }
+  .item-analise .obs { font-size: 12px; color: var(--texto-secundario); margin-top: 6px; line-height: 1.4; }
+  .item-analise .obs strong { color: var(--verde); }
+  .chips { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+  .chip { font-size: 11px; padding: 2px 8px; border-radius: 999px; }
+  .chip.ok { background: var(--verde-fundo); color: var(--verde-escuro); }
+  .chip.nok { background: #FCEBEB; color: #501313; font-weight: 600; }
+  .vazio { font-size: 13px; color: var(--texto-secundario); }
+  @media (max-width: 700px) { .conf-resumo { grid-template-columns: 1fr; } }
+
   .status-em-dia { color: var(--verde); font-weight: 600; }
   .status-alerta-txt { color: #BA7517; font-weight: 600; }
   .status-critico-txt { color: #A32D2D; font-weight: 600; }
@@ -254,12 +485,26 @@
     margin-bottom: 20px;
   }
 
+  @media (max-width: 1200px) {
+    .kpis { grid-template-columns: repeat(3, 1fr); }
+  }
+
   @media (max-width: 1100px) {
-    .kpis, .cards { grid-template-columns: repeat(2, 1fr); }
+    .cards { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 700px) {
+    .kpis { grid-template-columns: repeat(2, 1fr); }
+    .ranking { grid-template-columns: 1fr; }
+    .lado-direito { flex-wrap: wrap; justify-content: flex-end; }
   }
 </style>
 </head>
 <body>
+
+  <div class="ticker-wrap">
+    <div class="ticker-track" id="ticker-track"></div>
+  </div>
 
   <div class="cabecalho">
     <div class="titulo">
@@ -271,6 +516,7 @@
     </div>
     <div class="lado-direito">
       <span id="atualizado">carregando...</span>
+      <button class="btn-filtro" id="btn-filtro-alertas" onclick="alternarFiltroAlertas()">Só alertas</button>
       <a class="btn-monday" href="https://messigean18s-team.monday.com/boards/18415734554" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12h14M13 6l6 6-6 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         Análise no Monday
@@ -282,22 +528,52 @@
 
   <div class="kpis" id="kpis"></div>
 
+  <div class="ranking" id="ranking"></div>
+
   <div class="cards" id="cards"></div>
+
+  <div class="painel-fundo" id="painel-fundo" onclick="if(event.target===this)fecharPainel()">
+    <div class="painel" role="dialog" aria-modal="true" aria-labelledby="painel-titulo">
+      <div class="painel-topo">
+        <div>
+          <h2 id="painel-titulo"></h2>
+          <p id="painel-sub"></p>
+        </div>
+        <button class="painel-fechar" onclick="fecharPainel()" aria-label="Fechar">✕</button>
+      </div>
+      <div class="painel-corpo" id="painel-corpo"></div>
+    </div>
+  </div>
 
   <script>
     const CAMINHO_JSON = "data/geradores.json";
     const HORIMETRO_MAXIMO = 550; // referencia para a barra de progresso
+    const JANELA_DESTAQUE_HORAS = 2; // por quanto tempo o selo "mudou agora" fica visivel
+    let filtroSoAlertasAtivo = false;
 
     function classificarStatus(texto) {
       const t = (texto || "").toLowerCase();
+      if (t.includes("não conforme") || t.includes("nao conforme") || t.includes("inconforme")) return "critico";
       if (t.includes("critico") || t.includes("crítico") || t.includes("atrasad")) return "critico";
       if (t.includes("alerta") || t.includes("proximo") || t.includes("próximo")) return "alerta";
       return "ok";
     }
 
+    function emManutencao(statusOperacional) {
+      const t = (statusOperacional || "").toLowerCase();
+      return t.includes("manutenc") || t.includes("manutenç") || t.includes("parad") || t.includes("defeito");
+    }
+
     function formatarData(iso) {
       if (!iso) return "—";
       return iso;
+    }
+
+    function mudouRecentemente(g) {
+      if (!g.status_mudou || !g.status_mudou_em) return false;
+      const quando = new Date(g.status_mudou_em);
+      const horasPassadas = (Date.now() - quando.getTime()) / (1000 * 60 * 60);
+      return horasPassadas < JANELA_DESTAQUE_HORAS;
     }
 
     async function carregar() {
@@ -314,54 +590,275 @@
       }
     }
 
+    function renderizarTicker(geradores) {
+      const trackEl = document.getElementById("ticker-track");
+
+      const montarItem = g => {
+        const emManut = emManutencao(g.status_operacional);
+        const delta = g.delta_horimetro;
+        let variacaoTexto = "—";
+        let variacaoClasse = "neutro";
+        if (delta != null) {
+          if (delta > 0) { variacaoTexto = `▲ +${delta.toFixed(1)}h`; variacaoClasse = "subiu"; }
+          else if (delta < 0) { variacaoTexto = `▼ ${delta.toFixed(1)}h`; variacaoClasse = "desceu"; }
+          else { variacaoTexto = "• 0.0h"; variacaoClasse = "neutro"; }
+        }
+        const bolinhaClasse = emManut ? "manut" : "ok";
+        const horimetroTexto = g.horimetro != null ? g.horimetro.toFixed(1) + "h" : "—";
+        return `
+          <span class="ticker-item">
+            <span class="bolinha ${bolinhaClasse}"></span>
+            <span class="nome">${g.equipamento}</span>
+            <span class="valor">${horimetroTexto}</span>
+            <span class="variacao ${variacaoClasse}">${variacaoTexto}</span>
+          </span>
+        `;
+      };
+
+      const itensHtml = geradores.map(montarItem).join("");
+      // Duplica a sequencia para o efeito de rolagem continua (translateX -50%)
+      trackEl.innerHTML = itensHtml + itensHtml;
+    }
+
+    function renderizarRanking(geradores) {
+      const rankingEl = document.getElementById("ranking");
+      const comHorimetro = geradores.filter(g => g.horimetro != null);
+      if (comHorimetro.length < 2) {
+        rankingEl.innerHTML = "";
+        return;
+      }
+
+      const maisRodado = comHorimetro.reduce((a, b) => (b.horimetro > a.horimetro ? b : a));
+      const menosRodado = comHorimetro.reduce((a, b) => (b.horimetro < a.horimetro ? b : a));
+
+      rankingEl.innerHTML = `
+        <div class="ranking-card mais">
+          <div class="ranking-icone">▲</div>
+          <div class="ranking-texto">
+            <p class="label">Mais rodado</p>
+            <p class="nome">${maisRodado.equipamento}</p>
+            <p class="valor">${maisRodado.horimetro.toFixed(1)}h acumuladas</p>
+          </div>
+        </div>
+        <div class="ranking-card menos">
+          <div class="ranking-icone">▼</div>
+          <div class="ranking-texto">
+            <p class="label">Menos rodado</p>
+            <p class="nome">${menosRodado.equipamento}</p>
+            <p class="valor">${menosRodado.horimetro.toFixed(1)}h acumuladas</p>
+          </div>
+        </div>
+      `;
+    }
+
+    function precisaAtencao(g) {
+      const emManut = emManutencao(g.status_operacional);
+      const statusPreventiva = classificarStatus(g.status);
+      return emManut || statusPreventiva !== "ok";
+    }
+
+    // ---------- Analise de conformidade (usa os dados do Monday) ----------
+    let ultimosGeradores = [];
+    let kpiAberto = null;
+
+    function esc(s) {
+      return String(s == null ? "" : s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+    }
+
+    // Nao conforme = em manutencao OU preventiva atrasada ("Status" do Monday)
+    function analisarConformidade(g) {
+      const motivos = [];
+      if (emManutencao(g.status_operacional)) motivos.push("Em manutenção (" + (g.status_operacional || "") + ")");
+      if (classificarStatus(g.status) === "critico") motivos.push("Preventiva: " + (g.status || "atrasada"));
+      const insp = g.inspecao;
+      if (insp) {
+        if (insp.nao_conformes && insp.nao_conformes.length) motivos.push("Inspeção: " + insp.nao_conformes.join(", "));
+        else if (classificarStatus(insp.situacao) === "critico") motivos.push("Inspeção: situação não conforme");
+      }
+      return { conforme: motivos.length === 0, motivos };
+    }
+
+    function montarKpis(geradores) {
+      const ehOperando = g => (g.status_operacional || "").toLowerCase().includes("operando");
+      return {
+        disp: { titulo: "Disponibilidade da frota", sub: "Geradores operando x fora de operação", lista: geradores },
+        total: { titulo: "Total de geradores", sub: "Conformidade geral da frota (manutenção, preventiva e última inspeção)", lista: geradores },
+        operando: { titulo: "Operando", sub: "Geradores em operação agora", lista: geradores.filter(ehOperando) },
+        manut: { titulo: "Em manutenção", sub: "Geradores parados ou em manutenção", lista: geradores.filter(g => emManutencao(g.status_operacional)) },
+        emdia: { titulo: "Em dia (preventiva)", sub: "Status da preventiva no Monday", lista: geradores },
+        proxima: { titulo: "Próxima preventiva", sub: "Ordenado pela data mais próxima", lista: geradores.filter(g => g.proxima_preventiva).slice().sort((a, b) => a.proxima_preventiva.localeCompare(b.proxima_preventiva)) }
+      };
+    }
+
+    function itemAnalise(g, an, kpi) {
+      const extra = kpi === "proxima" ? "Próx: " + formatarData(g.proxima_preventiva)
+        : (g.horimetro != null ? g.horimetro.toFixed(1) + "h" : "");
+      const obs = g.observacoes && g.observacoes.trim() ? `<div class="obs"><strong>Obs:</strong> ${esc(g.observacoes)}</div>` : "";
+      const insp = g.inspecao;
+      let inspHtml = "";
+      if (insp) {
+        const chips = (insp.componentes || []).filter(c => c.status === "conforme" || c.status === "nao_conforme")
+          .map(c => `<span class="chip ${c.status === "nao_conforme" ? "nok" : "ok"}">${c.status === "nao_conforme" ? "✕" : "✓"} ${esc(c.nome)}</span>`).join("");
+        const pend = (insp.pendencias_abertas || []).map(p =>
+          `<div class="obs"><strong>Pendência ${esc(p.status)}</strong> (${esc(p.data)}): ${esc((p.componentes || []).join(", ") || "—")}${p.observacoes ? " — " + esc(p.observacoes) : ""}</div>`).join("");
+        inspHtml = `
+          <div class="obs"><strong>Última inspeção:</strong> ${esc(insp.data)}${insp.turno ? " · " + esc(insp.turno) : ""}${insp.inspetor ? " · " + esc(insp.inspetor) : ""}</div>
+          ${chips ? `<div class="chips">${chips}</div>` : ""}
+          ${insp.observacoes && insp.observacoes.trim() ? `<div class="obs"><strong>Obs da inspeção:</strong> ${esc(insp.observacoes)}</div>` : ""}
+          ${pend}`;
+      }
+      return `
+        <div class="item-analise ${an.conforme ? "" : "nok"}">
+          <div class="linha"><span>${esc(g.equipamento)}</span><span class="extra">${esc(g.status_operacional || "—")} · ${esc(g.status || "—")}${extra ? " · " + esc(extra) : ""}</span></div>
+          ${an.motivos.length ? `<div class="motivos">${an.motivos.map(esc).join(" · ")}</div>` : ""}
+          ${obs}
+          ${inspHtml}
+        </div>`;
+    }
+
+    function renderizarPainel() {
+      if (!kpiAberto) return;
+      const def = montarKpis(ultimosGeradores)[kpiAberto];
+      const itens = def.lista.map(g => ({ g, an: analisarConformidade(g) }));
+      const nok = itens.filter(i => !i.an.conforme);
+      const ok = itens.filter(i => i.an.conforme);
+      const pct = itens.length ? Math.round((ok.length / itens.length) * 100) : 0;
+      const temObs = g => (g.observacoes && g.observacoes.trim()) || (g.inspecao && g.inspecao.observacoes && g.inspecao.observacoes.trim());
+      const comObs = itens.filter(i => temObs(i.g));
+
+      document.getElementById("painel-titulo").textContent = def.titulo;
+      document.getElementById("painel-sub").textContent = def.sub + " · dados do Monday";
+      document.getElementById("painel-corpo").innerHTML = `
+        <div class="conf-resumo">
+          <div class="conf-caixa ok"><p>Conforme</p><strong>${ok.length}</strong></div>
+          <div class="conf-caixa nok"><p>Não conforme</p><strong>${nok.length}</strong></div>
+        </div>
+        <div class="conf-barra"><div style="width:${pct}%"></div></div>
+        <h3 class="nok">Não conforme (${nok.length})</h3>
+        ${nok.length ? nok.map(i => itemAnalise(i.g, i.an, kpiAberto)).join("") : `<p class="vazio">Nenhum gerador não conforme.</p>`}
+        <h3 class="ok">Conforme (${ok.length})</h3>
+        ${ok.length ? ok.map(i => itemAnalise(i.g, i.an, kpiAberto)).join("") : `<p class="vazio">Nenhum gerador conforme.</p>`}
+        <h3>Observações (${comObs.length})</h3>
+        ${comObs.length ? comObs.map(i => `<div class="item-analise ${i.an.conforme ? "" : "nok"}"><div class="linha"><span>${esc(i.g.equipamento)}</span></div><div class="obs">${esc([i.g.observacoes, i.g.inspecao && i.g.inspecao.observacoes].filter(x => x && x.trim()).join(" | "))}</div></div>`).join("") : `<p class="vazio">Sem observações registradas.</p>`}
+      `;
+    }
+
+    function abrirPainel(chave) {
+      kpiAberto = chave;
+      renderizarPainel();
+      document.getElementById("painel-fundo").classList.add("aberto");
+    }
+
+    function fecharPainel() {
+      kpiAberto = null;
+      document.getElementById("painel-fundo").classList.remove("aberto");
+    }
+
+    document.addEventListener("keydown", e => { if (e.key === "Escape") fecharPainel(); });
+    document.getElementById("kpis").addEventListener("click", e => {
+      const el = e.target.closest("[data-kpi]");
+      if (el) abrirPainel(el.dataset.kpi);
+    });
+    document.getElementById("kpis").addEventListener("keydown", e => {
+      if (e.key !== "Enter" && e.key !== " ") return;
+      const el = e.target.closest("[data-kpi]");
+      if (el) { e.preventDefault(); abrirPainel(el.dataset.kpi); }
+    });
+
+    function alternarFiltroAlertas() {
+      filtroSoAlertasAtivo = !filtroSoAlertasAtivo;
+      const btn = document.getElementById("btn-filtro-alertas");
+      btn.textContent = filtroSoAlertasAtivo ? "Mostrar todos" : "Só alertas";
+      btn.classList.toggle("ativo", filtroSoAlertasAtivo);
+      aplicarFiltroAlertas();
+    }
+
+    function aplicarFiltroAlertas() {
+      document.querySelectorAll(".card").forEach(card => {
+        const precisa = card.dataset.precisaAtencao === "true";
+        card.classList.toggle("escondido-pelo-filtro", filtroSoAlertasAtivo && !precisa);
+      });
+    }
+
     function renderizar(dados) {
       const geradores = dados.geradores || [];
       const dataAtualizacao = new Date(dados.atualizado_em);
       document.getElementById("atualizado").textContent =
         "atualizado " + dataAtualizacao.toLocaleDateString("pt-BR") + " " + dataAtualizacao.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
 
+      renderizarTicker(geradores);
+      renderizarRanking(geradores);
+
       const total = geradores.length;
       const operando = geradores.filter(g => (g.status_operacional || "").toLowerCase().includes("operando")).length;
+      const emManutTotal = geradores.filter(g => emManutencao(g.status_operacional)).length;
       const emDia = geradores.filter(g => classificarStatus(g.status) === "ok").length;
+      const disponibilidade = total > 0 ? Math.round((operando / total) * 100) : 0;
       const proximas = geradores
         .map(g => g.proxima_preventiva)
         .filter(Boolean)
         .sort();
       const proximaGeral = proximas.length ? proximas[0] : "—";
 
+      ultimosGeradores = geradores;
       const kpisEl = document.getElementById("kpis");
+      const at = 'tabindex="0" role="button"';
       kpisEl.innerHTML = `
-        <div class="kpi">
+        <div class="kpi disponibilidade" data-kpi="disp" ${at}>
+          <span class="dica">ver análise ›</span>
+          <p class="label">Disponibilidade da frota</p>
+          <p class="valor">${disponibilidade}%</p>
+        </div>
+        <div class="kpi" data-kpi="total" ${at}>
+          <span class="dica">ver análise ›</span>
           <p class="label">Total de geradores</p>
           <p class="valor">${total}</p>
         </div>
-        <div class="kpi destaque">
+        <div class="kpi destaque" data-kpi="operando" ${at}>
+          <span class="dica">ver análise ›</span>
           <p class="label">Operando</p>
           <p class="valor">${operando}/${total}</p>
         </div>
-        <div class="kpi destaque">
+        <div class="kpi alerta-kpi" data-kpi="manut" ${at}>
+          <span class="dica">ver análise ›</span>
+          <p class="label">Em manutenção</p>
+          <p class="valor">${emManutTotal}/${total}</p>
+        </div>
+        <div class="kpi destaque" data-kpi="emdia" ${at}>
+          <span class="dica">ver análise ›</span>
           <p class="label">Em dia (preventiva)</p>
           <p class="valor">${emDia}/${total}</p>
         </div>
-        <div class="kpi">
+        <div class="kpi" data-kpi="proxima" ${at}>
+          <span class="dica">ver análise ›</span>
           <p class="label">Próxima preventiva</p>
           <p class="valor">${formatarData(proximaGeral)}</p>
         </div>
       `;
+      renderizarPainel(); // mantem o painel aberto atualizado a cada refresh
 
       const cardsEl = document.getElementById("cards");
       cardsEl.innerHTML = "";
       geradores.forEach(g => {
-        const classe = classificarStatus(g.status);
+        const emManut = emManutencao(g.status_operacional);
+        const classe = emManut ? "critico" : classificarStatus(g.status);
         const pct = g.horimetro != null ? Math.min(100, Math.round((g.horimetro / HORIMETRO_MAXIMO) * 100)) : 0;
-        const textoStatus = classe === "ok" ? "Em dia" : (classe === "alerta" ? "Atenção" : "Atrasado");
-        const classeTexto = classe === "ok" ? "status-em-dia" : (classe === "alerta" ? "status-alerta-txt" : "status-critico-txt");
-
+        const textoStatus = classificarStatus(g.status) === "ok" ? "Em dia" : (classificarStatus(g.status) === "alerta" ? "Atenção" : "Atrasado");
+        const classeTexto = classificarStatus(g.status) === "ok" ? "status-em-dia" : (classificarStatus(g.status) === "alerta" ? "status-alerta-txt" : "status-critico-txt");
         const temObservacao = g.observacoes && g.observacoes.trim().length > 0;
+        const destacarMudanca = mudouRecentemente(g);
+
+        let deltaHtml = "";
+        if (g.delta_horimetro != null && g.delta_horimetro !== 0) {
+          const subiu = g.delta_horimetro > 0;
+          deltaHtml = `<span class="delta ${subiu ? "subiu" : "desceu"}">${subiu ? "▲" : "▼"} ${Math.abs(g.delta_horimetro).toFixed(1)}h</span>`;
+        }
 
         const card = document.createElement("div");
-        card.className = "card" + (classe === "alerta" ? " alerta" : classe === "critico" ? " critico" : "");
+        card.className = "card" + (classe === "alerta" ? " alerta" : classe === "critico" ? " critico" : "") + (destacarMudanca ? " mudou-agora" : "");
+        card.dataset.precisaAtencao = precisaAtencao(g) ? "true" : "false";
         card.innerHTML = `
+          ${destacarMudanca ? `<span class="selo-novo">Mudou agora</span>` : ""}
           <div class="card-topo">
             <span class="nome">${g.equipamento}</span>
           </div>
@@ -369,7 +866,10 @@
           <span class="badge${classe === "alerta" ? " alerta" : classe === "critico" ? " critico" : ""}">${g.status_operacional || "—"}</span>
           <div class="linha-horimetro">
             <span class="rotulo">Horímetro</span>
-            <span class="valor">${g.horimetro != null ? g.horimetro.toFixed(1) + "h" : "—"}</span>
+            <span>
+              <span class="valor">${g.horimetro != null ? g.horimetro.toFixed(1) + "h" : "—"}</span>
+              ${deltaHtml}
+            </span>
           </div>
           <div class="barra-fundo">
             <div class="barra-preenchida" style="width:${pct}%"></div>
@@ -382,11 +882,13 @@
         `;
         cardsEl.appendChild(card);
       });
+
+      aplicarFiltroAlertas();
     }
 
     carregar();
-    // Atualiza a pagina sozinha a cada 5 minutos, para uso na TV
-    setInterval(carregar, 5 * 60 * 1000);
+    // Atualiza a pagina sozinha a cada 1 minuto, para uso na TV
+    setInterval(carregar, 60 * 1000);
   </script>
 
 </body>

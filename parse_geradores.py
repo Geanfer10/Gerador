@@ -146,6 +146,145 @@ def buscar_board(board_id: str, token: str):
     return boards[0]
 
 
+# ---------------------------------------------------------------------------
+# Board "Inspecoes Semanais dos Geradores": ultima inspecao + pendencias
+# ---------------------------------------------------------------------------
+INSPECOES_BOARD_ID_PADRAO = "18415787937"
+
+COMPONENTES = [
+    "Nível de Água", "Correia Alternador", "Cabos das Baterias",
+    "Vazamento Resistência", "Tubo Flexível", "Nível de Óleo", "Filtro de Ar",
+    "Mangueiras Diesel", "Fixação Componentes", "Conservação e Limpeza",
+]
+
+
+def classificar_componente(texto: str) -> str:
+    t = normalizar(texto)
+    if "nao conforme" in t:
+        return "nao_conforme"
+    if "conforme" in t:
+        return "conforme"
+    if "n/a" in t:
+        return "na"
+    return "sem_dado"
+
+
+def minutos_do_dia(hora_texto: str) -> int:
+    """'08:45 AM' -> 525. Usado so para desempatar inspecoes do mesmo dia."""
+    m = re.match(r"\s*(\d{1,2}):(\d{2})\s*([AP]M)?", hora_texto or "", re.I)
+    if not m:
+        return 0
+    h, mi = int(m.group(1)), int(m.group(2))
+    ampm = (m.group(3) or "").upper()
+    if ampm == "PM" and h < 12:
+        h += 12
+    if ampm == "AM" and h == 12:
+        h = 0
+    return h * 60 + mi
+
+
+def buscar_inspecoes(board_id: str, token: str):
+    """Busca todos os registros do board de inspecoes (com paginacao)."""
+    headers = {"Authorization": token, "Content-Type": "application/json", "API-Version": "2024-10"}
+
+    def post(query, variables):
+        r = requests.post(MONDAY_API_URL, json={"query": query, "variables": variables}, headers=headers, timeout=30)
+        r.raise_for_status()
+        corpo = r.json()
+        if "errors" in corpo:
+            raise RuntimeError(f"Erro na API do Monday: {corpo['errors']}")
+        return corpo["data"]
+
+    campos = "items { id name group { title } column_values { id text } } cursor"
+    q1 = """query ($boardId: [ID!]) { boards(ids: $boardId) {
+        columns { id title }
+        items_page(limit: 100) { %s } } }""" % campos
+    dados = post(q1, {"boardId": [board_id]})
+    boards = dados["boards"]
+    if not boards:
+        raise RuntimeError(f"Board de inspecoes {board_id} nao encontrado.")
+    colunas = boards[0]["columns"]
+    pagina = boards[0]["items_page"]
+    itens = list(pagina["items"])
+    cursor = pagina.get("cursor")
+    q2 = "query ($cursor: String!) { next_items_page(limit: 100, cursor: $cursor) { %s } }" % campos
+    while cursor:
+        prox = post(q2, {"cursor": cursor})["next_items_page"]
+        itens.extend(prox["items"])
+        cursor = prox.get("cursor")
+    return colunas, itens
+
+
+def resumir_inspecoes(colunas, itens):
+    """Devolve {numero_do_gerador: {...ultima inspecao..., pendencias_abertas:[...]}}"""
+    por_titulo = {normalizar(c["title"]): c["id"] for c in colunas}
+
+    def col(item_valores, titulo):
+        cid = por_titulo.get(normalizar(titulo))
+        return extrair_texto(item_valores.get(cid)) if cid else ""
+
+    registros = {}
+    for item in itens:
+        v = {cv["id"]: cv for cv in item["column_values"]}
+        # A "tag" do nome do registro (ex.: "G07 16/10/2026") e a referencia mais
+        # confiavel; a coluna "Gerador" so e usada se o nome nao tiver a tag.
+        m = re.match(r"\s*G\s*0*(\d+)\b", item.get("name") or "", re.I) or re.search(r"(\d+)", col(v, "Gerador"))
+        if not m:
+            continue
+        numero = int(m.group(1))
+        comps = []
+        for nome in COMPONENTES:
+            comps.append({"nome": nome, "status": classificar_componente(col(v, nome))})
+        registros.setdefault(numero, []).append({
+            "data": col(v, "Data da Inspeção"),
+            "hora": minutos_do_dia(col(v, "Hora Inicio")),
+            "turno": col(v, "Turno"),
+            "inspetor": col(v, "Inspetor"),
+            "horimetro": extrair_horimetro(v.get(por_titulo.get(normalizar("Horímetro")))),
+            "situacao": col(v, "Situação da Inspeção"),
+            "observacoes": col(v, "Observações"),
+            "status_pendencia": col(v, "Status da Pendência"),
+            "grupo": (item.get("group") or {}).get("title", ""),
+            "componentes": comps,
+        })
+
+    resultado = {}
+    for numero, lista in registros.items():
+        lista.sort(key=lambda r: (r["data"], r["hora"]))
+        ultima = lista[-1]
+        abertas = []
+        for r in lista[:-1]:
+            sp = normalizar(r["status_pendencia"])
+            if not sp or "conclu" in sp:
+                continue
+            if "resolvid" in normalizar(r["grupo"]):
+                continue
+            nc = [c["nome"] for c in r["componentes"] if c["status"] == "nao_conforme"]
+            if nc or r["observacoes"]:
+                abertas.append({
+                    "data": r["data"], "status": r["status_pendencia"],
+                    "componentes": nc, "observacoes": r["observacoes"],
+                })
+        if normalizar(ultima["status_pendencia"]) and "conclu" not in normalizar(ultima["status_pendencia"]):
+            nc = [c["nome"] for c in ultima["componentes"] if c["status"] == "nao_conforme"]
+            if nc:
+                abertas.append({"data": ultima["data"], "status": ultima["status_pendencia"],
+                                "componentes": nc, "observacoes": ultima["observacoes"]})
+        resultado[numero] = {
+            "data": ultima["data"], "turno": ultima["turno"], "inspetor": ultima["inspetor"],
+            "horimetro": ultima["horimetro"], "situacao": ultima["situacao"],
+            "observacoes": ultima["observacoes"], "componentes": ultima["componentes"],
+            "nao_conformes": [c["nome"] for c in ultima["componentes"] if c["status"] == "nao_conforme"],
+            "pendencias_abertas": abertas,
+        }
+    return resultado
+
+
+def numero_do_gerador(nome: str):
+    m = re.search(r"gerador\s*0*(\d+)", normalizar(nome))
+    return int(m.group(1)) if m else None
+
+
 def carregar_leitura_anterior(caminho: str):
     """Le o geradores.json existente (se houver) e devolve um dict
     {equipamento: {horimetro, status_operacional}} para comparacao."""
@@ -166,7 +305,8 @@ def carregar_leitura_anterior(caminho: str):
     return anterior_por_equipamento
 
 
-def montar_json(board: dict, anterior_por_equipamento: dict) -> dict:
+def montar_json(board: dict, anterior_por_equipamento: dict, inspecoes: dict = None) -> dict:
+    inspecoes = inspecoes or {}
     colunas = board["columns"]
     mapa = montar_mapa_colunas(colunas)
     agora = datetime.now(timezone.utc).isoformat()
@@ -219,6 +359,7 @@ def montar_json(board: dict, anterior_por_equipamento: dict) -> dict:
                 "relatorio_dcco": pegar("relatorio_dcco"),
                 "observacoes": pegar("observacoes"),
                 "status": pegar("status") or "Desconhecido",
+                "inspecao": inspecoes.get(numero_do_gerador(equipamento)),
             }
         )
 
@@ -270,6 +411,10 @@ def main():
     parser = argparse.ArgumentParser(description="Gera geradores.json a partir do board do Monday.com")
     parser.add_argument("--board-id", required=True, help="ID do board do Monday.com (ex: 18415734554)")
     parser.add_argument(
+        "--inspecoes-board-id", default=INSPECOES_BOARD_ID_PADRAO,
+        help="ID do board de Inspecoes Semanais (ultimas inspecoes / conforme x nao conforme)",
+    )
+    parser.add_argument(
         "--output",
         default=os.path.join(os.path.dirname(__file__), "data", "geradores.json"),
         help="Caminho do arquivo JSON de saida",
@@ -284,7 +429,13 @@ def main():
     anterior_por_equipamento = carregar_leitura_anterior(args.output)
 
     board = buscar_board(args.board_id, token)
-    dados = montar_json(board, anterior_por_equipamento)
+    inspecoes = {}
+    try:
+        colunas_insp, itens_insp = buscar_inspecoes(args.inspecoes_board_id, token)
+        inspecoes = resumir_inspecoes(colunas_insp, itens_insp)
+    except Exception as e:  # o painel segue funcionando sem os dados de inspecao
+        print(f"Aviso: nao foi possivel ler as inspecoes ({e}).", file=sys.stderr)
+    dados = montar_json(board, anterior_por_equipamento, inspecoes)
     dados = preservar_status_mudou_recente(dados, args.output)
 
     os.makedirs(os.path.dirname(args.output), exist_ok=True)
