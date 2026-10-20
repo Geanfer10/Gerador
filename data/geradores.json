@@ -1,5 +1,5 @@
 {
-  "atualizado_em": "2026-10-20T14:20:17.404924+00:00",
+  "atualizado_em": "2026-10-20T14:23:48.613034+00:00",
   "total_geradores": 8,
   "geradores": [
     {
@@ -17,6 +17,7 @@
       "orcamento_preventiva": {
         "tem_orcamento": false,
         "arquivos": [],
+        "anexado_neste_gerador": false,
         "outros_arquivos": []
       },
       "observacoes": "",
@@ -288,6 +289,7 @@
       "orcamento_preventiva": {
         "tem_orcamento": false,
         "arquivos": [],
+        "anexado_neste_gerador": false,
         "outros_arquivos": []
       },
       "observacoes": "gerador nao ligou",
@@ -562,6 +564,7 @@
       "orcamento_preventiva": {
         "tem_orcamento": false,
         "arquivos": [],
+        "anexado_neste_gerador": false,
         "outros_arquivos": []
       },
       "observacoes": "",
@@ -833,6 +836,7 @@
       "orcamento_preventiva": {
         "tem_orcamento": false,
         "arquivos": [],
+        "anexado_neste_gerador": false,
         "outros_arquivos": []
       },
       "observacoes": "",
@@ -1096,6 +1100,7 @@
       "orcamento_preventiva": {
         "tem_orcamento": false,
         "arquivos": [],
+        "anexado_neste_gerador": false,
         "outros_arquivos": []
       },
       "observacoes": "Alternador",
@@ -1370,6 +1375,7 @@
       "orcamento_preventiva": {
         "tem_orcamento": false,
         "arquivos": [],
+        "anexado_neste_gerador": false,
         "outros_arquivos": []
       },
       "observacoes": "",
@@ -1641,6 +1647,7 @@
       "orcamento_preventiva": {
         "tem_orcamento": false,
         "arquivos": [],
+        "anexado_neste_gerador": false,
         "outros_arquivos": []
       },
       "observacoes": "",
@@ -1914,6 +1921,7 @@
       "orcamento_preventiva": {
         "tem_orcamento": false,
         "arquivos": [],
+        "anexado_neste_gerador": false,
         "outros_arquivos": []
       },
       "observacoes": "tubo flexivel trincado",
