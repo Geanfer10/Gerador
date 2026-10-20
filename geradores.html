@@ -244,7 +244,7 @@
   /* ---------- KPIs ---------- */
   .kpis {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    grid-template-columns: repeat(6, 1fr);
     gap: 14px;
     margin-bottom: 24px;
   }
@@ -473,9 +473,6 @@
   .card .ver-relatorio { font-size: 11px; color: var(--verde); font-weight: 600; margin-top: 10px; }
   .btn-link { display: inline-block; margin: 4px 8px 0 0; font-size: 12px; font-weight: 600; color: var(--verde); text-decoration: none; border: 1px solid var(--borda); border-radius: 6px; padding: 4px 10px; }
   .btn-link:hover { background: var(--verde-fundo); }
-  .badge-orc { display: inline-block; font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 999px; margin-top: 8px; }
-  .badge-orc.sim { background: var(--verde-fundo); color: var(--verde-escuro); }
-  .badge-orc.nao { background: #FAEEDA; color: #633806; }
   .vazio { font-size: 13px; color: var(--texto-secundario); }
   @media (max-width: 700px) { .conf-resumo { grid-template-columns: 1fr; } }
 
@@ -674,10 +671,6 @@
     }
 
     // Nao conforme = em manutencao OU preventiva atrasada ("Status" do Monday)
-    function temOrcamento(g) {
-      return !!(g.orcamento_preventiva && g.orcamento_preventiva.tem_orcamento);
-    }
-
     function analisarConformidade(g) {
       const motivos = [];
       if (emManutencao(g.status_operacional)) motivos.push("Em manutenção (" + (g.status_operacional || "") + ")");
@@ -698,7 +691,6 @@
         operando: { titulo: "Operando", sub: "Geradores em operação agora", lista: geradores.filter(ehOperando) },
         manut: { titulo: "Em manutenção", sub: "Geradores parados ou em manutenção", lista: geradores.filter(g => emManutencao(g.status_operacional)) },
         emdia: { titulo: "Em dia (preventiva)", sub: "Status da preventiva no Monday", lista: geradores },
-        orc: { titulo: "Orçamento da próxima preventiva", sub: "Regra: PDF do orçamento anexado no Monday", lista: geradores },
         proxima: { titulo: "Próxima preventiva", sub: "Ordenado pela data mais próxima", lista: geradores.filter(g => g.proxima_preventiva).slice().sort((a, b) => a.proxima_preventiva.localeCompare(b.proxima_preventiva)) }
       };
     }
@@ -734,10 +726,7 @@
       if (geradorAberto) { renderizarRelatorio(); return; }
       if (!kpiAberto) return;
       const def = montarKpis(ultimosGeradores)[kpiAberto];
-      const ehOrc = kpiAberto === "orc";
-      const itens = def.lista.map(g => ({ g, an: ehOrc
-        ? { conforme: temOrcamento(g), motivos: temOrcamento(g) ? [] : ["Sem PDF de orçamento anexado"] }
-        : analisarConformidade(g) }));
+      const itens = def.lista.map(g => ({ g, an: analisarConformidade(g) }));
       const nok = itens.filter(i => !i.an.conforme);
       const ok = itens.filter(i => i.an.conforme);
       const pct = itens.length ? Math.round((ok.length / itens.length) * 100) : 0;
@@ -748,14 +737,14 @@
       document.getElementById("painel-sub").textContent = def.sub + " · dados do Monday";
       document.getElementById("painel-corpo").innerHTML = `
         <div class="conf-resumo">
-          <div class="conf-caixa ok"><p>${ehOrc ? "Com orçamento" : "Conforme"}</p><strong>${ok.length}</strong></div>
-          <div class="conf-caixa nok"><p>${ehOrc ? "Sem orçamento" : "Não conforme"}</p><strong>${nok.length}</strong></div>
+          <div class="conf-caixa ok"><p>Conforme</p><strong>${ok.length}</strong></div>
+          <div class="conf-caixa nok"><p>Não conforme</p><strong>${nok.length}</strong></div>
         </div>
         <div class="conf-barra"><div style="width:${pct}%"></div></div>
-        <h3 class="nok">${ehOrc ? "Sem orçamento" : "Não conforme"} (${nok.length})</h3>
-        ${nok.length ? nok.map(i => itemAnalise(i.g, i.an, kpiAberto)).join("") : `<p class="vazio">${ehOrc ? "Todos têm orçamento." : "Nenhum gerador não conforme."}</p>`}
-        <h3 class="ok">${ehOrc ? "Com orçamento" : "Conforme"} (${ok.length})</h3>
-        ${ok.length ? ok.map(i => itemAnalise(i.g, i.an, kpiAberto)).join("") : `<p class="vazio">${ehOrc ? "Nenhum gerador com orçamento anexado." : "Nenhum gerador conforme."}</p>`}
+        <h3 class="nok">Não conforme (${nok.length})</h3>
+        ${nok.length ? nok.map(i => itemAnalise(i.g, i.an, kpiAberto)).join("") : `<p class="vazio">Nenhum gerador não conforme.</p>`}
+        <h3 class="ok">Conforme (${ok.length})</h3>
+        ${ok.length ? ok.map(i => itemAnalise(i.g, i.an, kpiAberto)).join("") : `<p class="vazio">Nenhum gerador conforme.</p>`}
         <h3>Observações (${comObs.length})</h3>
         ${comObs.length ? comObs.map(i => `<div class="item-analise ${i.an.conforme ? "" : "nok"}"><div class="linha"><span>${esc(i.g.equipamento)}</span></div><div class="obs">${esc([i.g.observacoes, i.g.inspecao && i.g.inspecao.observacoes].filter(x => x && x.trim()).join(" | "))}</div></div>`).join("") : `<p class="vazio">Sem observações registradas.</p>`}
       `;
@@ -774,7 +763,6 @@
       const links = [
         g.url ? `<a class="btn-link" href="${esc(g.url)}" target="_blank" rel="noopener">Abrir gerador no Monday ›</a>` : "",
         insp && insp.url ? `<a class="btn-link" href="${esc(insp.url)}" target="_blank" rel="noopener">Última inspeção no Monday ›</a>` : "",
-        temOrcamento(g) ? `<a class="btn-link" href="${esc(g.url || "#")}" target="_blank" rel="noopener">Orçamento: ${esc(g.orcamento_preventiva.arquivos.join(", "))} ›</a>` : "",
         g.relatorio_dcco ? `<a class="btn-link" href="${esc(g.url || "#")}" target="_blank" rel="noopener">Relatório DCCO: ${esc(g.relatorio_dcco)} ›</a>` : ""
       ].join("");
 
@@ -791,8 +779,7 @@
           Última preventiva: <strong>${esc(formatarData(g.ultima_preventiva))}</strong> ·
           Próxima: <strong>${esc(formatarData(g.proxima_preventiva))}</strong> ·
           Último teste: <strong>${esc(formatarData(g.ultimo_teste))}</strong> ·
-          Preventiva: <strong>${esc(g.status || "—")}</strong> ·
-          Orçamento da próxima preventiva: <strong>${temOrcamento(g) ? "garantido (PDF anexado)" : "pendente"}</strong>
+          Preventiva: <strong>${esc(g.status || "—")}</strong>
           ${g.observacoes && g.observacoes.trim() ? `<br><strong>Obs:</strong> ${esc(g.observacoes)}` : ""}
         </div></div>`;
 
@@ -899,7 +886,6 @@
       const proximaGeral = proximas.length ? proximas[0] : "—";
 
       ultimosGeradores = geradores;
-      const comOrcamento = geradores.filter(temOrcamento).length;
       const kpisEl = document.getElementById("kpis");
       const at = 'tabindex="0" role="button"';
       kpisEl.innerHTML = `
@@ -927,11 +913,6 @@
           <span class="dica">ver análise ›</span>
           <p class="label">Em dia (preventiva)</p>
           <p class="valor">${emDia}/${total}</p>
-        </div>
-        <div class="kpi ${comOrcamento === total && total > 0 ? "destaque" : ""}" data-kpi="orc" ${at}>
-          <span class="dica">ver análise ›</span>
-          <p class="label">Orçamento próx. preventiva</p>
-          <p class="valor">${comOrcamento}/${total}</p>
         </div>
         <div class="kpi" data-kpi="proxima" ${at}>
           <span class="dica">ver análise ›</span>
@@ -986,7 +967,6 @@
             <span class="${classeTexto}">${textoStatus}</span>
           </div>
           ${temObservacao ? `<div class="card-observacao"><strong>Obs:</strong> ${g.observacoes}</div>` : ""}
-          <span class="badge-orc ${temOrcamento(g) ? "sim" : "nao"}">${temOrcamento(g) ? "Orçamento garantido" : "Orçamento pendente"}</span>
           <div class="ver-relatorio">Ver relatório ›</div>
         `;
         cardsEl.appendChild(card);
