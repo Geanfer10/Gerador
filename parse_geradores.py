@@ -40,6 +40,7 @@ COLUMN_ALIASES = {
     "proxima_preventiva": ["proxima preventiva"],
     "relatorio_dcco": ["relatorio dcco"],
     "observacoes": ["observaco"],
+    "orcamento_preventiva": ["orcamento"],
     "status": ["status"],  # cuidado: precisa vir depois de status_operacional
 }
 
@@ -89,6 +90,22 @@ def extrair_texto(valor_coluna):
     return ""
 
 
+def nomes_arquivos(valor_coluna):
+    """Nomes dos arquivos anexados em uma coluna de arquivo do Monday."""
+    if not valor_coluna:
+        return []
+    nomes = []
+    for f in (valor_coluna.get("files") or []):
+        nome = (f or {}).get("name")
+        if nome:
+            nomes.append(nome)
+    if not nomes:
+        texto = extrair_texto(valor_coluna)
+        if texto:
+            nomes = [t.strip() for t in texto.split(",") if t.strip()]
+    return nomes
+
+
 def extrair_horimetro(valor_coluna):
     """Converte o valor da coluna Horimetro Atual para float (aceita virgula ou ponto)."""
     texto = extrair_texto(valor_coluna)
@@ -120,6 +137,13 @@ def buscar_board(board_id: str, token: str):
             column_values {
               id
               text
+              ... on FileValue {
+                files {
+                  ... on FileAssetValue {
+                    name
+                  }
+                }
+              }
             }
           }
         }
@@ -358,6 +382,10 @@ def montar_json(board: dict, anterior_por_equipamento: dict, inspecoes: dict = N
             if status_anterior and status_anterior != status_operacional_atual:
                 status_mudou = True
 
+        # Regra do orcamento: existe PDF anexado na coluna "Orcamento Preventiva".
+        arquivos_orc = nomes_arquivos(valores.get(mapa["orcamento_preventiva"])) if "orcamento_preventiva" in mapa else []
+        pdfs_orc = [n for n in arquivos_orc if n.lower().endswith(".pdf")]
+
         geradores.append(
             {
                 "equipamento": equipamento,
@@ -371,6 +399,11 @@ def montar_json(board: dict, anterior_por_equipamento: dict, inspecoes: dict = N
                 "ultima_preventiva": pegar("ultima_preventiva"),
                 "proxima_preventiva": pegar("proxima_preventiva"),
                 "relatorio_dcco": pegar("relatorio_dcco"),
+                "orcamento_preventiva": {
+                    "tem_orcamento": len(pdfs_orc) > 0,
+                    "arquivos": pdfs_orc,
+                    "outros_arquivos": [n for n in arquivos_orc if n not in pdfs_orc],
+                },
                 "observacoes": pegar("observacoes"),
                 "status": pegar("status") or "Desconhecido",
                 "url": f"https://messigean18s-team.monday.com/boards/{board.get('id', '')}/pulses/{item['id']}",
