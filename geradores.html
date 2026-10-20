@@ -698,7 +698,7 @@
         operando: { titulo: "Operando", sub: "Geradores em operação agora", lista: geradores.filter(ehOperando) },
         manut: { titulo: "Em manutenção", sub: "Geradores parados ou em manutenção", lista: geradores.filter(g => emManutencao(g.status_operacional)) },
         emdia: { titulo: "Em dia (preventiva)", sub: "Status da preventiva no Monday", lista: geradores },
-        orc: { titulo: "Orçamento da próxima preventiva", sub: "Regra: PDF do orçamento anexado no Monday", lista: geradores },
+        orc: { titulo: "Orçamento da próxima preventiva", sub: "Regra: 1 PDF anexado no Monday vale para toda a frota", lista: geradores },
         proxima: { titulo: "Próxima preventiva", sub: "Ordenado pela data mais próxima", lista: geradores.filter(g => g.proxima_preventiva).slice().sort((a, b) => a.proxima_preventiva.localeCompare(b.proxima_preventiva)) }
       };
     }

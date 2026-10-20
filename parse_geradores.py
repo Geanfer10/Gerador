@@ -411,6 +411,22 @@ def montar_json(board: dict, anterior_por_equipamento: dict, inspecoes: dict = N
             }
         )
 
+    # Regra do orcamento: UM PDF vale para a frota inteira. Se algum gerador
+    # tiver PDF anexado em "Orcamento Preventiva", todos ficam com orcamento garantido.
+    todos_pdfs = []
+    for g in geradores:
+        for nome in g["orcamento_preventiva"]["arquivos"]:
+            if nome not in todos_pdfs:
+                todos_pdfs.append(nome)
+    for g in geradores:
+        proprio = bool(g["orcamento_preventiva"]["arquivos"])
+        g["orcamento_preventiva"] = {
+            "tem_orcamento": len(todos_pdfs) > 0,
+            "arquivos": todos_pdfs,
+            "anexado_neste_gerador": proprio,
+            "outros_arquivos": g["orcamento_preventiva"]["outros_arquivos"],
+        }
+
     return {
         "atualizado_em": agora,
         "total_geradores": len(geradores),
