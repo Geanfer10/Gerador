@@ -90,18 +90,6 @@ def extrair_texto(valor_coluna):
     return ""
 
 
-def links_arquivos(valor_coluna):
-    """[{nome, url}] dos arquivos anexados (url protegida: abre para quem esta logado no Monday)."""
-    if not valor_coluna:
-        return []
-    saida = []
-    for f in (valor_coluna.get("files") or []):
-        nome = (f or {}).get("name")
-        if nome:
-            saida.append({"nome": nome, "url": ((f.get("asset") or {}).get("url")) or ""})
-    return saida
-
-
 def nomes_arquivos(valor_coluna):
     """Nomes dos arquivos anexados em uma coluna de arquivo do Monday."""
     if not valor_coluna:
@@ -153,9 +141,6 @@ def buscar_board(board_id: str, token: str):
                 files {
                   ... on FileAssetValue {
                     name
-                    asset {
-                      url
-                    }
                   }
                 }
               }
@@ -400,7 +385,6 @@ def montar_json(board: dict, anterior_por_equipamento: dict, inspecoes: dict = N
         # Regra do orcamento: existe PDF anexado na coluna "Orcamento Preventiva".
         arquivos_orc = nomes_arquivos(valores.get(mapa["orcamento_preventiva"])) if "orcamento_preventiva" in mapa else []
         pdfs_orc = [n for n in arquivos_orc if n.lower().endswith(".pdf")]
-        links_orc = [l for l in (links_arquivos(valores.get(mapa["orcamento_preventiva"])) if "orcamento_preventiva" in mapa else []) if l["nome"].lower().endswith(".pdf")]
 
         geradores.append(
             {
@@ -418,7 +402,6 @@ def montar_json(board: dict, anterior_por_equipamento: dict, inspecoes: dict = N
                 "orcamento_preventiva": {
                     "tem_orcamento": len(pdfs_orc) > 0,
                     "arquivos": pdfs_orc,
-                    "links": links_orc,
                     "outros_arquivos": [n for n in arquivos_orc if n not in pdfs_orc],
                 },
                 "observacoes": pegar("observacoes"),
@@ -431,11 +414,6 @@ def montar_json(board: dict, anterior_por_equipamento: dict, inspecoes: dict = N
     # Regra do orcamento: UM PDF vale para a frota inteira. Se algum gerador
     # tiver PDF anexado em "Orcamento Preventiva", todos ficam com orcamento garantido.
     todos_pdfs = []
-    todos_links = []
-    for g in geradores:
-        for l in g["orcamento_preventiva"]["links"]:
-            if l["nome"] not in [x["nome"] for x in todos_links]:
-                todos_links.append(l)
     for g in geradores:
         for nome in g["orcamento_preventiva"]["arquivos"]:
             if nome not in todos_pdfs:
@@ -445,7 +423,6 @@ def montar_json(board: dict, anterior_por_equipamento: dict, inspecoes: dict = N
         g["orcamento_preventiva"] = {
             "tem_orcamento": len(todos_pdfs) > 0,
             "arquivos": todos_pdfs,
-            "links": todos_links,
             "anexado_neste_gerador": proprio,
             "outros_arquivos": g["orcamento_preventiva"]["outros_arquivos"],
         }

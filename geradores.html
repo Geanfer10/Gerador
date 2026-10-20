@@ -476,8 +476,6 @@
   .badge-orc { display: inline-block; font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 999px; margin-top: 8px; }
   .badge-orc.sim { background: var(--verde-fundo); color: var(--verde-escuro); }
   .badge-orc.nao { background: #FAEEDA; color: #633806; }
-  .btn-baixar { background: var(--verde); color: #fff; border-color: var(--verde); }
-  .btn-baixar:hover { background: var(--verde-escuro); }
   .vazio { font-size: 13px; color: var(--texto-secundario); }
   @media (max-width: 700px) { .conf-resumo { grid-template-columns: 1fr; } }
 
@@ -676,17 +674,6 @@
     }
 
     // Nao conforme = em manutencao OU preventiva atrasada ("Status" do Monday)
-    function linksOrcamento(g) {
-      const o = g.orcamento_preventiva || {};
-      return (o.links && o.links.length ? o.links : (o.arquivos || []).map(n => ({ nome: n, url: g.url || "" })));
-    }
-
-    function botoesOrcamento(g) {
-      if (!temOrcamento(g)) return "";
-      return linksOrcamento(g).map(l =>
-        `<a class="btn-link btn-baixar" href="${esc(l.url || g.url || "#")}" target="_blank" rel="noopener" download>⬇ Baixar orçamento: ${esc(l.nome)}</a>`).join("");
-    }
-
     function temOrcamento(g) {
       return !!(g.orcamento_preventiva && g.orcamento_preventiva.tem_orcamento);
     }
@@ -721,7 +708,6 @@
         : (g.horimetro != null ? g.horimetro.toFixed(1) + "h" : "");
       const obs = g.observacoes && g.observacoes.trim() ? `<div class="obs"><strong>Obs:</strong> ${esc(g.observacoes)}</div>` : "";
       const insp = g.inspecao;
-      const orcHtml = kpi === "orc" ? botoesOrcamento(g) : "";
       let inspHtml = "";
       if (insp) {
         const chips = (insp.componentes || []).filter(c => c.status === "conforme" || c.status === "nao_conforme")
@@ -740,7 +726,6 @@
           <div class="linha"><span>${esc(g.equipamento)}</span><span class="extra">${esc(g.status_operacional || "—")} · ${esc(g.status || "—")}${extra ? " · " + esc(extra) : ""}</span></div>
           ${an.motivos.length ? `<div class="motivos">${an.motivos.map(esc).join(" · ")}</div>` : ""}
           ${obs}
-          ${orcHtml}
           ${inspHtml}
         </div>`;
     }
@@ -766,7 +751,6 @@
           <div class="conf-caixa ok"><p>${ehOrc ? "Com orçamento" : "Conforme"}</p><strong>${ok.length}</strong></div>
           <div class="conf-caixa nok"><p>${ehOrc ? "Sem orçamento" : "Não conforme"}</p><strong>${nok.length}</strong></div>
         </div>
-        ${ehOrc && ok.length ? `<div style="margin-bottom:14px">${botoesOrcamento(ok[0].g)}</div>` : ""}
         <div class="conf-barra"><div style="width:${pct}%"></div></div>
         <h3 class="nok">${ehOrc ? "Sem orçamento" : "Não conforme"} (${nok.length})</h3>
         ${nok.length ? nok.map(i => itemAnalise(i.g, i.an, kpiAberto)).join("") : `<p class="vazio">${ehOrc ? "Todos têm orçamento." : "Nenhum gerador não conforme."}</p>`}
@@ -790,7 +774,7 @@
       const links = [
         g.url ? `<a class="btn-link" href="${esc(g.url)}" target="_blank" rel="noopener">Abrir gerador no Monday ›</a>` : "",
         insp && insp.url ? `<a class="btn-link" href="${esc(insp.url)}" target="_blank" rel="noopener">Última inspeção no Monday ›</a>` : "",
-        botoesOrcamento(g),
+        temOrcamento(g) ? `<a class="btn-link" href="${esc(g.url || "#")}" target="_blank" rel="noopener">Orçamento: ${esc(g.orcamento_preventiva.arquivos.join(", "))} ›</a>` : "",
         g.relatorio_dcco ? `<a class="btn-link" href="${esc(g.url || "#")}" target="_blank" rel="noopener">Relatório DCCO: ${esc(g.relatorio_dcco)} ›</a>` : ""
       ].join("");
 
@@ -1003,7 +987,6 @@
           </div>
           ${temObservacao ? `<div class="card-observacao"><strong>Obs:</strong> ${g.observacoes}</div>` : ""}
           <span class="badge-orc ${temOrcamento(g) ? "sim" : "nao"}">${temOrcamento(g) ? "Orçamento garantido" : "Orçamento pendente"}</span>
-          ${temOrcamento(g) ? `<div style="margin-top:6px">${botoesOrcamento(g)}</div>` : ""}
           <div class="ver-relatorio">Ver relatório ›</div>
         `;
         cardsEl.appendChild(card);
