@@ -1,5 +1,5 @@
 {
-  "atualizado_em": "2026-10-20T16:35:26.703541+00:00",
+  "atualizado_em": "2026-10-20T16:41:53.042259+00:00",
   "total_geradores": 8,
   "geradores": [
     {
@@ -14,20 +14,6 @@
       "ultima_preventiva": "2026-05-06",
       "proxima_preventiva": "2026-11-06",
       "relatorio_dcco": "",
-      "orcamento_preventiva": {
-        "tem_orcamento": true,
-        "arquivos": [
-          "GOIAS VERDE ALIMENTOS - PREVENTIVAS - 63786.pdf"
-        ],
-        "links": [
-          {
-            "nome": "GOIAS VERDE ALIMENTOS - PREVENTIVAS - 63786.pdf",
-            "url": "https://messigean18s-team.monday.com/protected_static/32690846/resources/3329697925/GOIAS%20VERDE%20ALIMENTOS%20-%20PREVENTIVAS%20-%2063786.pdf"
-          }
-        ],
-        "anexado_neste_gerador": true,
-        "outros_arquivos": []
-      },
       "observacoes": "",
       "status": "🟢 Em Dia",
       "url": "https://messigean18s-team.monday.com/boards/18415734554/pulses/12156579661",
@@ -294,20 +280,6 @@
       "ultima_preventiva": "2026-05-06",
       "proxima_preventiva": "2026-11-06",
       "relatorio_dcco": "",
-      "orcamento_preventiva": {
-        "tem_orcamento": true,
-        "arquivos": [
-          "GOIAS VERDE ALIMENTOS - PREVENTIVAS - 63786.pdf"
-        ],
-        "links": [
-          {
-            "nome": "GOIAS VERDE ALIMENTOS - PREVENTIVAS - 63786.pdf",
-            "url": "https://messigean18s-team.monday.com/protected_static/32690846/resources/3329697925/GOIAS%20VERDE%20ALIMENTOS%20-%20PREVENTIVAS%20-%2063786.pdf"
-          }
-        ],
-        "anexado_neste_gerador": false,
-        "outros_arquivos": []
-      },
       "observacoes": "gerador nao ligou",
       "status": "🟢 Em Dia",
       "url": "https://messigean18s-team.monday.com/boards/18415734554/pulses/12156716029",
@@ -577,20 +549,6 @@
       "ultima_preventiva": "2026-05-06",
       "proxima_preventiva": "2026-11-06",
       "relatorio_dcco": "",
-      "orcamento_preventiva": {
-        "tem_orcamento": true,
-        "arquivos": [
-          "GOIAS VERDE ALIMENTOS - PREVENTIVAS - 63786.pdf"
-        ],
-        "links": [
-          {
-            "nome": "GOIAS VERDE ALIMENTOS - PREVENTIVAS - 63786.pdf",
-            "url": "https://messigean18s-team.monday.com/protected_static/32690846/resources/3329697925/GOIAS%20VERDE%20ALIMENTOS%20-%20PREVENTIVAS%20-%2063786.pdf"
-          }
-        ],
-        "anexado_neste_gerador": false,
-        "outros_arquivos": []
-      },
       "observacoes": "",
       "status": "🟢 Em Dia",
       "url": "https://messigean18s-team.monday.com/boards/18415734554/pulses/12156717818",
@@ -857,20 +815,6 @@
       "ultima_preventiva": "2026-05-06",
       "proxima_preventiva": "2026-11-06",
       "relatorio_dcco": "",
-      "orcamento_preventiva": {
-        "tem_orcamento": true,
-        "arquivos": [
-          "GOIAS VERDE ALIMENTOS - PREVENTIVAS - 63786.pdf"
-        ],
-        "links": [
-          {
-            "nome": "GOIAS VERDE ALIMENTOS - PREVENTIVAS - 63786.pdf",
-            "url": "https://messigean18s-team.monday.com/protected_static/32690846/resources/3329697925/GOIAS%20VERDE%20ALIMENTOS%20-%20PREVENTIVAS%20-%2063786.pdf"
-          }
-        ],
-        "anexado_neste_gerador": false,
-        "outros_arquivos": []
-      },
       "observacoes": "",
       "status": "🟢 Em Dia",
       "url": "https://messigean18s-team.monday.com/boards/18415734554/pulses/12156690448",
@@ -1129,20 +1073,6 @@
       "ultima_preventiva": "2026-05-06",
       "proxima_preventiva": "2026-11-06",
       "relatorio_dcco": "",
-      "orcamento_preventiva": {
-        "tem_orcamento": true,
-        "arquivos": [
-          "GOIAS VERDE ALIMENTOS - PREVENTIVAS - 63786.pdf"
-        ],
-        "links": [
-          {
-            "nome": "GOIAS VERDE ALIMENTOS - PREVENTIVAS - 63786.pdf",
-            "url": "https://messigean18s-team.monday.com/protected_static/32690846/resources/3329697925/GOIAS%20VERDE%20ALIMENTOS%20-%20PREVENTIVAS%20-%2063786.pdf"
-          }
-        ],
-        "anexado_neste_gerador": false,
-        "outros_arquivos": []
-      },
       "observacoes": "Alternador",
       "status": "🟢 Em Dia",
       "url": "https://messigean18s-team.monday.com/boards/18415734554/pulses/12156716427",
@@ -1412,20 +1342,6 @@
       "ultima_preventiva": "2026-05-06",
       "proxima_preventiva": "2026-11-06",
       "relatorio_dcco": "",
-      "orcamento_preventiva": {
-        "tem_orcamento": true,
-        "arquivos": [
-          "GOIAS VERDE ALIMENTOS - PREVENTIVAS - 63786.pdf"
-        ],
-        "links": [
-          {
-            "nome": "GOIAS VERDE ALIMENTOS - PREVENTIVAS - 63786.pdf",
-            "url": "https://messigean18s-team.monday.com/protected_static/32690846/resources/3329697925/GOIAS%20VERDE%20ALIMENTOS%20-%20PREVENTIVAS%20-%2063786.pdf"
-          }
-        ],
-        "anexado_neste_gerador": false,
-        "outros_arquivos": []
-      },
       "observacoes": "",
       "status": "🟢 Em Dia",
       "url": "https://messigean18s-team.monday.com/boards/18415734554/pulses/12156729876",
@@ -1692,20 +1608,6 @@
       "ultima_preventiva": "2026-05-06",
       "proxima_preventiva": "2026-11-06",
       "relatorio_dcco": "",
-      "orcamento_preventiva": {
-        "tem_orcamento": true,
-        "arquivos": [
-          "GOIAS VERDE ALIMENTOS - PREVENTIVAS - 63786.pdf"
-        ],
-        "links": [
-          {
-            "nome": "GOIAS VERDE ALIMENTOS - PREVENTIVAS - 63786.pdf",
-            "url": "https://messigean18s-team.monday.com/protected_static/32690846/resources/3329697925/GOIAS%20VERDE%20ALIMENTOS%20-%20PREVENTIVAS%20-%2063786.pdf"
-          }
-        ],
-        "anexado_neste_gerador": false,
-        "outros_arquivos": []
-      },
       "observacoes": "",
       "status": "🟢 Em Dia",
       "url": "https://messigean18s-team.monday.com/boards/18415734554/pulses/12156707557",
@@ -1974,20 +1876,6 @@
       "ultima_preventiva": "2026-05-06",
       "proxima_preventiva": "2026-11-06",
       "relatorio_dcco": "",
-      "orcamento_preventiva": {
-        "tem_orcamento": true,
-        "arquivos": [
-          "GOIAS VERDE ALIMENTOS - PREVENTIVAS - 63786.pdf"
-        ],
-        "links": [
-          {
-            "nome": "GOIAS VERDE ALIMENTOS - PREVENTIVAS - 63786.pdf",
-            "url": "https://messigean18s-team.monday.com/protected_static/32690846/resources/3329697925/GOIAS%20VERDE%20ALIMENTOS%20-%20PREVENTIVAS%20-%2063786.pdf"
-          }
-        ],
-        "anexado_neste_gerador": false,
-        "outros_arquivos": []
-      },
       "observacoes": "tubo flexivel trincado",
       "status": "🟢 Em Dia",
       "url": "https://messigean18s-team.monday.com/boards/18415734554/pulses/12156730950",
