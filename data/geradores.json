@@ -1,5 +1,5 @@
 {
-  "atualizado_em": "2026-10-20T14:05:40.624137+00:00",
+  "atualizado_em": "2026-10-20T14:20:17.404924+00:00",
   "total_geradores": 8,
   "geradores": [
     {
@@ -14,6 +14,11 @@
       "ultima_preventiva": "2026-05-06",
       "proxima_preventiva": "2026-11-06",
       "relatorio_dcco": "",
+      "orcamento_preventiva": {
+        "tem_orcamento": false,
+        "arquivos": [],
+        "outros_arquivos": []
+      },
       "observacoes": "",
       "status": "🟢 Em Dia",
       "url": "https://messigean18s-team.monday.com/boards/18415734554/pulses/12156579661",
@@ -280,6 +285,11 @@
       "ultima_preventiva": "2026-05-06",
       "proxima_preventiva": "2026-11-06",
       "relatorio_dcco": "",
+      "orcamento_preventiva": {
+        "tem_orcamento": false,
+        "arquivos": [],
+        "outros_arquivos": []
+      },
       "observacoes": "gerador nao ligou",
       "status": "🟢 Em Dia",
       "url": "https://messigean18s-team.monday.com/boards/18415734554/pulses/12156716029",
@@ -549,6 +559,11 @@
       "ultima_preventiva": "2026-05-06",
       "proxima_preventiva": "2026-11-06",
       "relatorio_dcco": "",
+      "orcamento_preventiva": {
+        "tem_orcamento": false,
+        "arquivos": [],
+        "outros_arquivos": []
+      },
       "observacoes": "",
       "status": "🟢 Em Dia",
       "url": "https://messigean18s-team.monday.com/boards/18415734554/pulses/12156717818",
@@ -815,6 +830,11 @@
       "ultima_preventiva": "2026-05-06",
       "proxima_preventiva": "2026-11-06",
       "relatorio_dcco": "",
+      "orcamento_preventiva": {
+        "tem_orcamento": false,
+        "arquivos": [],
+        "outros_arquivos": []
+      },
       "observacoes": "",
       "status": "🟢 Em Dia",
       "url": "https://messigean18s-team.monday.com/boards/18415734554/pulses/12156690448",
@@ -1073,6 +1093,11 @@
       "ultima_preventiva": "2026-05-06",
       "proxima_preventiva": "2026-11-06",
       "relatorio_dcco": "",
+      "orcamento_preventiva": {
+        "tem_orcamento": false,
+        "arquivos": [],
+        "outros_arquivos": []
+      },
       "observacoes": "Alternador",
       "status": "🟢 Em Dia",
       "url": "https://messigean18s-team.monday.com/boards/18415734554/pulses/12156716427",
@@ -1342,6 +1367,11 @@
       "ultima_preventiva": "2026-05-06",
       "proxima_preventiva": "2026-11-06",
       "relatorio_dcco": "",
+      "orcamento_preventiva": {
+        "tem_orcamento": false,
+        "arquivos": [],
+        "outros_arquivos": []
+      },
       "observacoes": "",
       "status": "🟢 Em Dia",
       "url": "https://messigean18s-team.monday.com/boards/18415734554/pulses/12156729876",
@@ -1608,6 +1638,11 @@
       "ultima_preventiva": "2026-05-06",
       "proxima_preventiva": "2026-11-06",
       "relatorio_dcco": "",
+      "orcamento_preventiva": {
+        "tem_orcamento": false,
+        "arquivos": [],
+        "outros_arquivos": []
+      },
       "observacoes": "",
       "status": "🟢 Em Dia",
       "url": "https://messigean18s-team.monday.com/boards/18415734554/pulses/12156707557",
@@ -1876,6 +1911,11 @@
       "ultima_preventiva": "2026-05-06",
       "proxima_preventiva": "2026-11-06",
       "relatorio_dcco": "",
+      "orcamento_preventiva": {
+        "tem_orcamento": false,
+        "arquivos": [],
+        "outros_arquivos": []
+      },
       "observacoes": "tubo flexivel trincado",
       "status": "🟢 Em Dia",
       "url": "https://messigean18s-team.monday.com/boards/18415734554/pulses/12156730950",
