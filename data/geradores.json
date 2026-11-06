@@ -1,12 +1,12 @@
 {
-  "atualizado_em": "2026-11-06T16:35:45.753786+00:00",
+  "atualizado_em": "2026-11-06T21:44:40.247020+00:00",
   "total_geradores": 8,
   "geradores": [
     {
       "equipamento": "Gerador 01 - C400D6B Série: D22T057618",
       "status_operacional": "Operando",
       "horimetro": 596.0,
-      "delta_horimetro": 16.0,
+      "delta_horimetro": 0.0,
       "status_anterior": "Operando",
       "status_mudou": false,
       "status_mudou_em": null,
@@ -157,6 +157,14 @@
               "Conservação e Limpeza"
             ],
             "observacoes": "Vazamento de oleo"
+          },
+          {
+            "data": "2026-11-06",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
           }
         ],
         "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/13488759350",
@@ -272,7 +280,7 @@
       "equipamento": "Gerador 02 - C400D6B Série: C22T057571",
       "status_operacional": "Operando",
       "horimetro": 595.4,
-      "delta_horimetro": 15.5,
+      "delta_horimetro": 0.0,
       "status_anterior": "Operando",
       "status_mudou": false,
       "status_mudou_em": null,
@@ -329,10 +337,12 @@
           },
           {
             "nome": "Conservação e Limpeza",
-            "status": "conforme"
+            "status": "nao_conforme"
           }
         ],
-        "nao_conformes": [],
+        "nao_conformes": [
+          "Conservação e Limpeza"
+        ],
         "pendencias_abertas": [
           {
             "data": "2026-07-03",
@@ -414,6 +424,14 @@
               "Conservação e Limpeza"
             ],
             "observacoes": "Filtro de ar a vermelho"
+          },
+          {
+            "data": "2026-11-06",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
           }
         ],
         "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/13488760062",
@@ -426,8 +444,10 @@
             "situacao": "Conforme",
             "observacoes": "",
             "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/13488760062",
-            "nao_conformes": [],
-            "conformes": 10
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
           },
           {
             "data": "2026-10-30",
@@ -529,7 +549,7 @@
       "equipamento": "Gerador 03 - C400D6B Série: C22T057467",
       "status_operacional": "Operando",
       "horimetro": 571.0,
-      "delta_horimetro": 14.7,
+      "delta_horimetro": 0.0,
       "status_anterior": "Operando",
       "status_mudou": false,
       "status_mudou_em": null,
@@ -586,10 +606,12 @@
           },
           {
             "nome": "Conservação e Limpeza",
-            "status": "conforme"
+            "status": "nao_conforme"
           }
         ],
-        "nao_conformes": [],
+        "nao_conformes": [
+          "Conservação e Limpeza"
+        ],
         "pendencias_abertas": [
           {
             "data": "2026-07-10",
@@ -662,6 +684,14 @@
               "Conservação e Limpeza"
             ],
             "observacoes": "filtro de ar a baixo"
+          },
+          {
+            "data": "2026-11-06",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
           }
         ],
         "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/13488780108",
@@ -674,8 +704,10 @@
             "situacao": "Conforme",
             "observacoes": "",
             "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/13488780108",
-            "nao_conformes": [],
-            "conformes": 10
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
           },
           {
             "data": "2026-10-30",
@@ -775,7 +807,7 @@
       "equipamento": "Gerador 04 - C400D6B Série: C22T057318",
       "status_operacional": "Operando",
       "horimetro": 569.3,
-      "delta_horimetro": 8.8,
+      "delta_horimetro": 0.0,
       "status_anterior": "Operando",
       "status_mudou": false,
       "status_mudou_em": null,
@@ -832,10 +864,12 @@
           },
           {
             "nome": "Conservação e Limpeza",
-            "status": "conforme"
+            "status": "nao_conforme"
           }
         ],
-        "nao_conformes": [],
+        "nao_conformes": [
+          "Conservação e Limpeza"
+        ],
         "pendencias_abertas": [
           {
             "data": "2026-07-03",
@@ -916,6 +950,14 @@
               "Conservação e Limpeza"
             ],
             "observacoes": "vazamento de oleo"
+          },
+          {
+            "data": "2026-11-06",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
           }
         ],
         "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/13488770629",
@@ -928,8 +970,10 @@
             "situacao": "Conforme",
             "observacoes": "",
             "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/13488770629",
-            "nao_conformes": [],
-            "conformes": 10
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
           },
           {
             "data": "2026-10-30",
@@ -1555,7 +1599,7 @@
       "equipamento": "Gerador 07 - C400D6B Série: B26T066767",
       "status_operacional": "Operando",
       "horimetro": 119.3,
-      "delta_horimetro": 15.5,
+      "delta_horimetro": 0.0,
       "status_anterior": "Operando",
       "status_mudou": false,
       "status_mudou_em": null,
@@ -1612,10 +1656,12 @@
           },
           {
             "nome": "Conservação e Limpeza",
-            "status": "conforme"
+            "status": "nao_conforme"
           }
         ],
-        "nao_conformes": [],
+        "nao_conformes": [
+          "Conservação e Limpeza"
+        ],
         "pendencias_abertas": [
           {
             "data": "2026-07-03",
@@ -1704,6 +1750,14 @@
               "Conservação e Limpeza"
             ],
             "observacoes": ""
+          },
+          {
+            "data": "2026-11-06",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
           }
         ],
         "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/13488823635",
@@ -1716,8 +1770,10 @@
             "situacao": "Conforme",
             "observacoes": "",
             "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/13488823635",
-            "nao_conformes": [],
-            "conformes": 10
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
           },
           {
             "data": "2026-10-30",
@@ -1818,7 +1874,7 @@
       "equipamento": "Gerador 08 - C400D6B Série: B26T066768",
       "status_operacional": "Operando",
       "horimetro": 118.7,
-      "delta_horimetro": 15.6,
+      "delta_horimetro": 0.0,
       "status_anterior": "Operando",
       "status_mudou": false,
       "status_mudou_em": null,
@@ -1875,10 +1931,12 @@
           },
           {
             "nome": "Conservação e Limpeza",
-            "status": "conforme"
+            "status": "nao_conforme"
           }
         ],
-        "nao_conformes": [],
+        "nao_conformes": [
+          "Conservação e Limpeza"
+        ],
         "pendencias_abertas": [
           {
             "data": "2026-07-03",
@@ -1959,6 +2017,14 @@
               "Conservação e Limpeza"
             ],
             "observacoes": ""
+          },
+          {
+            "data": "2026-11-06",
+            "status": "🟡 Aberta",
+            "componentes": [
+              "Conservação e Limpeza"
+            ],
+            "observacoes": ""
           }
         ],
         "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/13488817234",
@@ -1971,8 +2037,10 @@
             "situacao": "Conforme",
             "observacoes": "",
             "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/13488817234",
-            "nao_conformes": [],
-            "conformes": 10
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
           },
           {
             "data": "2026-10-30",
