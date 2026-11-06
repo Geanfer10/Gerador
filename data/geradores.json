@@ -1,16 +1,16 @@
 {
-  "atualizado_em": "2026-11-06T02:49:40.637618+00:00",
+  "atualizado_em": "2026-11-06T16:35:45.753786+00:00",
   "total_geradores": 8,
   "geradores": [
     {
       "equipamento": "Gerador 01 - C400D6B Série: D22T057618",
       "status_operacional": "Operando",
-      "horimetro": 580.05,
-      "delta_horimetro": 0.0,
+      "horimetro": 596.0,
+      "delta_horimetro": 16.0,
       "status_anterior": "Operando",
       "status_mudou": false,
       "status_mudou_em": null,
-      "ultimo_teste": "2026-10-30",
+      "ultimo_teste": "2026-11-06",
       "ultima_preventiva": "2026-05-06",
       "proxima_preventiva": "2026-11-06",
       "relatorio_dcco": "",
@@ -18,12 +18,12 @@
       "status": "🟢 Em Dia",
       "url": "https://messigean18s-team.monday.com/boards/18415734554/pulses/12156579661",
       "inspecao": {
-        "data": "2026-10-30",
+        "data": "2026-11-06",
         "turno": "1º Turno",
-        "inspetor": "Iran Batista",
-        "horimetro": 580.05,
+        "inspetor": "Paulo Ricardo",
+        "horimetro": 596.0,
         "situacao": "Conforme",
-        "observacoes": "Vazamento de oleo",
+        "observacoes": "",
         "componentes": [
           {
             "nome": "Nível de Água",
@@ -159,8 +159,21 @@
             "observacoes": "Vazamento de oleo"
           }
         ],
-        "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/13428626162",
+        "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/13488759350",
         "historico": [
+          {
+            "data": "2026-11-06",
+            "turno": "1º Turno",
+            "inspetor": "Paulo Ricardo",
+            "horimetro": 596.0,
+            "situacao": "Conforme",
+            "observacoes": "",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/13488759350",
+            "nao_conformes": [
+              "Conservação e Limpeza"
+            ],
+            "conformes": 9
+          },
           {
             "data": "2026-10-30",
             "turno": "1º Turno",
@@ -251,19 +264,6 @@
               "Conservação e Limpeza"
             ],
             "conformes": 9
-          },
-          {
-            "data": "2026-08-07",
-            "turno": "1º Turno",
-            "inspetor": "Iran Batista",
-            "horimetro": 498.6,
-            "situacao": "Conforme",
-            "observacoes": "",
-            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/12747811938",
-            "nao_conformes": [
-              "Conservação e Limpeza"
-            ],
-            "conformes": 9
           }
         ]
       }
@@ -271,12 +271,12 @@
     {
       "equipamento": "Gerador 02 - C400D6B Série: C22T057571",
       "status_operacional": "Operando",
-      "horimetro": 579.9,
-      "delta_horimetro": 0.0,
+      "horimetro": 595.4,
+      "delta_horimetro": 15.5,
       "status_anterior": "Operando",
       "status_mudou": false,
       "status_mudou_em": null,
-      "ultimo_teste": "2026-10-30",
+      "ultimo_teste": "2026-11-06",
       "ultima_preventiva": "2026-05-06",
       "proxima_preventiva": "2026-11-06",
       "relatorio_dcco": "",
@@ -284,12 +284,12 @@
       "status": "🟢 Em Dia",
       "url": "https://messigean18s-team.monday.com/boards/18415734554/pulses/12156716029",
       "inspecao": {
-        "data": "2026-10-30",
+        "data": "2026-11-06",
         "turno": "1º Turno",
-        "inspetor": "Iran Batista",
-        "horimetro": 579.9,
-        "situacao": "Não Conforme",
-        "observacoes": "Filtro de ar a vermelho",
+        "inspetor": "Paulo Ricardo",
+        "horimetro": 595.4,
+        "situacao": "Conforme",
+        "observacoes": "",
         "componentes": [
           {
             "nome": "Nível de Água",
@@ -317,7 +317,7 @@
           },
           {
             "nome": "Filtro de Ar",
-            "status": "nao_conforme"
+            "status": "conforme"
           },
           {
             "nome": "Mangueiras Diesel",
@@ -329,13 +329,10 @@
           },
           {
             "nome": "Conservação e Limpeza",
-            "status": "nao_conforme"
+            "status": "conforme"
           }
         ],
-        "nao_conformes": [
-          "Filtro de Ar",
-          "Conservação e Limpeza"
-        ],
+        "nao_conformes": [],
         "pendencias_abertas": [
           {
             "data": "2026-07-03",
@@ -419,8 +416,19 @@
             "observacoes": "Filtro de ar a vermelho"
           }
         ],
-        "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/13428671378",
+        "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/13488760062",
         "historico": [
+          {
+            "data": "2026-11-06",
+            "turno": "1º Turno",
+            "inspetor": "Paulo Ricardo",
+            "horimetro": 595.4,
+            "situacao": "Conforme",
+            "observacoes": "",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/13488760062",
+            "nao_conformes": [],
+            "conformes": 10
+          },
           {
             "data": "2026-10-30",
             "turno": "1º Turno",
@@ -513,19 +521,6 @@
               "Conservação e Limpeza"
             ],
             "conformes": 9
-          },
-          {
-            "data": "2026-08-07",
-            "turno": "1º Turno",
-            "inspetor": "Iran Batista",
-            "horimetro": 498.8,
-            "situacao": "Conforme",
-            "observacoes": "",
-            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/12747812814",
-            "nao_conformes": [
-              "Conservação e Limpeza"
-            ],
-            "conformes": 9
           }
         ]
       }
@@ -533,12 +528,12 @@
     {
       "equipamento": "Gerador 03 - C400D6B Série: C22T057467",
       "status_operacional": "Operando",
-      "horimetro": 556.3,
-      "delta_horimetro": 0.0,
+      "horimetro": 571.0,
+      "delta_horimetro": 14.7,
       "status_anterior": "Operando",
       "status_mudou": false,
       "status_mudou_em": null,
-      "ultimo_teste": "2026-10-30",
+      "ultimo_teste": "2026-11-06",
       "ultima_preventiva": "2026-05-06",
       "proxima_preventiva": "2026-11-06",
       "relatorio_dcco": "",
@@ -546,12 +541,12 @@
       "status": "🟢 Em Dia",
       "url": "https://messigean18s-team.monday.com/boards/18415734554/pulses/12156717818",
       "inspecao": {
-        "data": "2026-10-30",
+        "data": "2026-11-06",
         "turno": "1º Turno",
-        "inspetor": "Iran Batista",
-        "horimetro": 556.3,
-        "situacao": "Não Conforme",
-        "observacoes": "filtro de ar a baixo",
+        "inspetor": "Paulo Ricardo",
+        "horimetro": 571.0,
+        "situacao": "Conforme",
+        "observacoes": "",
         "componentes": [
           {
             "nome": "Nível de Água",
@@ -591,12 +586,10 @@
           },
           {
             "nome": "Conservação e Limpeza",
-            "status": "nao_conforme"
+            "status": "conforme"
           }
         ],
-        "nao_conformes": [
-          "Conservação e Limpeza"
-        ],
+        "nao_conformes": [],
         "pendencias_abertas": [
           {
             "data": "2026-07-10",
@@ -671,8 +664,19 @@
             "observacoes": "filtro de ar a baixo"
           }
         ],
-        "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/13428704284",
+        "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/13488780108",
         "historico": [
+          {
+            "data": "2026-11-06",
+            "turno": "1º Turno",
+            "inspetor": "Paulo Ricardo",
+            "horimetro": 571.0,
+            "situacao": "Conforme",
+            "observacoes": "",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/13488780108",
+            "nao_conformes": [],
+            "conformes": 10
+          },
           {
             "data": "2026-10-30",
             "turno": "1º Turno",
@@ -763,19 +767,6 @@
               "Conservação e Limpeza"
             ],
             "conformes": 9
-          },
-          {
-            "data": "2026-08-07",
-            "turno": "1º Turno",
-            "inspetor": "Iran Batista",
-            "horimetro": 483.5,
-            "situacao": "Conforme",
-            "observacoes": "mensagem de \" warning \" no painel",
-            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/12747863401",
-            "nao_conformes": [
-              "Conservação e Limpeza"
-            ],
-            "conformes": 9
           }
         ]
       }
@@ -783,12 +774,12 @@
     {
       "equipamento": "Gerador 04 - C400D6B Série: C22T057318",
       "status_operacional": "Operando",
-      "horimetro": 560.5,
-      "delta_horimetro": 0.0,
+      "horimetro": 569.3,
+      "delta_horimetro": 8.8,
       "status_anterior": "Operando",
       "status_mudou": false,
       "status_mudou_em": null,
-      "ultimo_teste": "2026-10-30",
+      "ultimo_teste": "2026-11-06",
       "ultima_preventiva": "2026-05-06",
       "proxima_preventiva": "2026-11-06",
       "relatorio_dcco": "",
@@ -796,12 +787,12 @@
       "status": "🟢 Em Dia",
       "url": "https://messigean18s-team.monday.com/boards/18415734554/pulses/12156690448",
       "inspecao": {
-        "data": "2026-10-30",
+        "data": "2026-11-06",
         "turno": "1º Turno",
-        "inspetor": "Iran Batista",
-        "horimetro": 560.5,
+        "inspetor": "Paulo Ricardo",
+        "horimetro": 569.3,
         "situacao": "Conforme",
-        "observacoes": "vazamento de oleo",
+        "observacoes": "",
         "componentes": [
           {
             "nome": "Nível de Água",
@@ -841,12 +832,10 @@
           },
           {
             "nome": "Conservação e Limpeza",
-            "status": "nao_conforme"
+            "status": "conforme"
           }
         ],
-        "nao_conformes": [
-          "Conservação e Limpeza"
-        ],
+        "nao_conformes": [],
         "pendencias_abertas": [
           {
             "data": "2026-07-03",
@@ -929,8 +918,19 @@
             "observacoes": "vazamento de oleo"
           }
         ],
-        "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/13428737693",
+        "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/13488770629",
         "historico": [
+          {
+            "data": "2026-11-06",
+            "turno": "1º Turno",
+            "inspetor": "Paulo Ricardo",
+            "horimetro": 569.3,
+            "situacao": "Conforme",
+            "observacoes": "",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/13488770629",
+            "nao_conformes": [],
+            "conformes": 10
+          },
           {
             "data": "2026-10-30",
             "turno": "1º Turno",
@@ -1021,19 +1021,6 @@
               "Conservação e Limpeza"
             ],
             "conformes": 9
-          },
-          {
-            "data": "2026-07-31",
-            "turno": "1º Turno",
-            "inspetor": "Iran Batista",
-            "horimetro": 483.4,
-            "situacao": "Conforme",
-            "observacoes": "mensagem de \" warning \" no painel",
-            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/12684511058",
-            "nao_conformes": [
-              "Conservação e Limpeza"
-            ],
-            "conformes": 9
           }
         ]
       }
@@ -1046,7 +1033,7 @@
       "status_anterior": "Manutençao",
       "status_mudou": false,
       "status_mudou_em": null,
-      "ultimo_teste": "2026-10-30",
+      "ultimo_teste": "2026-09-11",
       "ultima_preventiva": "2026-05-06",
       "proxima_preventiva": "2026-11-06",
       "relatorio_dcco": "",
@@ -1567,12 +1554,12 @@
     {
       "equipamento": "Gerador 07 - C400D6B Série: B26T066767",
       "status_operacional": "Operando",
-      "horimetro": 103.8,
-      "delta_horimetro": 0.0,
+      "horimetro": 119.3,
+      "delta_horimetro": 15.5,
       "status_anterior": "Operando",
       "status_mudou": false,
       "status_mudou_em": null,
-      "ultimo_teste": "2026-10-30",
+      "ultimo_teste": "2026-11-06",
       "ultima_preventiva": "2026-05-06",
       "proxima_preventiva": "2026-11-06",
       "relatorio_dcco": "",
@@ -1580,10 +1567,10 @@
       "status": "🟢 Em Dia",
       "url": "https://messigean18s-team.monday.com/boards/18415734554/pulses/12156707557",
       "inspecao": {
-        "data": "2026-10-30",
+        "data": "2026-11-06",
         "turno": "1º Turno",
-        "inspetor": "Iran Batista",
-        "horimetro": 103.8,
+        "inspetor": "Paulo Ricardo",
+        "horimetro": 119.3,
         "situacao": "Conforme",
         "observacoes": "",
         "componentes": [
@@ -1625,12 +1612,10 @@
           },
           {
             "nome": "Conservação e Limpeza",
-            "status": "nao_conforme"
+            "status": "conforme"
           }
         ],
-        "nao_conformes": [
-          "Conservação e Limpeza"
-        ],
+        "nao_conformes": [],
         "pendencias_abertas": [
           {
             "data": "2026-07-03",
@@ -1721,8 +1706,19 @@
             "observacoes": ""
           }
         ],
-        "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/13428783015",
+        "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/13488823635",
         "historico": [
+          {
+            "data": "2026-11-06",
+            "turno": "1º Turno",
+            "inspetor": "Paulo Ricardo",
+            "horimetro": 119.3,
+            "situacao": "Conforme",
+            "observacoes": "",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/13488823635",
+            "nao_conformes": [],
+            "conformes": 10
+          },
           {
             "data": "2026-10-30",
             "turno": "1º Turno",
@@ -1814,19 +1810,6 @@
               "Conservação e Limpeza"
             ],
             "conformes": 9
-          },
-          {
-            "data": "2026-08-07",
-            "turno": "1º Turno",
-            "inspetor": "Iran Batista",
-            "horimetro": 22.3,
-            "situacao": "Conforme",
-            "observacoes": "mensagem de \" warning \" no painel",
-            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/12747925008",
-            "nao_conformes": [
-              "Conservação e Limpeza"
-            ],
-            "conformes": 9
           }
         ]
       }
@@ -1834,12 +1817,12 @@
     {
       "equipamento": "Gerador 08 - C400D6B Série: B26T066768",
       "status_operacional": "Operando",
-      "horimetro": 103.1,
-      "delta_horimetro": 0.0,
+      "horimetro": 118.7,
+      "delta_horimetro": 15.6,
       "status_anterior": "Operando",
       "status_mudou": false,
       "status_mudou_em": null,
-      "ultimo_teste": "2026-10-30",
+      "ultimo_teste": "2026-11-06",
       "ultima_preventiva": "2026-05-06",
       "proxima_preventiva": "2026-11-06",
       "relatorio_dcco": "",
@@ -1847,10 +1830,10 @@
       "status": "🟢 Em Dia",
       "url": "https://messigean18s-team.monday.com/boards/18415734554/pulses/12156730950",
       "inspecao": {
-        "data": "2026-10-30",
+        "data": "2026-11-06",
         "turno": "1º Turno",
-        "inspetor": "Iran Batista",
-        "horimetro": 103.1,
+        "inspetor": "Paulo Ricardo",
+        "horimetro": 118.7,
         "situacao": "Conforme",
         "observacoes": "",
         "componentes": [
@@ -1892,12 +1875,10 @@
           },
           {
             "nome": "Conservação e Limpeza",
-            "status": "nao_conforme"
+            "status": "conforme"
           }
         ],
-        "nao_conformes": [
-          "Conservação e Limpeza"
-        ],
+        "nao_conformes": [],
         "pendencias_abertas": [
           {
             "data": "2026-07-03",
@@ -1980,8 +1961,19 @@
             "observacoes": ""
           }
         ],
-        "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/13428828205",
+        "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/13488817234",
         "historico": [
+          {
+            "data": "2026-11-06",
+            "turno": "1º Turno",
+            "inspetor": "Paulo Ricardo",
+            "horimetro": 118.7,
+            "situacao": "Conforme",
+            "observacoes": "",
+            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/13488817234",
+            "nao_conformes": [],
+            "conformes": 10
+          },
           {
             "data": "2026-10-30",
             "turno": "1º Turno",
@@ -2069,19 +2061,6 @@
             "situacao": "Conforme",
             "observacoes": "",
             "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/12806396569",
-            "nao_conformes": [
-              "Conservação e Limpeza"
-            ],
-            "conformes": 9
-          },
-          {
-            "data": "2026-08-07",
-            "turno": "1º Turno",
-            "inspetor": "Iran Batista",
-            "horimetro": 19.1,
-            "situacao": "Conforme",
-            "observacoes": "",
-            "url": "https://messigean18s-team.monday.com/boards/18415787937/pulses/12747943237",
             "nao_conformes": [
               "Conservação e Limpeza"
             ],
