@@ -569,9 +569,30 @@
       return t.includes("manutenc") || t.includes("manutenç") || t.includes("parad") || t.includes("defeito");
     }
 
+    // yyyy-mm-dd -> dd/mm/yyyy
     function formatarData(iso) {
       if (!iso) return "—";
-      return iso;
+      const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(iso);
+      return m ? `${m[3]}/${m[2]}/${m[1]}` : iso;
+    }
+
+    // Dias de atraso da proxima preventiva (0 = nao vencida). Compara so a data, no fuso do navegador.
+    function diasVencida(iso) {
+      const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(iso || "");
+      if (!m) return 0;
+      const hoje = new Date();
+      const hoje0 = new Date(hoje.getFullYear(), hoje.getMonth(), hoje.getDate());
+      const prev = new Date(+m[1], +m[2] - 1, +m[3]);
+      const dias = Math.round((hoje0 - prev) / 86400000);
+      return dias > 0 ? dias : 0;
+    }
+
+    function textoDias(n) { return n === 1 ? "1 dia" : n + " dias"; }
+
+    // Status da preventiva: data vencida tem prioridade sobre o "Status" digitado no Monday
+    function statusPreventiva(g) {
+      if (diasVencida(g.proxima_preventiva) > 0) return "critico";
+      return classificarStatus(g.status);
     }
 
     function mudouRecentemente(g) {
@@ -658,8 +679,8 @@
 
     function precisaAtencao(g) {
       const emManut = emManutencao(g.status_operacional);
-      const statusPreventiva = classificarStatus(g.status);
-      return emManut || statusPreventiva !== "ok";
+      const statusPrev = statusPreventiva(g);
+      return emManut || statusPrev !== "ok";
     }
 
     // ---------- Analise de conformidade (usa os dados do Monday) ----------
@@ -674,7 +695,9 @@
     function analisarConformidade(g) {
       const motivos = [];
       if (emManutencao(g.status_operacional)) motivos.push("Em manutenção (" + (g.status_operacional || "") + ")");
-      if (classificarStatus(g.status) === "critico") motivos.push("Preventiva: " + (g.status || "atrasada"));
+      const dv = diasVencida(g.proxima_preventiva);
+      if (dv > 0) motivos.push("Preventiva vencida em " + formatarData(g.proxima_preventiva) + " (há " + textoDias(dv) + ")");
+      else if (classificarStatus(g.status) === "critico") motivos.push("Preventiva: " + (g.status || "atrasada"));
       const insp = g.inspecao;
       if (insp) {
         if (insp.nao_conformes && insp.nao_conformes.length) motivos.push("Inspeção: " + insp.nao_conformes.join(", "));
@@ -706,16 +729,16 @@
           .map(c => `<span class="chip ${c.status === "nao_conforme" ? "nok" : "ok"}">${c.status === "nao_conforme" ? "✕" : "✓"} ${esc(c.nome)}</span>`).join("");
         const todasPend = (insp.pendencias_abertas || []).slice().reverse();
         const pend = todasPend.slice(0, 3).map(p =>
-          `<div class="obs"><strong>Pendência ${esc(p.status)}</strong> (${esc(p.data)}): ${esc((p.componentes || []).join(", ") || "—")}${p.observacoes ? " — " + esc(p.observacoes) : ""}</div>`).join("") + (todasPend.length > 3 ? `<div class="obs">+ ${todasPend.length - 3} pendência(s) mais antigas em aberto no Monday</div>` : "");
+          `<div class="obs"><strong>Pendência ${esc(p.status)}</strong> (${esc(formatarData(p.data))}): ${esc((p.componentes || []).join(", ") || "—")}${p.observacoes ? " — " + esc(p.observacoes) : ""}</div>`).join("") + (todasPend.length > 3 ? `<div class="obs">+ ${todasPend.length - 3} pendência(s) mais antigas em aberto no Monday</div>` : "");
         inspHtml = `
-          <div class="obs"><strong>Última inspeção:</strong> ${esc(insp.data)}${insp.turno ? " · " + esc(insp.turno) : ""}${insp.inspetor ? " · " + esc(insp.inspetor) : ""}</div>
+          <div class="obs"><strong>Última inspeção:</strong> ${esc(formatarData(insp.data))}${insp.turno ? " · " + esc(insp.turno) : ""}${insp.inspetor ? " · " + esc(insp.inspetor) : ""}</div>
           ${chips ? `<div class="chips">${chips}</div>` : ""}
           ${insp.observacoes && insp.observacoes.trim() ? `<div class="obs"><strong>Obs da inspeção:</strong> ${esc(insp.observacoes)}</div>` : ""}
           ${pend}`;
       }
       return `
         <div class="item-analise ${an.conforme ? "" : "nok"}">
-          <div class="linha"><span>${esc(g.equipamento)}</span><span class="extra">${esc(g.status_operacional || "—")} · ${esc(g.status || "—")}${extra ? " · " + esc(extra) : ""}</span></div>
+          <div class="linha"><span>${esc(g.equipamento)}</span><span class="extra">${esc(g.status_operacional || "—")} · ${diasVencida(g.proxima_preventiva) > 0 ? "🔴 Vencida" : esc(g.status || "—")}${extra ? " · " + esc(extra) : ""}</span></div>
           ${an.motivos.length ? `<div class="motivos">${an.motivos.map(esc).join(" · ")}</div>` : ""}
           ${obs}
           ${inspHtml}
@@ -779,7 +802,7 @@
           Última preventiva: <strong>${esc(formatarData(g.ultima_preventiva))}</strong> ·
           Próxima: <strong>${esc(formatarData(g.proxima_preventiva))}</strong> ·
           Último teste: <strong>${esc(formatarData(g.ultimo_teste))}</strong> ·
-          Preventiva: <strong>${esc(g.status || "—")}</strong>
+          Preventiva: <strong>${diasVencida(g.proxima_preventiva) > 0 ? "VENCIDA há " + textoDias(diasVencida(g.proxima_preventiva)) : esc(g.status || "—")}</strong>
           ${g.observacoes && g.observacoes.trim() ? `<br><strong>Obs:</strong> ${esc(g.observacoes)}` : ""}
         </div></div>`;
 
@@ -793,18 +816,18 @@
         }).join("");
         const hist = (insp.historico || []).map(h => `
           <div class="item-analise ${h.nao_conformes.length ? "nok" : ""}">
-            <div class="linha"><span>${esc(h.data)}${h.turno ? " · " + esc(h.turno) : ""}</span><span class="extra">${esc(h.inspetor || "")}${h.horimetro != null ? " · " + h.horimetro.toFixed(1) + "h" : ""}</span></div>
+            <div class="linha"><span>${esc(formatarData(h.data))}${h.turno ? " · " + esc(h.turno) : ""}</span><span class="extra">${esc(h.inspetor || "")}${h.horimetro != null ? " · " + h.horimetro.toFixed(1) + "h" : ""}</span></div>
             <div class="${h.nao_conformes.length ? "motivos" : "obs"}">${h.nao_conformes.length ? "Não conforme: " + h.nao_conformes.map(esc).join(", ") : "Todos os itens conformes"}</div>
             ${h.observacoes && h.observacoes.trim() ? `<div class="obs"><strong>Obs:</strong> ${esc(h.observacoes)}</div>` : ""}
             ${h.url ? `<a class="btn-link" href="${esc(h.url)}" target="_blank" rel="noopener">Abrir no Monday ›</a>` : ""}
           </div>`).join("");
         corpo += `
-          <h3>Última inspeção (${esc(insp.data)}${insp.turno ? " · " + esc(insp.turno) : ""}${insp.inspetor ? " · " + esc(insp.inspetor) : ""})</h3>
+          <h3>Última inspeção (${esc(formatarData(insp.data))}${insp.turno ? " · " + esc(insp.turno) : ""}${insp.inspetor ? " · " + esc(insp.inspetor) : ""})</h3>
           <div class="chips" style="margin-bottom:8px">${chips}</div>
           ${insp.observacoes && insp.observacoes.trim() ? `<div class="item-analise"><div class="obs" style="margin-top:0"><strong>Obs da inspeção:</strong> ${esc(insp.observacoes)}</div></div>` : ""}
           <h3>Histórico de inspeções (${(insp.historico || []).length} mais recentes)</h3>
           ${hist}
-          ${(insp.pendencias_abertas || []).length ? `<h3 class="nok">Pendências em aberto (${insp.pendencias_abertas.length})</h3>` + insp.pendencias_abertas.slice().reverse().slice(0, 5).map(p => `<div class="item-analise nok"><div class="linha"><span>${esc(p.data)}</span><span class="extra">${esc(p.status)}</span></div><div class="motivos">${esc((p.componentes || []).join(", ") || "—")}</div>${p.observacoes ? `<div class="obs">${esc(p.observacoes)}</div>` : ""}</div>`).join("") : ""}`;
+          ${(insp.pendencias_abertas || []).length ? `<h3 class="nok">Pendências em aberto (${insp.pendencias_abertas.length})</h3>` + insp.pendencias_abertas.slice().reverse().slice(0, 5).map(p => `<div class="item-analise nok"><div class="linha"><span>${esc(formatarData(p.data))}</span><span class="extra">${esc(p.status)}</span></div><div class="motivos">${esc((p.componentes || []).join(", ") || "—")}</div>${p.observacoes ? `<div class="obs">${esc(p.observacoes)}</div>` : ""}</div>`).join("") : ""}`;
       }
       document.getElementById("painel-corpo").innerHTML = corpo;
     }
@@ -877,7 +900,8 @@
       const total = geradores.length;
       const operando = geradores.filter(g => (g.status_operacional || "").toLowerCase().includes("operando")).length;
       const emManutTotal = geradores.filter(g => emManutencao(g.status_operacional)).length;
-      const emDia = geradores.filter(g => classificarStatus(g.status) === "ok").length;
+      const emDia = geradores.filter(g => statusPreventiva(g) === "ok").length;
+      const vencidas = geradores.filter(g => diasVencida(g.proxima_preventiva) > 0).length;
       const disponibilidade = total > 0 ? Math.round((operando / total) * 100) : 0;
       const proximas = geradores
         .map(g => g.proxima_preventiva)
@@ -909,14 +933,14 @@
           <p class="label">Em manutenção</p>
           <p class="valor">${emManutTotal}/${total}</p>
         </div>
-        <div class="kpi destaque" data-kpi="emdia" ${at}>
+        <div class="kpi ${emDia === total ? "destaque" : "alerta-kpi"}" data-kpi="emdia" ${at}>
           <span class="dica">ver análise ›</span>
-          <p class="label">Em dia (preventiva)</p>
+          <p class="label">Em dia (preventiva)${vencidas ? " · " + vencidas + " vencida" + (vencidas > 1 ? "s" : "") : ""}</p>
           <p class="valor">${emDia}/${total}</p>
         </div>
-        <div class="kpi" data-kpi="proxima" ${at}>
+        <div class="kpi ${diasVencida(proximaGeral) > 0 ? "alerta-kpi" : ""}" data-kpi="proxima" ${at}>
           <span class="dica">ver análise ›</span>
-          <p class="label">Próxima preventiva</p>
+          <p class="label">${diasVencida(proximaGeral) > 0 ? "Preventiva VENCIDA há " + textoDias(diasVencida(proximaGeral)) : "Próxima preventiva"}</p>
           <p class="valor">${formatarData(proximaGeral)}</p>
         </div>
       `;
@@ -926,10 +950,12 @@
       cardsEl.innerHTML = "";
       geradores.forEach(g => {
         const emManut = emManutencao(g.status_operacional);
-        const classe = emManut ? "critico" : classificarStatus(g.status);
+        const statusPrev = statusPreventiva(g);
+        const venc = diasVencida(g.proxima_preventiva);
+        const classe = emManut ? "critico" : statusPrev;
         const pct = g.horimetro != null ? Math.min(100, Math.round((g.horimetro / HORIMETRO_MAXIMO) * 100)) : 0;
-        const textoStatus = classificarStatus(g.status) === "ok" ? "Em dia" : (classificarStatus(g.status) === "alerta" ? "Atenção" : "Atrasado");
-        const classeTexto = classificarStatus(g.status) === "ok" ? "status-em-dia" : (classificarStatus(g.status) === "alerta" ? "status-alerta-txt" : "status-critico-txt");
+        const textoStatus = venc > 0 ? "Vencida há " + textoDias(venc) : (statusPrev === "ok" ? "Em dia" : (statusPrev === "alerta" ? "Atenção" : "Atrasado"));
+        const classeTexto = statusPrev === "ok" ? "status-em-dia" : (statusPrev === "alerta" ? "status-alerta-txt" : "status-critico-txt");
         const temObservacao = g.observacoes && g.observacoes.trim().length > 0;
         const destacarMudanca = mudouRecentemente(g);
 
@@ -963,7 +989,7 @@
             <div class="barra-preenchida" style="width:${pct}%"></div>
           </div>
           <div class="card-rodape">
-            <span>Próx: ${formatarData(g.proxima_preventiva)}</span>
+            <span class="${venc > 0 ? "status-critico-txt" : ""}">Próx: ${formatarData(g.proxima_preventiva)}</span>
             <span class="${classeTexto}">${textoStatus}</span>
           </div>
           ${temObservacao ? `<div class="card-observacao"><strong>Obs:</strong> ${g.observacoes}</div>` : ""}
