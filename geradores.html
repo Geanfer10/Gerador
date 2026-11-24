@@ -908,6 +908,8 @@
         .filter(Boolean)
         .sort();
       const proximaGeral = proximas.length ? proximas[0] : "—";
+      const nomesVencidos = geradores.filter(g => diasVencida(g.proxima_preventiva) > 0)
+        .map(g => (g.equipamento || "").split(" - ")[0]).join(", ");
 
       ultimosGeradores = geradores;
       const kpisEl = document.getElementById("kpis");
@@ -942,6 +944,7 @@
           <span class="dica">ver análise ›</span>
           <p class="label">${diasVencida(proximaGeral) > 0 ? "Preventiva VENCIDA há " + textoDias(diasVencida(proximaGeral)) : "Próxima preventiva"}</p>
           <p class="valor">${formatarData(proximaGeral)}</p>
+          ${nomesVencidos ? `<p class="label" style="margin:6px 0 0;font-size:12px">${nomesVencidos}</p>` : ""}
         </div>
       `;
       renderizarPainel(); // mantem o painel aberto atualizado a cada refresh
