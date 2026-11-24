@@ -587,11 +587,17 @@
       return dias > 0 ? dias : 0;
     }
 
+    // Gerador desativado / em manutencao nao entra no alerta de preventiva vencida
+    function diasVencidaG(g) {
+      if (emManutencao(g.status_operacional)) return 0;
+      return diasVencida(g.proxima_preventiva);
+    }
+
     function textoDias(n) { return n === 1 ? "1 dia" : n + " dias"; }
 
     // Status da preventiva: data vencida tem prioridade sobre o "Status" digitado no Monday
     function statusPreventiva(g) {
-      if (diasVencida(g.proxima_preventiva) > 0) return "critico";
+      if (diasVencidaG(g) > 0) return "critico";
       return classificarStatus(g.status);
     }
 
@@ -695,7 +701,7 @@
     function analisarConformidade(g) {
       const motivos = [];
       if (emManutencao(g.status_operacional)) motivos.push("Em manutenção (" + (g.status_operacional || "") + ")");
-      const dv = diasVencida(g.proxima_preventiva);
+      const dv = diasVencidaG(g);
       if (dv > 0) motivos.push("Preventiva vencida em " + formatarData(g.proxima_preventiva) + " (há " + textoDias(dv) + ")");
       else if (classificarStatus(g.status) === "critico") motivos.push("Preventiva: " + (g.status || "atrasada"));
       const insp = g.inspecao;
@@ -738,7 +744,7 @@
       }
       return `
         <div class="item-analise ${an.conforme ? "" : "nok"}">
-          <div class="linha"><span>${esc(g.equipamento)}</span><span class="extra">${esc(g.status_operacional || "—")} · ${diasVencida(g.proxima_preventiva) > 0 ? "🔴 Vencida" : esc(g.status || "—")}${extra ? " · " + esc(extra) : ""}</span></div>
+          <div class="linha"><span>${esc(g.equipamento)}</span><span class="extra">${esc(g.status_operacional || "—")} · ${diasVencidaG(g) > 0 ? "🔴 Vencida" : esc(g.status || "—")}${extra ? " · " + esc(extra) : ""}</span></div>
           ${an.motivos.length ? `<div class="motivos">${an.motivos.map(esc).join(" · ")}</div>` : ""}
           ${obs}
           ${inspHtml}
@@ -802,7 +808,7 @@
           Última preventiva: <strong>${esc(formatarData(g.ultima_preventiva))}</strong> ·
           Próxima: <strong>${esc(formatarData(g.proxima_preventiva))}</strong> ·
           Último teste: <strong>${esc(formatarData(g.ultimo_teste))}</strong> ·
-          Preventiva: <strong>${diasVencida(g.proxima_preventiva) > 0 ? "VENCIDA há " + textoDias(diasVencida(g.proxima_preventiva)) : esc(g.status || "—")}</strong>
+          Preventiva: <strong>${diasVencidaG(g) > 0 ? "VENCIDA há " + textoDias(diasVencidaG(g)) : esc(g.status || "—")}</strong>
           ${g.observacoes && g.observacoes.trim() ? `<br><strong>Obs:</strong> ${esc(g.observacoes)}` : ""}
         </div></div>`;
 
@@ -901,14 +907,15 @@
       const operando = geradores.filter(g => (g.status_operacional || "").toLowerCase().includes("operando")).length;
       const emManutTotal = geradores.filter(g => emManutencao(g.status_operacional)).length;
       const emDia = geradores.filter(g => statusPreventiva(g) === "ok").length;
-      const vencidas = geradores.filter(g => diasVencida(g.proxima_preventiva) > 0).length;
+      const vencidas = geradores.filter(g => diasVencidaG(g) > 0).length;
       const disponibilidade = total > 0 ? Math.round((operando / total) * 100) : 0;
       const proximas = geradores
+        .filter(g => !emManutencao(g.status_operacional))
         .map(g => g.proxima_preventiva)
         .filter(Boolean)
         .sort();
       const proximaGeral = proximas.length ? proximas[0] : "—";
-      const nomesVencidos = geradores.filter(g => diasVencida(g.proxima_preventiva) > 0)
+      const nomesVencidos = geradores.filter(g => diasVencidaG(g) > 0)
         .map(g => (g.equipamento || "").split(" - ")[0]).join(", ");
 
       ultimosGeradores = geradores;
@@ -954,7 +961,7 @@
       geradores.forEach(g => {
         const emManut = emManutencao(g.status_operacional);
         const statusPrev = statusPreventiva(g);
-        const venc = diasVencida(g.proxima_preventiva);
+        const venc = diasVencidaG(g);
         const classe = emManut ? "critico" : statusPrev;
         const pct = g.horimetro != null ? Math.min(100, Math.round((g.horimetro / HORIMETRO_MAXIMO) * 100)) : 0;
         const textoStatus = venc > 0 ? "Vencida há " + textoDias(venc) : (statusPrev === "ok" ? "Em dia" : (statusPrev === "alerta" ? "Atenção" : "Atrasado"));
