@@ -1,5 +1,5 @@
 {
-  "atualizado_em": "2026-11-24T05:03:13.543271+00:00",
+  "atualizado_em": "2026-11-24T19:55:36.182980+00:00",
   "total_geradores": 8,
   "geradores": [
     {
@@ -14,7 +14,7 @@
       "ultima_preventiva": "2026-11-12",
       "proxima_preventiva": "2027-05-12",
       "relatorio_dcco": "",
-      "observacoes": "Vazamento de oleo",
+      "observacoes": "",
       "status": "🟢 Em Dia",
       "url": "https://messigean18s-team.monday.com/boards/18415734554/pulses/12156579661",
       "inspecao": {
@@ -288,7 +288,7 @@
       "ultima_preventiva": "2026-11-12",
       "proxima_preventiva": "2027-05-12",
       "relatorio_dcco": "",
-      "observacoes": "filtro de ar vermelho",
+      "observacoes": "",
       "status": "🟢 Em Dia",
       "url": "https://messigean18s-team.monday.com/boards/18415734554/pulses/12156716029",
       "inspecao": {
@@ -557,7 +557,7 @@
       "ultima_preventiva": "2026-11-12",
       "proxima_preventiva": "2027-05-12",
       "relatorio_dcco": "",
-      "observacoes": "filtro de ar abaixo",
+      "observacoes": "",
       "status": "🟢 Em Dia",
       "url": "https://messigean18s-team.monday.com/boards/18415734554/pulses/12156717818",
       "inspecao": {
@@ -815,7 +815,7 @@
       "ultima_preventiva": "2026-11-12",
       "proxima_preventiva": "2027-05-12",
       "relatorio_dcco": "",
-      "observacoes": "Vazamento de oleo",
+      "observacoes": "",
       "status": "🟢 Em Dia",
       "url": "https://messigean18s-team.monday.com/boards/18415734554/pulses/12156690448",
       "inspecao": {
@@ -1081,7 +1081,7 @@
       "ultima_preventiva": "2026-05-06",
       "proxima_preventiva": "2026-11-06",
       "relatorio_dcco": "",
-      "observacoes": "Alternador",
+      "observacoes": "",
       "status": "🟢 Em Dia",
       "url": "https://messigean18s-team.monday.com/boards/18415734554/pulses/12156716427",
       "inspecao": {
@@ -1341,7 +1341,7 @@
       "ultima_preventiva": "2026-11-12",
       "proxima_preventiva": "2027-05-12",
       "relatorio_dcco": "",
-      "observacoes": "Vazamento de oleo",
+      "observacoes": "",
       "status": "🟢 Em Dia",
       "url": "https://messigean18s-team.monday.com/boards/18415734554/pulses/12156729876",
       "inspecao": {
